@@ -24,6 +24,13 @@
 
 <body>
 
+    <!-- Subtle moving background: three slowly-drifting lavender blobs -->
+    <div class="bg-mesh" aria-hidden="true">
+        <div class="blob blob-a"></div>
+        <div class="blob blob-b"></div>
+        <div class="blob blob-c"></div>
+    </div>
+
     <!-- ============================================================
          TOP NAV  (hidden until the user scrolls down)
          ============================================================ -->
@@ -78,15 +85,15 @@
 
                 <div class="hero-links">
                     <a class="btn" href="#" target="_blank" rel="noopener" aria-label="Paper on arXiv">
-                        <svg class="btn-icon arxiv-svg" viewBox="0 0 246.978 111.119" aria-hidden="true">
+                        <!-- arXiv small logomark (just the X arrow), trimmed from the official 2022 SVG -->
+                        <svg class="btn-icon arxiv-svg" viewBox="93 7 78 109" aria-hidden="true">
                             <g transform="translate(-358.165 -222.27)">
-                                <path fill="#7c7469" d="M427.571,255.154c1.859,0,3.1,1.24,3.985,3.453,1.062-2.213,2.568-3.453,4.694-3.453h14.878a4.062,4.062,0,0,1,4.074,4.074v7.828c0,2.656-1.327,4.074-4.074,4.074-2.656,0-4.074-1.418-4.074-4.074V263.3H436.515a2.411,2.411,0,0,0-2.656,2.745v27.188h10.007c2.658,0,4.074,1.329,4.074,4.074s-1.416,4.074-4.074,4.074h-26.39c-2.659,0-3.986-1.328-3.986-4.074s1.327-4.074,3.986-4.074h8.236V263.3h-7.263c-2.656,0-3.985-1.329-3.985-4.074,0-2.658,1.329-4.074,3.985-4.074Z"/>
-                                <path fill="#7c7469" d="M539.233,255.154c2.656,0,4.074,1.416,4.074,4.074v34.007h10.1c2.746,0,4.074,1.329,4.074,4.074s-1.328,4.074-4.074,4.074H524.8c-2.656,0-4.074-1.328-4.074-4.074s1.418-4.074,4.074-4.074h10.362V263.3h-8.533c-2.744,0-4.073-1.329-4.073-4.074,0-2.658,1.329-4.074,4.073-4.074Zm4.22-17.615a5.859,5.859,0,1,1-5.819-5.819A5.9,5.9,0,0,1,543.453,237.539Z"/>
-                                <path fill="#7c7469" d="M605.143,259.228a4.589,4.589,0,0,1-.267,1.594L590,298.9a3.722,3.722,0,0,1-3.721,2.48h-5.933a3.689,3.689,0,0,1-3.808-2.48l-15.055-38.081a3.23,3.23,0,0,1-.355-1.594,4.084,4.084,0,0,1,4.164-4.074,3.8,3.8,0,0,1,3.718,2.656l14.348,36.134,13.9-36.134a3.8,3.8,0,0,1,3.72-2.656A4.084,4.084,0,0,1,605.143,259.228Z"/>
-                                <path fill="#aa142d" d="M486.149,277.877l-32.741,38.852c-1.286,1.372-2.084,3.777-1.365,5.5a4.705,4.705,0,0,0,4.4,2.914,4.191,4.191,0,0,0,3.16-1.563l40.191-42.714a4.417,4.417,0,0,0,.042-6.042Z"/>
-                                <path fill="#7c7469" d="M486.149,277.877l31.187-38.268c1.492-1.989,2.2-3.03,1.492-4.723a5.142,5.142,0,0,0-4.481-3.161h0a4.024,4.024,0,0,0-3.008,1.108L472.711,274.6a4.769,4.769,0,0,0,.015,6.53L520.512,332.2a3.913,3.913,0,0,0,3.137,1.192,4.394,4.394,0,0,0,4.027-2.818c.719-1.727-.076-3.438-1.4-5.23l-40.124-47.464"/>
-                                <path fill="#aa142d" d="M499.833,274.828,453.169,224.4s-1.713-2.08-3.524-2.124a4.607,4.607,0,0,0-4.338,2.788c-.705,1.692-.2,2.88,1.349,5.1l40.093,48.422"/>
-                                <path fill="#7c7469" d="M390.61,255.154c5.018,0,8.206,3.312,8.206,8.4v37.831H363.308a4.813,4.813,0,0,1-5.143-4.929V283.427a8.256,8.256,0,0,1,7-8.148l25.507-3.572v-8.4H362.306a4.014,4.014,0,0,1-4.141-4.074c0-2.87,2.143-4.074,4.355-4.074Zm.059,38.081V279.942l-24.354,3.4v9.9Z"/>
+                                <path fill="#aa142d"
+                                    d="M486.149,277.877l-32.741,38.852c-1.286,1.372-2.084,3.777-1.365,5.5a4.705,4.705,0,0,0,4.4,2.914,4.191,4.191,0,0,0,3.16-1.563l40.191-42.714a4.417,4.417,0,0,0,.042-6.042Z" />
+                                <path fill="#7c7469"
+                                    d="M486.149,277.877l31.187-38.268c1.492-1.989,2.2-3.03,1.492-4.723a5.142,5.142,0,0,0-4.481-3.161h0a4.024,4.024,0,0,0-3.008,1.108L472.711,274.6a4.769,4.769,0,0,0,.015,6.53L520.512,332.2a3.913,3.913,0,0,0,3.137,1.192,4.394,4.394,0,0,0,4.027-2.818c.719-1.727-.076-3.438-1.4-5.23l-40.124-47.464" />
+                                <path fill="#aa142d"
+                                    d="M499.833,274.828,453.169,224.4s-1.713-2.08-3.524-2.124a4.607,4.607,0,0,0-4.338,2.788c-.705,1.692-.2,2.88,1.349,5.1l40.093,48.422" />
                             </g>
                         </svg>
                         Paper
@@ -241,7 +248,10 @@
          ============================================================ -->
     <section class="section overview-section">
         <figure class="overview-figure">
-            <img src="assets/images/theory/overview.png" alt="overview of reward-tilting failure modes" />
+            <picture>
+                <source media="(max-width: 720px)" srcset="assets/images/theory/overview_mobile.png" />
+                <img src="assets/images/theory/overview.png" alt="overview of reward-tilting failure modes" />
+            </picture>
             <figcaption>
                 <strong>Overview.</strong> Compared to analytic reward tilting, practical guidance algorithms
                 <em>over-concentrate within each mode</em> and <em>fail to select high-reward modes</em>. We propose
@@ -310,30 +320,13 @@
         </div>
 
         <p>
-            for a reward $r : \mathbb{R}^d \to \mathbb{R}$ and inverse temperature $\lambda > 0$. This measure is the
-            unique solution of a KL-regularized variational problem.
-        </p>
-
-        <details class="proof-drop">
-            <summary>Proof sketch &middot; variational characterization of the tilt</summary>
-            <p>
-                The reward-tilted measure solves
-                $$\tilde{\rho}_1 \;=\; \arg\max_{\rho}\; \Bigl\{ \mathbb{E}_{X \sim \rho}[r(X)]
-                - \tfrac{1}{\lambda}\,\mathrm{KL}(\rho \,\|\, \rho_1) \Bigr\}.$$
-                Writing the objective as an integral against $\rho_1$ in the density ratio $f = \rho/\rho_1$ and
-                pointwise-maximizing with the constraint $\mathbb{E}_{X \sim \rho_1}[f(X)] = 1$ gives
-                $f(x) \propto e^{\lambda r(x)}$ via a Lagrange multiplier, so
-                $\tilde{\rho}_1(x) \propto \rho_1(x)\, e^{\lambda r(x)}$.
-            </p>
-        </details>
-
-        <p>
-            The Doob <em>h</em>-transform provides a principled way to reach $\tilde{\rho}_1$ at terminal time by
-            modifying the drift of the forward SDE. Define the <em>Doob h-function</em>
+            for a reward $r : \mathbb{R}^d \to \mathbb{R}$ and inverse temperature $\lambda > 0$. The Doob
+            <em>h</em>-transform provides a principled way to reach $\tilde{\rho}_1$ at terminal time by modifying
+            the drift of the forward SDE. Define the <em>Doob h-function</em>
         </p>
 
         <div class="formula-box">
-            $$h_t(x) \;\coloneq\; \mathbb{E}\!\left[ e^{\lambda r(X_1)} \,\big|\, X_t = x \right].$$
+            $$h_t(x) \;:=\; \mathbb{E}\!\left[ e^{\lambda r(X_1)} \,\big|\, X_t = x \right].$$
         </div>
 
         <p>
@@ -352,6 +345,32 @@
             et al.</a> show that the <em>memoryless schedule</em> $\sigma_t = \sqrt{2(1-t)/t}\,I_d$ guarantees this
             property.
         </p>
+
+        <details class="proof-drop">
+            <summary>Proof sketch &middot; the Doob <em>h</em>-transform yields the reward tilt</summary>
+            <p>
+                Since $h_t(X_t) = \mathbb{E}[e^{\lambda r(X_1)} \mid \mathcal{F}_t]$ is a Doob martingale, it
+                satisfies the Kolmogorov backward equation
+                $\partial_t h_t + \mathcal{L}_t h_t = 0$, where $\mathcal{L}_t$ is the generator of the forward SDE.
+                Define a new path measure $Q$ via the Radon&ndash;Nikodym derivative
+                $$\tfrac{dQ}{dP}\bigg|_{\mathcal{F}_t} \;=\; g_t \;:=\; \tfrac{h_t(X_t)}{h_0(X_0)}.$$
+                It&ocirc;'s formula together with the backward equation gives
+                $dg_t = g_t\, \nabla \log h_t(X_t)^{\!\top} \sigma_t\, dB_t$, so $g_t$ is a Dol&eacute;ans&ndash;Dade
+                exponential. Under standard integrability (Novikov), Girsanov's theorem says that under $Q$,
+                $\tilde{B}_t = B_t - \int_0^t \sigma_s^{\!\top} \nabla \log h_s(X_s)\, ds$ is a Brownian motion, and
+                substituting back into the SDE for $X_t$ gives the guided drift
+                $b_t + \tfrac{1}{2} \sigma_t \sigma_t^{\!\top} \nabla \log \rho_t
+                + \sigma_t \sigma_t^{\!\top} \nabla \log h_t$.
+            </p>
+            <p>
+                For any test function $f$,
+                $\mathbb{E}_Q[f(X_t)] = \mathbb{E}_P[g_t f(X_t)] = \mathbb{E}_P[f(X_t)\, h_t(X_t) / h_0(X_0)]$, so
+                $\tilde{\rho}_t \propto \rho_t\, h_t$. When $X_0 \perp\!\!\!\perp X_1$ (which holds for the
+                memoryless schedule), $h_0(X_0) = \mathbb{E}[e^{\lambda r(X_1)}]$ is a constant, and at $t=1$ this
+                becomes $\tilde{\rho}_1(x) \propto \rho_1(x)\, e^{\lambda r(x)}$. Converting the guided SDE back to
+                its probability flow then gives the deterministic guided ODE in the box above.
+            </p>
+        </details>
 
         <h3>Plug-in estimation</h3>
         <p>
@@ -675,10 +694,10 @@
             <button class="carousel-btn next" aria-label="Next slide" data-target="ir-carousel">&rsaquo;</button>
         </div>
 
-        <!-- Mode selection: checkerboard + table side-by-side -->
+        <!-- Mode selection: checkerboard figure stacked above the table -->
         <h3>Mode selection: 2D checkerboard</h3>
 
-        <div class="cb-row">
+        <div class="cb-stack">
             <figure class="cb-figure">
                 <img src="assets/images/experiments/cb_fig7.png" alt="checkerboard guidance comparison" />
                 <figcaption>
@@ -749,30 +768,71 @@
                             a neon sign on the roof glowing ECLIPSE DINER, in cherry-red and cream tubes, a long empty
                             highway behind it, painterly warm light on chrome surfaces&rdquo;</p>
                         <div class="ms-grid">
+                            <!-- header row -->
                             <div></div>
-                            <div class="ms-col-label">Best-of-1</div>
-                            <div class="ms-col-label">Best-of-2</div>
-                            <div class="ms-col-label">Best-of-4</div>
+                            <div class="ms-col-label" data-cols="2">Best-of-1</div>
+                            <div class="ms-col-label" data-cols="2">Best-of-2</div>
+                            <div class="ms-col-label" data-cols="2">Best-of-4</div>
 
+                            <!-- Unguided -->
                             <div class="ms-row-label cover-unguided">Unguided</div>
-                            <img src="assets/images/experiments/flux_ms_diner/unguided_bo1.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_diner/unguided_bo2.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_diner/unguided_bo4.png" alt="" />
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_diner/unguided_bo1_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_diner/unguided_bo1_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_diner/unguided_bo2_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_diner/unguided_bo2_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_diner/unguided_bo4_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_diner/unguided_bo4_b.png" alt="" />
+                            </div>
 
+                            <!-- Guided -->
                             <div class="ms-row-label cover-guided">Guided</div>
-                            <img src="assets/images/experiments/flux_ms_diner/guided_bo1.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_diner/guided_bo2.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_diner/guided_bo4.png" alt="" />
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_diner/guided_bo1_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_diner/guided_bo1_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_diner/guided_bo2_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_diner/guided_bo2_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_diner/guided_bo4_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_diner/guided_bo4_b.png" alt="" />
+                            </div>
 
+                            <!-- Guided (k=8) -->
                             <div class="ms-row-label cover-guided">Guided (<em>k</em>=8)</div>
-                            <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo1.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo2.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo4.png" alt="" />
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo1_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo1_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo2_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo2_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo4_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo4_b.png" alt="" />
+                            </div>
 
+                            <!-- Damped -->
                             <div class="ms-row-label cover-damped">Damped (ours)</div>
-                            <img src="assets/images/experiments/flux_ms_diner/damped_bo1.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_diner/damped_bo2.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_diner/damped_bo4.png" alt="" />
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_diner/damped_bo1_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_diner/damped_bo1_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_diner/damped_bo2_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_diner/damped_bo2_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_diner/damped_bo4_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_diner/damped_bo4_b.png" alt="" />
+                            </div>
                         </div>
                         <figcaption class="exp-caption">
                             VLM reward derived from &ldquo;Does this image clearly show a neon sign with the word
@@ -787,29 +847,65 @@
                             NEXT TRAIN MARS, teal neon, commuters in silhouette&rdquo;</p>
                         <div class="ms-grid">
                             <div></div>
-                            <div class="ms-col-label">Best-of-1</div>
-                            <div class="ms-col-label">Best-of-2</div>
-                            <div class="ms-col-label">Best-of-4</div>
+                            <div class="ms-col-label" data-cols="2">Best-of-1</div>
+                            <div class="ms-col-label" data-cols="2">Best-of-2</div>
+                            <div class="ms-col-label" data-cols="2">Best-of-4</div>
 
                             <div class="ms-row-label cover-unguided">Unguided</div>
-                            <img src="assets/images/experiments/flux_ms_subway/unguided_bo1.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_subway/unguided_bo2.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_subway/unguided_bo4.png" alt="" />
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_subway/unguided_bo1_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_subway/unguided_bo1_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_subway/unguided_bo2_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_subway/unguided_bo2_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_subway/unguided_bo4_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_subway/unguided_bo4_b.png" alt="" />
+                            </div>
 
                             <div class="ms-row-label cover-guided">Guided</div>
-                            <img src="assets/images/experiments/flux_ms_subway/guided_bo1.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_subway/guided_bo2.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_subway/guided_bo4.png" alt="" />
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_subway/guided_bo1_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_subway/guided_bo1_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_subway/guided_bo2_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_subway/guided_bo2_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_subway/guided_bo4_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_subway/guided_bo4_b.png" alt="" />
+                            </div>
 
                             <div class="ms-row-label cover-guided">Guided (<em>k</em>=8)</div>
-                            <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo1.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo2.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo4.png" alt="" />
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo1_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo1_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo2_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo2_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo4_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo4_b.png" alt="" />
+                            </div>
 
                             <div class="ms-row-label cover-damped">Damped (ours)</div>
-                            <img src="assets/images/experiments/flux_ms_subway/damped_bo1.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_subway/damped_bo2.png" alt="" />
-                            <img src="assets/images/experiments/flux_ms_subway/damped_bo4.png" alt="" />
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_subway/damped_bo1_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_subway/damped_bo1_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_subway/damped_bo2_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_subway/damped_bo2_b.png" alt="" />
+                            </div>
+                            <div class="ms-pair">
+                                <img src="assets/images/experiments/flux_ms_subway/damped_bo4_a.png" alt="" />
+                                <img src="assets/images/experiments/flux_ms_subway/damped_bo4_b.png" alt="" />
+                            </div>
                         </div>
                         <figcaption class="exp-caption">
                             VLM reward derived from &ldquo;Does this image clearly show a display with the text
