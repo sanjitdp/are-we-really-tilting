@@ -7,6 +7,20 @@
     <meta name="description"
         content="Project page for the paper 'Are we really tilting? The mechanics of reward guidance in flow and diffusion models' by Sanjit Dandapanthula and Nicholas M. Boffi.">
     <link rel="stylesheet" href="style.css">
+
+    <!-- MathJax for inline formulas in the background section -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                packages: { '[+]': ['ams'] }
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 
 <body>
@@ -18,7 +32,7 @@
         <div class="topnav-inner">
             <span class="topnav-title">Are we really tilting?</span>
             <nav class="topnav-links">
-                <a href="#abstract">Abstract</a>
+                <a href="#background">Background</a>
                 <a href="#overview">Overview</a>
                 <a href="#experiments">Experiments</a>
                 <a href="#bibtex">BibTeX</a>
@@ -30,110 +44,226 @@
     </header>
 
     <!-- ============================================================
-         HERO
+         HERO  —  title + abstract on the left, splash carousel on the right
          ============================================================ -->
     <section class="hero">
-        <h1 class="paper-title">Are we really tilting?</h1>
-        <p class="paper-subtitle">The mechanics of reward guidance in flow and diffusion models</p>
+        <div class="hero-grid">
 
-        <div class="authors">
-            <span><a href="https://sanjitdp.github.io/" target="_blank" rel="noopener">Sanjit Dandapanthula</a></span>
-            <span><a href="https://nmboffi.github.io/" target="_blank" rel="noopener">Nicholas&nbsp;M.&nbsp;Boffi</a></span>
-        </div>
-        <div class="affiliation">Carnegie Mellon University</div>
+            <div class="hero-text">
+                <h1 class="paper-title">Are we really tilting?</h1>
+                <p class="paper-subtitle">The mechanics of reward guidance in flow and diffusion models</p>
 
-        <div class="hero-links">
-            <a class="btn" href="#" target="_blank" rel="noopener">
-                <span class="btn-icon">📄</span> arXiv
-            </a>
-            <a class="btn" href="https://github.com/sanjitdp/reward-guidance" target="_blank" rel="noopener">
-                <span class="btn-icon">{ }</span> Code
-            </a>
-            <a class="btn" href="#bibtex">
-                <span class="btn-icon">❝</span> BibTeX
-            </a>
+                <div class="authors">
+                    <span><a href="https://sanjitdp.github.io/" target="_blank" rel="noopener">Sanjit
+                            Dandapanthula</a></span>
+                    <span><a href="https://nmboffi.github.io/" target="_blank"
+                            rel="noopener">Nicholas&nbsp;M.&nbsp;Boffi</a></span>
+                </div>
+                <div class="affiliation">Carnegie Mellon University</div>
+
+                <p class="abstract">
+                    Reward guidance algorithms steer a learned generative process toward the reward-tilted measure
+                    at inference time. While empirically powerful, these methods are prone to <em>reward hacking</em>:
+                    the guided model over-optimizes the reward at the cost of fidelity to the learned distribution.
+                    We show that reward hacking arises from an approximation made in most practical implementations
+                    of reward-guided diffusion &mdash; finite-particle <strong>plug-in estimation</strong> of the
+                    Doob <em>h</em>-function &mdash; even in the simplest non-trivial settings of Gaussian and
+                    Gaussian-mixture targets with quadratic rewards. In closed form, we isolate two distinct failure
+                    modes: <strong>within-mode reward hacking</strong> and the inability to <strong>select
+                        high-reward modes</strong>. We propose a closed-form reward damping schedule that corrects
+                    the within-mode bias with no additional compute, and clarify the role of best-of-<em>n</em>
+                    sampling in fixing mode selection. Experiments on Gaussian mixture targets, a 2D checkerboard,
+                    and FLUX.1 text-to-image generation confirm that our theoretical insights carry over to
+                    practical settings.
+                </p>
+
+                <div class="hero-links">
+                    <a class="btn" href="#" target="_blank" rel="noopener">
+                        <span class="btn-icon">📄</span> arXiv
+                    </a>
+                    <a class="btn" href="https://github.com/sanjitdp/reward-guidance" target="_blank" rel="noopener">
+                        <span class="btn-icon">{ }</span> Code
+                    </a>
+                    <a class="btn" href="#bibtex">
+                        <span class="btn-icon">❝</span> BibTeX
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-carousel-wrap">
+                <div class="carousel-shell">
+                    <button class="carousel-btn prev" aria-label="Previous slide" data-target="cover-carousel">&lsaquo;</button>
+                    <div class="carousel" id="cover-carousel" data-autoplay="6000">
+                        <div class="carousel-track">
+
+                            <figure class="slide cover-slide">
+                                <p class="cover-prompt">&ldquo;dogs of different breeds, each taking on a color of the
+                                    rainbow&rdquo;</p>
+                                <div class="cover-row">
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/01_dogs/unguided.png" alt="unguided" />
+                                        <span class="cover-label cover-unguided">Unguided</span>
+                                    </div>
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/01_dogs/guided.png" alt="guided" />
+                                        <span class="cover-label cover-guided">Guided</span>
+                                    </div>
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/01_dogs/damped.png" alt="damped" />
+                                        <span class="cover-label cover-damped">Damped (ours)</span>
+                                    </div>
+                                </div>
+                            </figure>
+
+                            <figure class="slide cover-slide">
+                                <p class="cover-prompt">&ldquo;paper astronauts repairing a torn moon backdrop&rdquo;</p>
+                                <div class="cover-row">
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/02_astronauts/unguided.png" alt="unguided" />
+                                        <span class="cover-label cover-unguided">Unguided</span>
+                                    </div>
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/02_astronauts/guided.png" alt="guided" />
+                                        <span class="cover-label cover-guided">Guided</span>
+                                    </div>
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/02_astronauts/damped.png" alt="damped" />
+                                        <span class="cover-label cover-damped">Damped (ours)</span>
+                                    </div>
+                                </div>
+                            </figure>
+
+                            <figure class="slide cover-slide">
+                                <p class="cover-prompt">&ldquo;sculptor in an open-air studio working on a headless
+                                    statue&rdquo;</p>
+                                <div class="cover-row">
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/03_sculptor/unguided.png" alt="unguided" />
+                                        <span class="cover-label cover-unguided">Unguided</span>
+                                    </div>
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/03_sculptor/guided.png" alt="guided" />
+                                        <span class="cover-label cover-guided">Guided</span>
+                                    </div>
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/03_sculptor/damped.png" alt="damped" />
+                                        <span class="cover-label cover-damped">Damped (ours)</span>
+                                    </div>
+                                </div>
+                            </figure>
+
+                            <figure class="slide cover-slide">
+                                <p class="cover-prompt">&ldquo;skyscraper under construction, missing its middle
+                                    third&rdquo;</p>
+                                <div class="cover-row">
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/04_skyscraper/unguided.png" alt="unguided" />
+                                        <span class="cover-label cover-unguided">Unguided</span>
+                                    </div>
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/04_skyscraper/guided.png" alt="guided" />
+                                        <span class="cover-label cover-guided">Guided</span>
+                                    </div>
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/04_skyscraper/damped.png" alt="damped" />
+                                        <span class="cover-label cover-damped">Damped (ours)</span>
+                                    </div>
+                                </div>
+                            </figure>
+
+                            <figure class="slide cover-slide">
+                                <p class="cover-prompt">&ldquo;brass automaton praying to a human child in an abandoned
+                                    temple&rdquo;</p>
+                                <div class="cover-row">
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/05_automaton/unguided.png" alt="unguided" />
+                                        <span class="cover-label cover-unguided">Unguided</span>
+                                    </div>
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/05_automaton/guided.png" alt="guided" />
+                                        <span class="cover-label cover-guided">Guided</span>
+                                    </div>
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/05_automaton/damped.png" alt="damped" />
+                                        <span class="cover-label cover-damped">Damped (ours)</span>
+                                    </div>
+                                </div>
+                            </figure>
+
+                            <figure class="slide cover-slide">
+                                <p class="cover-prompt">&ldquo;koi pond full of vibrant fish, with the surface
+                                    reflecting a mother and daughter looking down&rdquo;</p>
+                                <div class="cover-row">
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/06_koi/unguided.png" alt="unguided" />
+                                        <span class="cover-label cover-unguided">Unguided</span>
+                                    </div>
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/06_koi/guided.png" alt="guided" />
+                                        <span class="cover-label cover-guided">Guided</span>
+                                    </div>
+                                    <div class="cover-cell">
+                                        <img src="assets/images/cover/06_koi/damped.png" alt="damped" />
+                                        <span class="cover-label cover-damped">Damped (ours)</span>
+                                    </div>
+                                </div>
+                            </figure>
+
+                        </div>
+                        <div class="carousel-dots"></div>
+                    </div>
+                    <button class="carousel-btn next" aria-label="Next slide" data-target="cover-carousel">&rsaquo;</button>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- ============================================================
-         ABSTRACT
+         BACKGROUND  —  bare-minimum setup
          ============================================================ -->
-    <section id="abstract" class="section">
-        <h2>Abstract</h2>
-        <div class="callout">
-            <p>
-                Reward guidance algorithms steer a learned generative process toward the reward-tilted measure at
-                inference time. While empirically powerful, these methods are prone to <em>reward hacking</em>: the
-                guided model over-optimizes the reward at the cost of fidelity to the learned distribution. Prior work
-                has attributed this to the complexity of neural reward functions or implicit biases in diffusion
-                training, but its fundamental origins remain poorly understood.
-            </p>
-            <p>
-                We show that reward hacking arises from an approximation made in most practical implementations of
-                reward-guided diffusion &mdash; finite-particle <strong>plug-in estimation</strong> of the Doob
-                <em>h</em>-function &mdash; even in the simplest non-trivial settings of Gaussian and Gaussian mixture
-                targets with quadratic rewards. In closed form, we isolate two distinct failure modes of the plug-in
-                estimator: it leads to <strong>reward hacking within each mode</strong> and it <strong>cannot select
-                    high-reward modes</strong>.
-            </p>
-            <p>
-                We propose a closed-form reward damping schedule that corrects the within-mode bias with no additional
-                compute, and clarify the role of best-of-<em>n</em> sampling in compensating for the mode selection
-                failure. Experiments on Gaussian mixture targets, a 2D checkerboard, and FLUX.1 text-to-image generation
-                confirm that our theoretical insights carry over to practical settings.
-            </p>
-        </div>
-    </section>
+    <section id="background" class="section">
+        <h2>Background</h2>
 
-    <!-- ============================================================
-         COVER CAROUSEL
-         ============================================================ -->
-    <section class="section">
-        <h2>Reward damping in action</h2>
-        <p class="section-lead">
-            Below: base FLUX.1 samples guided with <a href="https://arxiv.org/abs/2304.05977" target="_blank"
-                rel="noopener">ImageReward</a>. Naive plug-in guidance hacks the reward; <strong>reward damping</strong>
-            (ours) preserves a sample faithful to the prompt.
+        <p>
+            Flow and diffusion models build a sample $X_1 \sim \rho_1$ by transporting a simple noise distribution
+            along a stochastic interpolant
+            $X_t = \alpha_t X_0 + \sigma_t X_1$, $t \in [0, 1]$, with $X_0 \sim \mathcal{N}(0, I)$.
+            For reward-guided generation, we want samples not from $\rho_1$ but from the
+            <em>reward-tilted</em> measure
         </p>
 
-        <div class="carousel" data-autoplay="6000">
-            <div class="carousel-track">
-                <figure class="slide">
-                    <img src="assets/images/cover/01_dogs.png" alt="dogs prompt: unguided / guided / damped" />
-                    <figcaption>&ldquo;dogs of different breeds, each taking on a color of the rainbow&rdquo;</figcaption>
-                </figure>
-                <figure class="slide">
-                    <img src="assets/images/cover/02_astronauts.png" alt="astronauts prompt" />
-                    <figcaption>&ldquo;paper astronauts repairing a torn moon backdrop&rdquo;</figcaption>
-                </figure>
-                <figure class="slide">
-                    <img src="assets/images/cover/03_sculptor.png" alt="sculptor prompt" />
-                    <figcaption>&ldquo;sculptor in an open-air studio working on a headless statue&rdquo;</figcaption>
-                </figure>
-                <figure class="slide">
-                    <img src="assets/images/cover/04_skyscraper.png" alt="skyscraper prompt" />
-                    <figcaption>&ldquo;skyscraper under construction, missing its middle third&rdquo;</figcaption>
-                </figure>
-                <figure class="slide">
-                    <img src="assets/images/cover/05_automaton.png" alt="automaton prompt" />
-                    <figcaption>&ldquo;brass automaton praying to a human child in an abandoned temple&rdquo;</figcaption>
-                </figure>
-                <figure class="slide">
-                    <img src="assets/images/cover/06_koi.png" alt="koi pond prompt" />
-                    <figcaption>&ldquo;koi pond full of vibrant fish, with the surface reflecting a mother and daughter
-                        looking down&rdquo;</figcaption>
-                </figure>
-            </div>
-            <button class="carousel-btn prev" aria-label="Previous slide">&lsaquo;</button>
-            <button class="carousel-btn next" aria-label="Next slide">&rsaquo;</button>
-            <div class="carousel-dots"></div>
+        <div class="formula-box">
+            $$\tilde{\rho}_1(x) \;\propto\; \rho_1(x)\, e^{\lambda r(x)},$$
         </div>
 
-        <p class="figure-caption">
-            <strong>Cover figure.</strong> We introduce <em>reward damping</em>, a simple and principled guidance
-            schedule to mitigate reward hacking. Across six text prompts, naive guidance produces over-optimized
-            artifacts (warped subjects, lost compositional structure), while damped guidance keeps the sample close to
-            the base distribution while still increasing reward.
+        <p>
+            for a reward $r$ and inverse temperature $\lambda$. The Doob $h$-transform tells us this is achieved by
+            adding a guidance term to the base velocity field, where the <em>$h$-function</em>
+        </p>
+
+        <div class="formula-box">
+            $$h_t(x) \;=\; \mathbb{E}\!\left[e^{\lambda r(X_1)} \,\big|\, X_t = x\right]$$
+        </div>
+
+        <p>
+            captures the expected future reward given the current state. The guided sampler simply nudges each step
+            of the base sampler toward $\nabla \log h_t(x)$.
+        </p>
+
+        <p>
+            This expectation is intractable, so it is replaced with a finite-particle <strong>plug-in estimator</strong>:
+            draw $k$ samples $X_1^{(i)}$ from the base model conditional on $X_t = x$ and form
+        </p>
+
+        <div class="formula-box">
+            $$\hat{h}_t^{(k)}(x) \;=\; \frac{1}{k} \sum_{i=1}^{k} e^{\lambda r(X_1^{(i)})}.$$
+        </div>
+
+        <p>
+            <strong>Our central claim</strong> is that even with infinite compute (large $k$), this plug-in estimator
+            does not produce samples from $\tilde{\rho}_1$ &mdash; it has two distinct biases that we characterize in
+            closed form below.
         </p>
     </section>
 
@@ -142,22 +272,14 @@
          ============================================================ -->
     <section id="overview" class="section">
         <h2>Overview</h2>
-        <p>
-            We study <em>reward-guided sampling</em>: given a base flow- or diffusion-model that samples
-            from a distribution and a reward function, we want samples from a <em>reward-tilted</em>
-            distribution that puts more mass on high-reward outcomes. The standard approach is to apply a guidance
-            term, derived from the Doob <em>h</em>-transform, that nudges each step of the sampler toward
-            high-reward regions. In practice, this term is intractable, so it is replaced with a finite-particle
-            <em>plug-in estimator</em>.
-        </p>
 
         <figure class="overview-figure">
             <img src="assets/images/theory/overview.png" alt="overview of reward-tilting failure modes" />
             <figcaption>
                 <strong>Overview.</strong> Compared to analytic reward tilting, practical guidance algorithms
                 <em>over-concentrate within each mode</em> and <em>fail to select high-reward modes</em>. We propose
-                damped reward guidance to fix the first issue, and clarify the role of best-of-<em>n</em> in
-                fixing the second; combined, they approximately recover the analytic tilt.
+                damped reward guidance to fix the first issue, and clarify the role of best-of-<em>n</em> in fixing
+                the second; combined, they approximately recover the analytic tilt.
             </figcaption>
         </figure>
 
@@ -247,62 +369,66 @@
         </figure>
 
         <h4>Blueness reward</h4>
-        <div class="carousel" data-autoplay="7000">
-            <div class="carousel-track">
-                <figure class="slide">
-                    <img src="assets/images/experiments/brg_fox.png" alt="blueness reward, fox prompt" />
-                    <figcaption>
-                        <strong>Blueness reward (fox).</strong> Naive guidance creates overwhelmingly blue outputs that
-                        wash out the fox's orange fur; reward damping recognizes that the fox should remain orange while
-                        the sweater and background turn blue.
-                    </figcaption>
-                </figure>
-                <figure class="slide">
-                    <img src="assets/images/experiments/brg_rococo.png" alt="blueness reward, rococo painting prompt" />
-                    <figcaption>
-                        <strong>Blueness reward (artist).</strong> Naive guidance produces blue images that forget the
-                        artist or candles, while reward damping produces a very blue image that retains the artist and
-                        the warm candlelight.
-                    </figcaption>
-                </figure>
+        <div class="carousel-shell">
+            <button class="carousel-btn prev" aria-label="Previous slide" data-target="blueness-carousel">&lsaquo;</button>
+            <div class="carousel" id="blueness-carousel" data-autoplay="7000">
+                <div class="carousel-track">
+                    <figure class="slide">
+                        <img src="assets/images/experiments/brg_fox.png" alt="blueness reward, fox prompt" />
+                        <figcaption>
+                            <strong>Blueness reward (fox).</strong> Naive guidance creates overwhelmingly blue outputs
+                            that wash out the fox's orange fur; reward damping recognizes that the fox should remain
+                            orange while the sweater and background turn blue.
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="assets/images/experiments/brg_rococo.png" alt="blueness reward, rococo painting" />
+                        <figcaption>
+                            <strong>Blueness reward (artist).</strong> Naive guidance produces blue images that forget
+                            the artist or candles, while reward damping produces a very blue image that retains the
+                            artist and the warm candlelight.
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="carousel-dots"></div>
             </div>
-            <button class="carousel-btn prev" aria-label="Previous slide">&lsaquo;</button>
-            <button class="carousel-btn next" aria-label="Next slide">&rsaquo;</button>
-            <div class="carousel-dots"></div>
+            <button class="carousel-btn next" aria-label="Next slide" data-target="blueness-carousel">&rsaquo;</button>
         </div>
 
         <h4>ImageReward (learned human-preference)</h4>
-        <div class="carousel" data-autoplay="7000">
-            <div class="carousel-track">
-                <figure class="slide">
-                    <img src="assets/images/experiments/ir_archaeo.png" alt="ImageReward, archaeologist prompt" />
-                    <figcaption>
-                        <strong>ImageReward (archaeologist).</strong> Both unguided and naively-guided images produce
-                        unnatural artifacts or fail to show a brush; damped guidance produces a more natural image with
-                        a visible brush.
-                    </figcaption>
-                </figure>
-                <figure class="slide">
-                    <img src="assets/images/experiments/ir_market.png" alt="ImageReward, Indian market prompt" />
-                    <figcaption>
-                        <strong>ImageReward (market).</strong> Image scored against
-                        &ldquo;a vibrant Indian outdoor market with colorful stalls and produce.&rdquo;
-                        Naive guidance brightens the lamps while leaving the rest washed out; damping produces a more
-                        balanced improvement across brightness and color.
-                    </figcaption>
-                </figure>
-                <figure class="slide">
-                    <img src="assets/images/experiments/ir_miner.png" alt="ImageReward, miner prompt" />
-                    <figcaption>
-                        <strong>ImageReward (miner).</strong> Naive guidance hacks ImageReward by ignoring the
-                        split-diorama constraint; reward damping produces dramatic images that still respect the
-                        constraint.
-                    </figcaption>
-                </figure>
+        <div class="carousel-shell">
+            <button class="carousel-btn prev" aria-label="Previous slide" data-target="ir-carousel">&lsaquo;</button>
+            <div class="carousel" id="ir-carousel" data-autoplay="7000">
+                <div class="carousel-track">
+                    <figure class="slide">
+                        <img src="assets/images/experiments/ir_archaeo.png" alt="ImageReward, archaeologist prompt" />
+                        <figcaption>
+                            <strong>ImageReward (archaeologist).</strong> Both unguided and naively-guided images
+                            produce unnatural artifacts or fail to show a brush; damped guidance produces a more
+                            natural image with a visible brush.
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="assets/images/experiments/ir_market.png" alt="ImageReward, Indian market prompt" />
+                        <figcaption>
+                            <strong>ImageReward (market).</strong> Image scored against
+                            &ldquo;a vibrant Indian outdoor market with colorful stalls and produce.&rdquo; Naive
+                            guidance brightens the lamps while leaving the rest washed out; damping produces a more
+                            balanced improvement across brightness and color.
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="assets/images/experiments/ir_miner.png" alt="ImageReward, miner prompt" />
+                        <figcaption>
+                            <strong>ImageReward (miner).</strong> Naive guidance hacks ImageReward by ignoring the
+                            split-diorama constraint; reward damping produces dramatic images that still respect the
+                            constraint.
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="carousel-dots"></div>
             </div>
-            <button class="carousel-btn prev" aria-label="Previous slide">&lsaquo;</button>
-            <button class="carousel-btn next" aria-label="Next slide">&rsaquo;</button>
-            <div class="carousel-dots"></div>
+            <button class="carousel-btn next" aria-label="Next slide" data-target="ir-carousel">&rsaquo;</button>
         </div>
 
         <!-- Mode selection: checkerboard + table side-by-side -->
@@ -321,7 +447,7 @@
             <div class="cb-table">
                 <p class="cb-table-caption">
                     <strong>Checkerboard statistics.</strong> Mean reward and covariance trace for each method
-                    (&lambda; = 10). Uncertainties are &plusmn;2 standard errors of the mean; covariance-trace
+                    ($\lambda = 10$). Uncertainties are $\pm 2$ standard errors of the mean; covariance-trace
                     uncertainties are bootstrapped.
                 </p>
                 <table>
@@ -359,7 +485,7 @@
                             <td>0.107 &plusmn; 0.010</td>
                         </tr>
                         <tr class="row-highlight">
-                            <td>Best-of-4, &sigma;<sub>damp</sub>=0.2</td>
+                            <td>Best-of-4, $\sigma_{\mathrm{damp}}=0.2$</td>
                             <td>0.920 &plusmn; 0.004</td>
                             <td>0.429 &plusmn; 0.022</td>
                         </tr>
@@ -369,29 +495,34 @@
         </div>
 
         <h3>Mode selection on FLUX.1</h3>
-        <div class="carousel" data-autoplay="9000">
-            <div class="carousel-track">
-                <figure class="slide">
-                    <img src="assets/images/experiments/flux_ms_diner.png" alt="ECLIPSE diner mode-selection sweep" />
-                    <figcaption>
-                        <strong>FLUX mode selection (ECLIPSE diner).</strong> VLM reward derived from
-                        &ldquo;Does this image clearly show a neon sign with the word &lsquo;ECLIPSE&rsquo; as the main
-                        readable text?&rdquo; Plug-in guidance hacks the reward; damping helps slightly; best-of-<em>n</em> substantially improves it &mdash; confirming the importance of the initial seed for mode selection.
-                    </figcaption>
-                </figure>
-                <figure class="slide">
-                    <img src="assets/images/experiments/flux_ms_subway.png" alt="NEXT TRAIN MARS mode-selection sweep" />
-                    <figcaption>
-                        <strong>FLUX mode selection (NEXT TRAIN MARS).</strong> VLM reward derived from
-                        &ldquo;Does this image clearly show a display with the text &lsquo;NEXT TRAIN MARS&rsquo; as the
-                        main readable text?&rdquo; The qualitative pattern reproduces: plug-in guidance hacks the
-                        reward, and best-of-<em>n</em> substantially improves it.
-                    </figcaption>
-                </figure>
+        <div class="carousel-shell">
+            <button class="carousel-btn prev" aria-label="Previous slide" data-target="ms-carousel">&lsaquo;</button>
+            <div class="carousel" id="ms-carousel" data-autoplay="9000">
+                <div class="carousel-track">
+                    <figure class="slide">
+                        <img src="assets/images/experiments/flux_ms_diner.png" alt="ECLIPSE diner mode-selection sweep" />
+                        <figcaption>
+                            <strong>FLUX mode selection (ECLIPSE diner).</strong> VLM reward derived from
+                            &ldquo;Does this image clearly show a neon sign with the word &lsquo;ECLIPSE&rsquo; as the
+                            main readable text?&rdquo; Plug-in guidance hacks the reward; damping helps slightly;
+                            best-of-<em>n</em> substantially improves it &mdash; confirming the importance of the
+                            initial seed for mode selection.
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="assets/images/experiments/flux_ms_subway.png"
+                            alt="NEXT TRAIN MARS mode-selection sweep" />
+                        <figcaption>
+                            <strong>FLUX mode selection (NEXT TRAIN MARS).</strong> VLM reward derived from
+                            &ldquo;Does this image clearly show a display with the text &lsquo;NEXT TRAIN MARS&rsquo;
+                            as the main readable text?&rdquo; The qualitative pattern reproduces: plug-in guidance
+                            hacks the reward, and best-of-<em>n</em> substantially improves it.
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="carousel-dots"></div>
             </div>
-            <button class="carousel-btn prev" aria-label="Previous slide">&lsaquo;</button>
-            <button class="carousel-btn next" aria-label="Next slide">&rsaquo;</button>
-            <div class="carousel-dots"></div>
+            <button class="carousel-btn next" aria-label="Next slide" data-target="ms-carousel">&rsaquo;</button>
         </div>
     </section>
 

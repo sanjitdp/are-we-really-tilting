@@ -1,5 +1,5 @@
 // Lightweight carousel — no dependencies.
-// One instance per .carousel element on the page.
+// Each .carousel has an id; sibling buttons reference it via data-target.
 
 (function () {
     const carousels = document.querySelectorAll(".carousel");
@@ -7,15 +7,15 @@
     carousels.forEach((root) => {
         const track = root.querySelector(".carousel-track");
         const slides = Array.from(root.querySelectorAll(".slide"));
-        const prevBtn = root.querySelector(".carousel-btn.prev");
-        const nextBtn = root.querySelector(".carousel-btn.next");
         const dotsHost = root.querySelector(".carousel-dots");
+        const id = root.id;
+        const prevBtn = id ? document.querySelector(`.carousel-btn.prev[data-target="${id}"]`) : null;
+        const nextBtn = id ? document.querySelector(`.carousel-btn.next[data-target="${id}"]`) : null;
         const autoplayMs = parseInt(root.dataset.autoplay || "0", 10);
 
         if (slides.length <= 1) {
-            // Hide controls if only one slide
-            if (prevBtn) prevBtn.style.display = "none";
-            if (nextBtn) nextBtn.style.display = "none";
+            if (prevBtn) prevBtn.style.visibility = "hidden";
+            if (nextBtn) nextBtn.style.visibility = "hidden";
             if (dotsHost) dotsHost.style.display = "none";
             return;
         }
@@ -51,14 +51,14 @@
         function next(fromUser = false) { goTo(index + 1, fromUser); }
         function prev(fromUser = false) { goTo(index - 1, fromUser); }
 
-        prevBtn.addEventListener("click", () => prev(true));
-        nextBtn.addEventListener("click", () => next(true));
+        if (prevBtn) prevBtn.addEventListener("click", () => prev(true));
+        if (nextBtn) nextBtn.addEventListener("click", () => next(true));
 
-        // Keyboard navigation when carousel is in viewport and focused
+        // Keyboard navigation when carousel is focused
         root.tabIndex = 0;
         root.addEventListener("keydown", (e) => {
             if (e.key === "ArrowRight") { next(true); e.preventDefault(); }
-            if (e.key === "ArrowLeft")  { prev(true); e.preventDefault(); }
+            if (e.key === "ArrowLeft") { prev(true); e.preventDefault(); }
         });
 
         // Touch swipe
@@ -85,7 +85,6 @@
             if (timer) { clearInterval(timer); timer = null; }
         }
 
-        // Pause on hover
         root.addEventListener("mouseenter", stopAutoplay);
         root.addEventListener("mouseleave", () => {
             if (!userInteracted) startAutoplay();
@@ -93,15 +92,10 @@
 
         render();
 
-        // Defer autoplay until images have started loading and the carousel is in viewport
         if ("IntersectionObserver" in window) {
             const io = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        startAutoplay();
-                    } else {
-                        stopAutoplay();
-                    }
+                    if (entry.isIntersecting) startAutoplay(); else stopAutoplay();
                 });
             }, { threshold: 0.25 });
             io.observe(root);
