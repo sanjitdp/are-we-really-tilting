@@ -505,7 +505,7 @@ strong { font-weight: 700; }
 .five-col-row .cover-cell img { aspect-ratio: 1 / 1; }
 
 .exp-caption {
-    margin-top: 14px !important;
+    margin: 14px auto 0;
     font-size: 14.5px;
     color: var(--text-soft);
     text-align: center;
@@ -513,9 +513,8 @@ strong { font-weight: 700; }
     line-height: 1.5;
     padding: 0 8px;
     min-height: 4.5em;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    /* No display:flex here — caption text needs to wrap freely so long
+       captions (e.g. the FLUX mode-selection one) aren't clipped. */
 }
 
 /* ============================ Mode-selection 4 method rows × 6 image cells ============================ */
@@ -576,19 +575,13 @@ strong { font-weight: 700; }
 /* Per-method best-of-N labels — only visible on mobile */
 .ms-pair-labels { display: none; }
 
-/* ============================ Overview figure (two LaTeX halves) ============================ */
+/* ============================ Overview figure ============================ */
 
 .overview-figure { margin: 18px auto 24px; max-width: 1180px; text-align: center; }
 
-/* Side-by-side on desktop, stacked on mobile (handled in the responsive block) */
-.overview-halves {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+.overview-figure img {
     margin: 0 auto;
-}
-.overview-halves img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     display: block;
 }
@@ -744,7 +737,7 @@ strong { font-weight: 700; }
         margin-bottom: 18px;
     }
     .ms-row-label {
-        text-align: left;
+        text-align: center;
         padding: 4px 0 6px;
         font-size: 14px;
     }

@@ -231,16 +231,18 @@
     </section>
 
     <!-- ============================================================
-         OVERVIEW figure  (LaTeX-rendered halves; stacked on mobile)
+         OVERVIEW figure
+         Desktop: original wide LaTeX figure (4 panels in one row).
+         Mobile:  custom 2x2 LaTeX rebuild with a 3-row legend.
          ============================================================ -->
     <section class="section overview-section">
         <figure class="overview-figure">
-            <div class="overview-halves">
-                <img src="assets/images/theory/overview_left.png"
-                    alt="Base target and analytic reward tilting" />
-                <img src="assets/images/theory/overview_right.png"
-                    alt="Practical guidance and damping with best-of-n" />
-            </div>
+            <picture>
+                <source media="(max-width: 720px)"
+                    srcset="assets/images/theory/overview_mobile.png" />
+                <img src="assets/images/theory/overview.png"
+                    alt="Overview: base target, analytic reward tilting, practical guidance, damping with best-of-n" />
+            </picture>
             <figcaption>
                 <strong>Overview.</strong> Compared to analytic reward tilting, practical guidance algorithms
                 <em>over-concentrate within each mode</em> and <em>fail to select high-reward modes</em>. We propose
