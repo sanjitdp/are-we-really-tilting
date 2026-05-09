@@ -8,7 +8,6 @@
         content="Project page for the paper 'Are we really tilting? The mechanics of reward guidance in flow and diffusion models' by Sanjit Dandapanthula and Nicholas M. Boffi.">
     <link rel="stylesheet" href="style.css">
 
-    <!-- MathJax for inline formulas in the background section -->
     <script>
         window.MathJax = {
             tex: {
@@ -36,7 +35,7 @@
                 <a href="#overview">Overview</a>
                 <a href="#experiments">Experiments</a>
                 <a href="#citation">Citation</a>
-                <a class="link-pill" href="#" target="_blank" rel="noopener">arXiv</a>
+                <a class="link-pill" href="#" target="_blank" rel="noopener">Paper</a>
                 <a class="link-pill" href="https://github.com/sanjitdp/reward-guidance" target="_blank"
                     rel="noopener">Code</a>
             </nav>
@@ -44,7 +43,7 @@
     </header>
 
     <!-- ============================================================
-         HERO  —  title + abstract on the left, splash carousel on the right
+         HERO
          ============================================================ -->
     <section class="hero">
         <div class="hero-grid">
@@ -78,15 +77,9 @@
                 </p>
 
                 <div class="hero-links">
-                    <a class="btn" href="#" target="_blank" rel="noopener" aria-label="arXiv">
-                        <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <!-- arXiv-style document with downward arrow -->
-                            <path fill="currentColor"
-                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm0 7V3.5L19.5 9H14Z" />
-                            <path fill="#ffffff"
-                                d="M12.6 12.5h-1.2v3.4l-1.5-1.5-.85.85L12 18.2l2.95-2.95-.85-.85-1.5 1.5v-3.4Z" />
-                        </svg>
-                        arXiv
+                    <a class="btn" href="#" target="_blank" rel="noopener" aria-label="Paper on arXiv">
+                        <span class="btn-icon arxiv-mark">ar<span class="x">X</span>iv</span>
+                        Paper
                     </a>
                     <a class="btn" href="https://github.com/sanjitdp/reward-guidance" target="_blank" rel="noopener"
                         aria-label="Code on GitHub">
@@ -110,8 +103,8 @@
                         <div class="carousel-track">
 
                             <figure class="slide cover-slide">
-                                <p class="cover-prompt">&ldquo;dogs of different breeds, each taking on a color of the
-                                    rainbow&rdquo;</p>
+                                <p class="cover-prompt">&ldquo;line of dogs of different breeds, with each dog taking on
+                                    a color of the rainbow to form a technicolor gradient&rdquo;</p>
                                 <div class="cover-row">
                                     <div class="cover-cell">
                                         <img src="assets/images/cover/01_dogs/unguided.png" alt="unguided" />
@@ -129,7 +122,8 @@
                             </figure>
 
                             <figure class="slide cover-slide">
-                                <p class="cover-prompt">&ldquo;paper astronauts repairing a torn moon backdrop&rdquo;</p>
+                                <p class="cover-prompt">&ldquo;stylized stop-motion scene of paper astronauts repairing
+                                    a torn moon backdrop&rdquo;</p>
                                 <div class="cover-row">
                                     <div class="cover-cell">
                                         <img src="assets/images/cover/02_astronauts/unguided.png" alt="unguided" />
@@ -147,8 +141,8 @@
                             </figure>
 
                             <figure class="slide cover-slide">
-                                <p class="cover-prompt">&ldquo;sculptor in an open-air studio working on a headless
-                                    statue&rdquo;</p>
+                                <p class="cover-prompt">&ldquo;renaissance painting of a sculptor in an open-air studio
+                                    working on a headless statue&rdquo;</p>
                                 <div class="cover-row">
                                     <div class="cover-cell">
                                         <img src="assets/images/cover/03_sculptor/unguided.png" alt="unguided" />
@@ -166,8 +160,8 @@
                             </figure>
 
                             <figure class="slide cover-slide">
-                                <p class="cover-prompt">&ldquo;skyscraper under construction, missing its middle
-                                    third&rdquo;</p>
+                                <p class="cover-prompt">&ldquo;editorial photo of a skyscraper under construction,
+                                    missing its middle third&rdquo;</p>
                                 <div class="cover-row">
                                     <div class="cover-cell">
                                         <img src="assets/images/cover/04_skyscraper/unguided.png" alt="unguided" />
@@ -233,6 +227,21 @@
     </section>
 
     <!-- ============================================================
+         OVERVIEW figure  (sits right above Background as the first thing)
+         ============================================================ -->
+    <section class="section overview-section">
+        <figure class="overview-figure">
+            <img src="assets/images/theory/overview.png" alt="overview of reward-tilting failure modes" />
+            <figcaption>
+                <strong>Overview.</strong> Compared to analytic reward tilting, practical guidance algorithms
+                <em>over-concentrate within each mode</em> and <em>fail to select high-reward modes</em>. We propose
+                damped reward guidance to fix the first issue, and clarify the role of best-of-<em>n</em> in fixing
+                the second; combined, they approximately recover the analytic tilt.
+            </figcaption>
+        </figure>
+    </section>
+
+    <!-- ============================================================
          BACKGROUND  —  bare-minimum setup
          ============================================================ -->
     <section id="background" class="section">
@@ -284,20 +293,9 @@
          OVERVIEW & THEORY
          ============================================================ -->
     <section id="overview" class="section">
-        <h2>Overview</h2>
-
-        <figure class="overview-figure">
-            <img src="assets/images/theory/overview.png" alt="overview of reward-tilting failure modes" />
-            <figcaption>
-                <strong>Overview.</strong> Compared to analytic reward tilting, practical guidance algorithms
-                <em>over-concentrate within each mode</em> and <em>fail to select high-reward modes</em>. We propose
-                damped reward guidance to fix the first issue, and clarify the role of best-of-<em>n</em> in fixing
-                the second; combined, they approximately recover the analytic tilt.
-            </figcaption>
-        </figure>
+        <h2>What we prove</h2>
 
         <div class="callout">
-            <p class="callout-title">What we prove (informally)</p>
             <p>
                 Even in the simplest non-trivial settings &mdash; Gaussian and Gaussian-mixture targets with
                 quadratic rewards &mdash; the plug-in estimator exhibits <strong>two distinct failure modes</strong>
@@ -370,38 +368,90 @@
 
         <h3>Within-mode hacking on FLUX.1</h3>
 
-        <h4>Masked intensity</h4>
-        <figure class="full-figure">
-            <img src="assets/images/experiments/welder.png"
-                alt="masked-intensity guidance: naive removes the welder, damped keeps it" />
-            <figcaption>
-                <strong>Masked intensity reward.</strong> Reward is mean pixel intensity inside a top-right circular
-                mask minus mean intensity outside. Naive guidance maximizes the masked-region brightness by removing
-                the welder from the frame; reward damping obtains a high-reward sample including the welder.
-            </figcaption>
-        </figure>
+        <h4>Masked intensity reward</h4>
+        <div class="carousel-shell single">
+            <div class="carousel" id="welder-carousel">
+                <div class="carousel-track">
+                    <figure class="slide three-col-slide">
+                        <p class="exp-prompt">&ldquo;photorealistic worm's-eye view of a welder mid-spark inside a
+                            rusted ship hull, sweat, smoke, orange backlight&rdquo;</p>
+                        <div class="three-col-row">
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/welder/unguided.png" alt="unguided" />
+                                <span class="cover-label cover-unguided">Unguided</span>
+                            </div>
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/welder/guided.png" alt="guided" />
+                                <span class="cover-label cover-guided">Guided</span>
+                            </div>
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/welder/damped.png" alt="damped" />
+                                <span class="cover-label cover-damped">Damped (ours)</span>
+                            </div>
+                        </div>
+                        <figcaption class="exp-caption">
+                            Reward is mean pixel intensity inside a top-right circular mask minus mean intensity
+                            outside. Naive guidance maximizes the masked-region brightness by removing the welder
+                            from the frame; reward damping obtains a high-reward sample including the welder.
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="carousel-dots"></div>
+            </div>
+        </div>
 
         <h4>Blueness reward</h4>
         <div class="carousel-shell">
             <button class="carousel-btn prev" aria-label="Previous slide" data-target="blueness-carousel">&lsaquo;</button>
             <div class="carousel" id="blueness-carousel" data-autoplay="7000">
                 <div class="carousel-track">
-                    <figure class="slide">
-                        <img src="assets/images/experiments/brg_fox.png" alt="blueness reward, fox prompt" />
-                        <figcaption>
-                            <strong>Blueness reward (fox).</strong> Naive guidance creates overwhelmingly blue outputs
-                            that wash out the fox's orange fur; reward damping recognizes that the fox should remain
-                            orange while the sweater and background turn blue.
+
+                    <figure class="slide three-col-slide">
+                        <p class="exp-prompt">&ldquo;a baby fox wearing a cozy knitted sweater&rdquo;</p>
+                        <div class="three-col-row">
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/brg_fox/unguided.png" alt="unguided" />
+                                <span class="cover-label cover-unguided">Unguided</span>
+                            </div>
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/brg_fox/guided.png" alt="guided" />
+                                <span class="cover-label cover-guided">Guided</span>
+                            </div>
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/brg_fox/damped.png" alt="damped" />
+                                <span class="cover-label cover-damped">Damped (ours)</span>
+                            </div>
+                        </div>
+                        <figcaption class="exp-caption">
+                            Reward is the mean blue channel minus the mean of red and green. Naive guidance washes
+                            out the orange fur; damped guidance keeps the fox orange and turns the sweater and
+                            background blue.
                         </figcaption>
                     </figure>
-                    <figure class="slide">
-                        <img src="assets/images/experiments/brg_rococo.png" alt="blueness reward, rococo painting" />
-                        <figcaption>
-                            <strong>Blueness reward (artist).</strong> Naive guidance produces blue images that forget
-                            the artist or candles, while reward damping produces a very blue image that retains the
-                            artist and the warm candlelight.
+
+                    <figure class="slide three-col-slide">
+                        <p class="exp-prompt">&ldquo;artist painting in the center of a cluttered room lit by
+                            candlelight, rococo&rdquo;</p>
+                        <div class="three-col-row">
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/brg_rococo/unguided.png" alt="unguided" />
+                                <span class="cover-label cover-unguided">Unguided</span>
+                            </div>
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/brg_rococo/guided.png" alt="guided" />
+                                <span class="cover-label cover-guided">Guided</span>
+                            </div>
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/brg_rococo/damped.png" alt="damped" />
+                                <span class="cover-label cover-damped">Damped (ours)</span>
+                            </div>
+                        </div>
+                        <figcaption class="exp-caption">
+                            Naive guidance produces blue images that lose the artist or candles; damped guidance
+                            produces a very blue image that retains the artist and the warm candlelight.
                         </figcaption>
                     </figure>
+
                 </div>
                 <div class="carousel-dots"></div>
             </div>
@@ -413,31 +463,76 @@
             <button class="carousel-btn prev" aria-label="Previous slide" data-target="ir-carousel">&lsaquo;</button>
             <div class="carousel" id="ir-carousel" data-autoplay="7000">
                 <div class="carousel-track">
-                    <figure class="slide">
-                        <img src="assets/images/experiments/ir_archaeo.png" alt="ImageReward, archaeologist prompt" />
-                        <figcaption>
-                            <strong>ImageReward (archaeologist).</strong> Both unguided and naively-guided images
-                            produce unnatural artifacts or fail to show a brush; damped guidance produces a more
-                            natural image with a visible brush.
+
+                    <figure class="slide three-col-slide">
+                        <p class="exp-prompt">&ldquo;photorealistic close-up of an archaeologist brushing weathered
+                            paper talismans in a flooded bunker, flashlight haze, focused expression&rdquo;</p>
+                        <div class="three-col-row">
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/ir_archaeo/unguided.png" alt="unguided" />
+                                <span class="cover-label cover-unguided">Unguided</span>
+                            </div>
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/ir_archaeo/guided.png" alt="guided" />
+                                <span class="cover-label cover-guided">Guided</span>
+                            </div>
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/ir_archaeo/damped.png" alt="damped" />
+                                <span class="cover-label cover-damped">Damped (ours)</span>
+                            </div>
+                        </div>
+                        <figcaption class="exp-caption">
+                            Both unguided and naively-guided images produce unnatural artifacts or fail to show a
+                            brush; damped guidance produces a more natural image with a visible brush.
                         </figcaption>
                     </figure>
-                    <figure class="slide">
-                        <img src="assets/images/experiments/ir_market.png" alt="ImageReward, Indian market prompt" />
-                        <figcaption>
-                            <strong>ImageReward (market).</strong> Image scored against
-                            &ldquo;a vibrant Indian outdoor market with colorful stalls and produce.&rdquo; Naive
-                            guidance brightens the lamps while leaving the rest washed out; damping produces a more
-                            balanced improvement across brightness and color.
+
+                    <figure class="slide three-col-slide">
+                        <p class="exp-prompt">&ldquo;a dull, muted, washed-out, desaturated Indian outdoor market with
+                            stalls and produce, overcast gloomy lighting, faded colors&rdquo;</p>
+                        <div class="three-col-row">
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/ir_market/unguided.png" alt="unguided" />
+                                <span class="cover-label cover-unguided">Unguided</span>
+                            </div>
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/ir_market/guided.png" alt="guided" />
+                                <span class="cover-label cover-guided">Guided</span>
+                            </div>
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/ir_market/damped.png" alt="damped" />
+                                <span class="cover-label cover-damped">Damped (ours)</span>
+                            </div>
+                        </div>
+                        <figcaption class="exp-caption">
+                            Naive guidance brightens the lamps while leaving the rest washed out; damped guidance
+                            produces a more balanced improvement across brightness and color.
                         </figcaption>
                     </figure>
-                    <figure class="slide">
-                        <img src="assets/images/experiments/ir_miner.png" alt="ImageReward, miner prompt" />
-                        <figcaption>
-                            <strong>ImageReward (miner).</strong> Naive guidance hacks ImageReward by ignoring the
-                            split-diorama constraint; reward damping produces dramatic images that still respect the
-                            constraint.
+
+                    <figure class="slide three-col-slide">
+                        <p class="exp-prompt">&ldquo;cinematic split diorama of a miner above and below ground, helmet
+                            beam, coal dust, family dinner fading opposite&rdquo;</p>
+                        <div class="three-col-row">
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/ir_miner/unguided.png" alt="unguided" />
+                                <span class="cover-label cover-unguided">Unguided</span>
+                            </div>
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/ir_miner/guided.png" alt="guided" />
+                                <span class="cover-label cover-guided">Guided</span>
+                            </div>
+                            <div class="cover-cell">
+                                <img src="assets/images/experiments/ir_miner/damped.png" alt="damped" />
+                                <span class="cover-label cover-damped">Damped (ours)</span>
+                            </div>
+                        </div>
+                        <figcaption class="exp-caption">
+                            Naive guidance hacks ImageReward by ignoring the split-diorama constraint; damped guidance
+                            produces dramatic images that still respect the constraint.
                         </figcaption>
                     </figure>
+
                 </div>
                 <div class="carousel-dots"></div>
             </div>
@@ -512,26 +607,82 @@
             <button class="carousel-btn prev" aria-label="Previous slide" data-target="ms-carousel">&lsaquo;</button>
             <div class="carousel" id="ms-carousel" data-autoplay="9000">
                 <div class="carousel-track">
-                    <figure class="slide">
-                        <img src="assets/images/experiments/flux_ms_diner.png" alt="ECLIPSE diner mode-selection sweep" />
-                        <figcaption>
-                            <strong>FLUX mode selection (ECLIPSE diner).</strong> VLM reward derived from
-                            &ldquo;Does this image clearly show a neon sign with the word &lsquo;ECLIPSE&rsquo; as the
-                            main readable text?&rdquo; Plug-in guidance hacks the reward; damping helps slightly;
-                            best-of-<em>n</em> substantially improves it &mdash; confirming the importance of the
-                            initial seed for mode selection.
+
+                    <figure class="slide ms-slide">
+                        <p class="exp-prompt">&ldquo;a roadside American diner in the Nevada desert, shot at twilight,
+                            a neon sign on the roof glowing ECLIPSE DINER, in cherry-red and cream tubes, a long empty
+                            highway behind it, painterly warm light on chrome surfaces&rdquo;</p>
+                        <div class="ms-grid">
+                            <div></div>
+                            <div class="ms-col-label">Best-of-1</div>
+                            <div class="ms-col-label">Best-of-2</div>
+                            <div class="ms-col-label">Best-of-4</div>
+
+                            <div class="ms-row-label cover-unguided">Unguided</div>
+                            <img src="assets/images/experiments/flux_ms_diner/unguided_bo1.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_diner/unguided_bo2.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_diner/unguided_bo4.png" alt="" />
+
+                            <div class="ms-row-label cover-guided">Guided</div>
+                            <img src="assets/images/experiments/flux_ms_diner/guided_bo1.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_diner/guided_bo2.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_diner/guided_bo4.png" alt="" />
+
+                            <div class="ms-row-label cover-guided">Guided (<em>k</em>=8)</div>
+                            <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo1.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo2.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo4.png" alt="" />
+
+                            <div class="ms-row-label cover-damped">Damped (ours)</div>
+                            <img src="assets/images/experiments/flux_ms_diner/damped_bo1.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_diner/damped_bo2.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_diner/damped_bo4.png" alt="" />
+                        </div>
+                        <figcaption class="exp-caption">
+                            VLM reward derived from &ldquo;Does this image clearly show a neon sign with the word
+                            &lsquo;ECLIPSE&rsquo; as the main readable text?&rdquo; Plug-in guidance hacks the reward;
+                            damping helps slightly; best-of-<em>n</em> substantially improves it &mdash; confirming
+                            the importance of the initial seed for mode selection.
                         </figcaption>
                     </figure>
-                    <figure class="slide">
-                        <img src="assets/images/experiments/flux_ms_subway.png"
-                            alt="NEXT TRAIN MARS mode-selection sweep" />
-                        <figcaption>
-                            <strong>FLUX mode selection (NEXT TRAIN MARS).</strong> VLM reward derived from
-                            &ldquo;Does this image clearly show a display with the text &lsquo;NEXT TRAIN MARS&rsquo;
-                            as the main readable text?&rdquo; The qualitative pattern reproduces: plug-in guidance
-                            hacks the reward, and best-of-<em>n</em> substantially improves it.
+
+                    <figure class="slide ms-slide">
+                        <p class="exp-prompt">&ldquo;cyberpunk subway platform with a holographic display that says
+                            NEXT TRAIN MARS, teal neon, commuters in silhouette&rdquo;</p>
+                        <div class="ms-grid">
+                            <div></div>
+                            <div class="ms-col-label">Best-of-1</div>
+                            <div class="ms-col-label">Best-of-2</div>
+                            <div class="ms-col-label">Best-of-4</div>
+
+                            <div class="ms-row-label cover-unguided">Unguided</div>
+                            <img src="assets/images/experiments/flux_ms_subway/unguided_bo1.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_subway/unguided_bo2.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_subway/unguided_bo4.png" alt="" />
+
+                            <div class="ms-row-label cover-guided">Guided</div>
+                            <img src="assets/images/experiments/flux_ms_subway/guided_bo1.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_subway/guided_bo2.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_subway/guided_bo4.png" alt="" />
+
+                            <div class="ms-row-label cover-guided">Guided (<em>k</em>=8)</div>
+                            <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo1.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo2.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo4.png" alt="" />
+
+                            <div class="ms-row-label cover-damped">Damped (ours)</div>
+                            <img src="assets/images/experiments/flux_ms_subway/damped_bo1.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_subway/damped_bo2.png" alt="" />
+                            <img src="assets/images/experiments/flux_ms_subway/damped_bo4.png" alt="" />
+                        </div>
+                        <figcaption class="exp-caption">
+                            VLM reward derived from &ldquo;Does this image clearly show a display with the text
+                            &lsquo;NEXT TRAIN MARS&rsquo; as the main readable text?&rdquo; The qualitative pattern
+                            reproduces: plug-in guidance hacks the reward, and best-of-<em>n</em> substantially
+                            improves it.
                         </figcaption>
                     </figure>
+
                 </div>
                 <div class="carousel-dots"></div>
             </div>
