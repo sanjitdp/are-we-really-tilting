@@ -1,3 +1,24 @@
+// Show the top nav only after the user scrolls past the hero.
+(function () {
+    const nav = document.getElementById("topnav");
+    if (!nav) return;
+
+    const SHOW_AT = 240;     // px; roughly past the title + first lines
+    let visible = false;
+
+    function update() {
+        const shouldShow = window.scrollY > SHOW_AT;
+        if (shouldShow !== visible) {
+            visible = shouldShow;
+            nav.classList.toggle("visible", shouldShow);
+        }
+    }
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+})();
+
 // Lightweight carousel — no dependencies.
 // Each .carousel has an id; sibling buttons reference it via data-target.
 
