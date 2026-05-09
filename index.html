@@ -24,13 +24,6 @@
 
 <body>
 
-    <!-- Subtle moving background: three slowly-drifting lavender blobs -->
-    <div class="bg-mesh" aria-hidden="true">
-        <div class="blob blob-a"></div>
-        <div class="blob blob-b"></div>
-        <div class="blob blob-c"></div>
-    </div>
-
     <!-- ============================================================
          TOP NAV  (hidden until the user scrolls down)
          ============================================================ -->
@@ -85,7 +78,6 @@
 
                 <div class="hero-links">
                     <a class="btn" href="#" target="_blank" rel="noopener" aria-label="Paper on arXiv">
-                        <!-- arXiv small logomark (just the X arrow), trimmed from the official 2022 SVG -->
                         <svg class="btn-icon arxiv-svg" viewBox="93 7 78 109" aria-hidden="true">
                             <g transform="translate(-358.165 -222.27)">
                                 <path fill="#aa142d"
@@ -114,129 +106,124 @@
             </div>
 
             <div class="hero-carousel-wrap">
-                <div class="carousel-shell">
-                    <button class="carousel-btn prev" aria-label="Previous slide" data-target="cover-carousel">&lsaquo;</button>
-                    <div class="carousel" id="cover-carousel" data-autoplay="6000">
-                        <div class="carousel-track">
-
-                            <figure class="slide cover-slide">
-                                <p class="cover-prompt">&ldquo;line of dogs of different breeds, with each dog taking on
-                                    a color of the rainbow to form a technicolor gradient&rdquo;</p>
-                                <div class="cover-row">
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/01_dogs/unguided.png" alt="unguided" />
-                                        <span class="cover-label cover-unguided">Unguided</span>
+                <div class="carousel" id="cover-carousel" data-autoplay="6000">
+                    <div class="carousel-shell">
+                        <button class="carousel-btn prev" aria-label="Previous slide" data-target="cover-carousel">&lsaquo;</button>
+                        <div class="carousel-viewport">
+                            <div class="carousel-track">
+                                <figure class="slide cover-slide">
+                                    <p class="cover-prompt">&ldquo;line of dogs of different breeds, with each dog
+                                        taking on a color of the rainbow to form a technicolor gradient&rdquo;</p>
+                                    <div class="cover-row">
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/01_dogs/unguided.png" alt="unguided" />
+                                            <span class="cover-label cover-unguided">Unguided</span>
+                                        </div>
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/01_dogs/guided.png" alt="guided" />
+                                            <span class="cover-label cover-guided">Guided</span>
+                                        </div>
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/01_dogs/damped.png" alt="damped" />
+                                            <span class="cover-label cover-damped">Damped (ours)</span>
+                                        </div>
                                     </div>
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/01_dogs/guided.png" alt="guided" />
-                                        <span class="cover-label cover-guided">Guided</span>
+                                </figure>
+                                <figure class="slide cover-slide">
+                                    <p class="cover-prompt">&ldquo;stylized stop-motion scene of paper astronauts
+                                        repairing a torn moon backdrop&rdquo;</p>
+                                    <div class="cover-row">
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/02_astronauts/unguided.png" alt="unguided" />
+                                            <span class="cover-label cover-unguided">Unguided</span>
+                                        </div>
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/02_astronauts/guided.png" alt="guided" />
+                                            <span class="cover-label cover-guided">Guided</span>
+                                        </div>
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/02_astronauts/damped.png" alt="damped" />
+                                            <span class="cover-label cover-damped">Damped (ours)</span>
+                                        </div>
                                     </div>
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/01_dogs/damped.png" alt="damped" />
-                                        <span class="cover-label cover-damped">Damped (ours)</span>
+                                </figure>
+                                <figure class="slide cover-slide">
+                                    <p class="cover-prompt">&ldquo;renaissance painting of a sculptor in an open-air
+                                        studio working on a headless statue&rdquo;</p>
+                                    <div class="cover-row">
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/03_sculptor/unguided.png" alt="unguided" />
+                                            <span class="cover-label cover-unguided">Unguided</span>
+                                        </div>
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/03_sculptor/guided.png" alt="guided" />
+                                            <span class="cover-label cover-guided">Guided</span>
+                                        </div>
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/03_sculptor/damped.png" alt="damped" />
+                                            <span class="cover-label cover-damped">Damped (ours)</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </figure>
-
-                            <figure class="slide cover-slide">
-                                <p class="cover-prompt">&ldquo;stylized stop-motion scene of paper astronauts repairing
-                                    a torn moon backdrop&rdquo;</p>
-                                <div class="cover-row">
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/02_astronauts/unguided.png" alt="unguided" />
-                                        <span class="cover-label cover-unguided">Unguided</span>
+                                </figure>
+                                <figure class="slide cover-slide">
+                                    <p class="cover-prompt">&ldquo;editorial photo of a skyscraper under construction,
+                                        missing its middle third&rdquo;</p>
+                                    <div class="cover-row">
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/04_skyscraper/unguided.png" alt="unguided" />
+                                            <span class="cover-label cover-unguided">Unguided</span>
+                                        </div>
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/04_skyscraper/guided.png" alt="guided" />
+                                            <span class="cover-label cover-guided">Guided</span>
+                                        </div>
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/04_skyscraper/damped.png" alt="damped" />
+                                            <span class="cover-label cover-damped">Damped (ours)</span>
+                                        </div>
                                     </div>
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/02_astronauts/guided.png" alt="guided" />
-                                        <span class="cover-label cover-guided">Guided</span>
+                                </figure>
+                                <figure class="slide cover-slide">
+                                    <p class="cover-prompt">&ldquo;brass automaton praying to a human child in an
+                                        abandoned temple&rdquo;</p>
+                                    <div class="cover-row">
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/05_automaton/unguided.png" alt="unguided" />
+                                            <span class="cover-label cover-unguided">Unguided</span>
+                                        </div>
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/05_automaton/guided.png" alt="guided" />
+                                            <span class="cover-label cover-guided">Guided</span>
+                                        </div>
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/05_automaton/damped.png" alt="damped" />
+                                            <span class="cover-label cover-damped">Damped (ours)</span>
+                                        </div>
                                     </div>
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/02_astronauts/damped.png" alt="damped" />
-                                        <span class="cover-label cover-damped">Damped (ours)</span>
+                                </figure>
+                                <figure class="slide cover-slide">
+                                    <p class="cover-prompt">&ldquo;koi pond full of vibrant fish, with the surface
+                                        reflecting a mother and daughter looking down&rdquo;</p>
+                                    <div class="cover-row">
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/06_koi/unguided.png" alt="unguided" />
+                                            <span class="cover-label cover-unguided">Unguided</span>
+                                        </div>
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/06_koi/guided.png" alt="guided" />
+                                            <span class="cover-label cover-guided">Guided</span>
+                                        </div>
+                                        <div class="cover-cell">
+                                            <img src="assets/images/cover/06_koi/damped.png" alt="damped" />
+                                            <span class="cover-label cover-damped">Damped (ours)</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </figure>
-
-                            <figure class="slide cover-slide">
-                                <p class="cover-prompt">&ldquo;renaissance painting of a sculptor in an open-air studio
-                                    working on a headless statue&rdquo;</p>
-                                <div class="cover-row">
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/03_sculptor/unguided.png" alt="unguided" />
-                                        <span class="cover-label cover-unguided">Unguided</span>
-                                    </div>
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/03_sculptor/guided.png" alt="guided" />
-                                        <span class="cover-label cover-guided">Guided</span>
-                                    </div>
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/03_sculptor/damped.png" alt="damped" />
-                                        <span class="cover-label cover-damped">Damped (ours)</span>
-                                    </div>
-                                </div>
-                            </figure>
-
-                            <figure class="slide cover-slide">
-                                <p class="cover-prompt">&ldquo;editorial photo of a skyscraper under construction,
-                                    missing its middle third&rdquo;</p>
-                                <div class="cover-row">
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/04_skyscraper/unguided.png" alt="unguided" />
-                                        <span class="cover-label cover-unguided">Unguided</span>
-                                    </div>
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/04_skyscraper/guided.png" alt="guided" />
-                                        <span class="cover-label cover-guided">Guided</span>
-                                    </div>
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/04_skyscraper/damped.png" alt="damped" />
-                                        <span class="cover-label cover-damped">Damped (ours)</span>
-                                    </div>
-                                </div>
-                            </figure>
-
-                            <figure class="slide cover-slide">
-                                <p class="cover-prompt">&ldquo;brass automaton praying to a human child in an abandoned
-                                    temple&rdquo;</p>
-                                <div class="cover-row">
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/05_automaton/unguided.png" alt="unguided" />
-                                        <span class="cover-label cover-unguided">Unguided</span>
-                                    </div>
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/05_automaton/guided.png" alt="guided" />
-                                        <span class="cover-label cover-guided">Guided</span>
-                                    </div>
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/05_automaton/damped.png" alt="damped" />
-                                        <span class="cover-label cover-damped">Damped (ours)</span>
-                                    </div>
-                                </div>
-                            </figure>
-
-                            <figure class="slide cover-slide">
-                                <p class="cover-prompt">&ldquo;koi pond full of vibrant fish, with the surface
-                                    reflecting a mother and daughter looking down&rdquo;</p>
-                                <div class="cover-row">
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/06_koi/unguided.png" alt="unguided" />
-                                        <span class="cover-label cover-unguided">Unguided</span>
-                                    </div>
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/06_koi/guided.png" alt="guided" />
-                                        <span class="cover-label cover-guided">Guided</span>
-                                    </div>
-                                    <div class="cover-cell">
-                                        <img src="assets/images/cover/06_koi/damped.png" alt="damped" />
-                                        <span class="cover-label cover-damped">Damped (ours)</span>
-                                    </div>
-                                </div>
-                            </figure>
-
+                                </figure>
+                            </div>
                         </div>
-                        <div class="carousel-dots"></div>
+                        <button class="carousel-btn next" aria-label="Next slide" data-target="cover-carousel">&rsaquo;</button>
                     </div>
-                    <button class="carousel-btn next" aria-label="Next slide" data-target="cover-carousel">&rsaquo;</button>
+                    <div class="carousel-dots"></div>
                 </div>
             </div>
 
@@ -244,14 +231,24 @@
     </section>
 
     <!-- ============================================================
-         OVERVIEW figure  (sits right above Background as the first thing)
+         OVERVIEW figure  (4 panels rebuilt cleanly + HTML legend)
          ============================================================ -->
     <section class="section overview-section">
         <figure class="overview-figure">
-            <picture>
-                <source media="(max-width: 720px)" srcset="assets/images/theory/overview_mobile.png" />
-                <img src="assets/images/theory/overview.png" alt="overview of reward-tilting failure modes" />
-            </picture>
+            <div class="overview-grid">
+                <img src="assets/images/theory/panel_1_base.png" alt="Base target" />
+                <img src="assets/images/theory/panel_2_analytic.png" alt="Analytic reward tilting" />
+                <img src="assets/images/theory/panel_3_practical.png" alt="Practical guidance" />
+                <img src="assets/images/theory/panel_4_damped.png" alt="Damping plus best-of-n" />
+            </div>
+            <ul class="overview-legend">
+                <li><span class="lg-swatch lg-base"></span>base target</li>
+                <li><span class="lg-dot lg-base-samples"></span>base samples</li>
+                <li><span class="lg-dot lg-tilted"></span>tilted samples</li>
+                <li><span class="lg-dot lg-guided"></span>guided samples</li>
+                <li><span class="lg-dot lg-proposal"></span>our proposal</li>
+                <li><span class="lg-x">&#x2715;</span>reward maximizer</li>
+            </ul>
             <figcaption>
                 <strong>Overview.</strong> Compared to analytic reward tilting, practical guidance algorithms
                 <em>over-concentrate within each mode</em> and <em>fail to select high-reward modes</em>. We propose
@@ -300,14 +297,12 @@
         </p>
 
         <details class="proof-drop">
-            <summary>Proof sketch &middot; SDE matches the flow time-marginals</summary>
-            <p>
-                The Fokker&ndash;Planck equation for the SDE is
-                $$\partial_t \rho_t \;=\; -\nabla \cdot (\rho_t b_t) - \tfrac{1}{2}\nabla^2\!:\!(\rho_t \sigma_t \sigma_t^{\!\top})
-                + \tfrac{1}{2} \nabla^2\!:\!(\rho_t \sigma_t \sigma_t^{\!\top}) \;=\; -\nabla \cdot (\rho_t b_t),$$
-                which is exactly the continuity equation for $\dot{x}_t = b_t(x_t)$. The two diffusion terms cancel,
-                so the score-matching correction restores the ODE marginals while still letting us inject noise.
-            </p>
+            <summary>Proof &middot; SDE matches the flow time-marginals</summary>
+            <div>
+                <p>The Fokker&ndash;Planck equation associated with the SDE is</p>
+                $$\partial_t \rho_t = -\nabla \cdot \left( \rho_t b_t + \tfrac{1}{2} \nabla \cdot (\rho_t\, \sigma_t \sigma_t^\top) \right) + \tfrac{1}{2} \nabla \cdot (\nabla \cdot (\rho_t\, \sigma_t \sigma_t^\top)) = -\nabla \cdot (\rho_t b_t),$$
+                <p>which matches the continuity equation for the probability flow ODE.</p>
+            </div>
         </details>
 
         <h3>Reward guidance and the Doob <em>h</em>-transform</h3>
@@ -347,29 +342,43 @@
         </p>
 
         <details class="proof-drop">
-            <summary>Proof sketch &middot; the Doob <em>h</em>-transform yields the reward tilt</summary>
-            <p>
-                Since $h_t(X_t) = \mathbb{E}[e^{\lambda r(X_1)} \mid \mathcal{F}_t]$ is a Doob martingale, it
-                satisfies the Kolmogorov backward equation
-                $\partial_t h_t + \mathcal{L}_t h_t = 0$, where $\mathcal{L}_t$ is the generator of the forward SDE.
-                Define a new path measure $Q$ via the Radon&ndash;Nikodym derivative
-                $$\tfrac{dQ}{dP}\bigg|_{\mathcal{F}_t} \;=\; g_t \;:=\; \tfrac{h_t(X_t)}{h_0(X_0)}.$$
-                It&ocirc;'s formula together with the backward equation gives
-                $dg_t = g_t\, \nabla \log h_t(X_t)^{\!\top} \sigma_t\, dB_t$, so $g_t$ is a Dol&eacute;ans&ndash;Dade
-                exponential. Under standard integrability (Novikov), Girsanov's theorem says that under $Q$,
-                $\tilde{B}_t = B_t - \int_0^t \sigma_s^{\!\top} \nabla \log h_s(X_s)\, ds$ is a Brownian motion, and
-                substituting back into the SDE for $X_t$ gives the guided drift
-                $b_t + \tfrac{1}{2} \sigma_t \sigma_t^{\!\top} \nabla \log \rho_t
-                + \sigma_t \sigma_t^{\!\top} \nabla \log h_t$.
-            </p>
-            <p>
-                For any test function $f$,
-                $\mathbb{E}_Q[f(X_t)] = \mathbb{E}_P[g_t f(X_t)] = \mathbb{E}_P[f(X_t)\, h_t(X_t) / h_0(X_0)]$, so
-                $\tilde{\rho}_t \propto \rho_t\, h_t$. When $X_0 \perp\!\!\!\perp X_1$ (which holds for the
-                memoryless schedule), $h_0(X_0) = \mathbb{E}[e^{\lambda r(X_1)}]$ is a constant, and at $t=1$ this
-                becomes $\tilde{\rho}_1(x) \propto \rho_1(x)\, e^{\lambda r(x)}$. Converting the guided SDE back to
-                its probability flow then gives the deterministic guided ODE in the box above.
-            </p>
+            <summary>Proof &middot; Doob <em>h</em>-transform yields the reward tilt</summary>
+            <div>
+                <p>We first define the Doob <em>h</em>-function</p>
+                $$h_t(x) = \mathbb{E}[e^{\lambda r(X_1)} \mid X_t = x]$$
+                <p>and note that $h_t(X_t)$ is a Doob martingale. Letting $\mathcal{L}_t$ denote the generator of the diffusion:</p>
+                $$\mathcal{L}_t f = \left( b_t + \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log \rho_t \right)^{\!\top} \nabla f + \tfrac{1}{2} \operatorname{tr}\!\left( (\sigma_t \sigma_t^\top) \nabla^2 f \right),$$
+                <p>we know that $h_t(X_t)$ must satisfy the Kolmogorov backward equation</p>
+                $$\partial_t h_t(X_t) + \mathcal{L}_t h_t(X_t) = 0.$$
+                <p>Next, let $(\mathcal{F}_t)_{t \geq 0}$ denote the natural filtration generated by the Brownian motion $(B_t)_{t \geq 0}$. Letting $P$ denote the law of the path $(X_t)_{t \in [0, 1]}$ and letting $P_t$ denote the restriction of $P$ to $\mathcal{F}_t$, we define the <em>Doob h-transform</em> of $P$ by its Radon&ndash;Nikodym derivative:</p>
+                $$\frac{dQ_t}{dP_t} = g_t := \frac{h_t(X_t)}{h_0(X_0)}.$$
+                <p>By It&ocirc;'s formula and the Kolmogorov backward equation, we have</p>
+                $$\begin{aligned}
+                    dg_t
+                     & = \frac{1}{h_0(X_0)} \left( (\partial_t h_t(X_t) + \mathcal{L}_t h_t(X_t))\, dt + \nabla h_t(X_t)^{\!\top} \sigma_t\, dB_t \right) \\
+                     & = \frac{1}{h_0(X_0)} \nabla h_t(X_t)^{\!\top} \sigma_t\, dB_t                                                                       \\
+                     & = g_t \nabla \log h_t(X_t)^{\!\top} \sigma_t\, dB_t.
+                \end{aligned}$$
+                <p>At this point, applying It&ocirc;'s formula shows that</p>
+                $$d(\log g_t) = \nabla \log h_t(X_t)^{\!\top} \sigma_t\, dB_t - \tfrac{1}{2} \|\nabla \log h_t(X_t)^{\!\top} \sigma_t\|_2^2\, dt$$
+                <p>and integrating both sides shows that $g_t$ is the Dol&eacute;ans&ndash;Dade exponential (local) martingale</p>
+                $$g_t = \exp\!\left( \int_0^t \nabla \log h_s(X_s)^{\!\top} \sigma_s\, dB_s - \tfrac{1}{2} \int_0^t \|\nabla \log h_s(X_s)^{\!\top} \sigma_s\|_2^2\, ds \right).$$
+                <p>Under the standard Novikov's condition (for instance):</p>
+                $$\mathbb{E}\!\left[ \exp\!\left( \tfrac{1}{2} \int_0^1 \|\nabla \log h_s(X_s)^{\!\top} \sigma_s\|_2^2\, ds \right) \right] < \infty,$$
+                <p>$g_t$ is a true martingale. At last, Girsanov's theorem implies that under $Q := Q_1$, the process</p>
+                $$\tilde{B}_t = B_t - \int_0^t \sigma_s^{\!\top} \nabla \log h_s(X_s)\, ds$$
+                <p>is a Brownian motion, and substituting back into the SDE for $X_t$ gives</p>
+                $$dX_t = \left( b_t(X_t) + \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log \rho_t(X_t) + (\sigma_t \sigma_t^\top) \nabla \log h_t(X_t) \right) dt + \sigma_t\, d\tilde{B}_t.$$
+                <p>We can then find the density $\tilde{\rho}_t$ of $X_t$ under $Q$ by integrating a test function $f \in C_c^\infty(\mathbb{R}^d)$:</p>
+                $$\mathbb{E}_Q[f(X_t)] = \mathbb{E}_P[g_t\, f(X_t)] = \mathbb{E}_P\!\left[ f(X_t)\, \frac{h_t(X_t)}{h_0(X_0)} \right].$$
+                <p>In the specific case that $X_0 \perp\!\!\!\perp X_1$ (which happens using the memoryless noise schedule), it is clear that $h_0(X_0) = \mathbb{E}[e^{\lambda r(X_1)}]$ is a normalizing constant, and thus $\tilde{\rho}_t(x) \propto \rho_t(x)\, h_t(x)$. At the endpoint, this means that $\tilde{\rho}_1(x) \propto e^{\lambda r(x)} \rho_1(x)$ as desired, and the Doob <em>h</em>-transform of the original diffusion gives a principled way to sample from the reward-tilted measure. We can then convert the guided SDE back to a guided ODE by considering the associated probability flow:</p>
+                $$\begin{aligned}
+                    dX_t
+                     & = \left( b_t(X_t) + \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log \rho_t(X_t) + (\sigma_t \sigma_t^\top) \nabla \log h_t(X_t) - \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log \tilde{\rho}_t(X_t) \right) dt \\
+                     & = \left( b_t(X_t) + \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log h_t(X_t) \right) dt.
+                \end{aligned}$$
+                <p>Hence, the guided probability flow ODE simply includes an additional score term $\tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log h_t(X_t)$ that steers the dynamics toward high-reward regions of the output space.</p>
+            </div>
         </details>
 
         <h3>Plug-in estimation</h3>
@@ -391,7 +400,7 @@
     </section>
 
     <!-- ============================================================
-         OVERVIEW & THEORY
+         WHAT WE PROVE
          ============================================================ -->
     <section id="overview" class="section">
         <h2>What we prove</h2>
@@ -470,233 +479,136 @@
         <h3>Within-mode hacking on FLUX.1</h3>
 
         <h4>Masked intensity reward</h4>
-        <div class="carousel-shell single">
-            <div class="carousel" id="welder-carousel">
-                <div class="carousel-track">
-                    <figure class="slide five-col-slide">
-                        <p class="exp-prompt">&ldquo;photorealistic worm's-eye view of a welder mid-spark inside a
-                            rusted ship hull, sweat, smoke, orange backlight&rdquo;</p>
-                        <div class="five-col-row">
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/welder/unguided.png" alt="unguided" />
-                                <span class="cover-label cover-unguided">Unguided</span>
+        <div class="carousel" id="welder-carousel">
+            <div class="carousel-shell">
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+                        <figure class="slide five-col-slide">
+                            <p class="exp-prompt">&ldquo;photorealistic worm's-eye view of a welder mid-spark inside a
+                                rusted ship hull, sweat, smoke, orange backlight&rdquo;</p>
+                            <div class="five-col-row">
+                                <div class="cover-cell"><img src="assets/images/experiments/welder/unguided.png" alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/welder/guided.png" alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/welder/guided_lowlam.png" alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/welder/guided_k8.png" alt="guided k=8" /><span class="cover-label cover-guided">Guided (<em>k</em>=8)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/welder/damped.png" alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
                             </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/welder/guided.png" alt="guided" />
-                                <span class="cover-label cover-guided">Guided</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/welder/guided_lowlam.png"
-                                    alt="guided lower lambda" />
-                                <span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/welder/guided_k8.png" alt="guided k=8" />
-                                <span class="cover-label cover-guided">Guided (<em>k</em>=8)</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/welder/damped.png" alt="damped" />
-                                <span class="cover-label cover-damped">Damped (ours)</span>
-                            </div>
-                        </div>
-                        <figcaption class="exp-caption">
-                            Reward is mean pixel intensity inside a top-right circular mask minus mean intensity
-                            outside. Naive guidance maximizes the masked-region brightness by removing the welder
-                            from the frame; reward damping obtains a high-reward sample including the welder.
-                        </figcaption>
-                    </figure>
+                            <figcaption class="exp-caption">
+                                Reward is mean pixel intensity inside a top-right circular mask minus mean intensity
+                                outside. Naive guidance maximizes the masked-region brightness by removing the welder
+                                from the frame; reward damping obtains a high-reward sample including the welder.
+                            </figcaption>
+                        </figure>
+                    </div>
                 </div>
-                <div class="carousel-dots"></div>
             </div>
+            <div class="carousel-dots"></div>
         </div>
 
         <h4>Blueness reward</h4>
-        <div class="carousel-shell">
-            <button class="carousel-btn prev" aria-label="Previous slide" data-target="blueness-carousel">&lsaquo;</button>
-            <div class="carousel" id="blueness-carousel" data-autoplay="7000">
-                <div class="carousel-track">
-
-                    <figure class="slide five-col-slide">
-                        <p class="exp-prompt">&ldquo;a baby fox wearing a cozy knitted sweater&rdquo;</p>
-                        <div class="five-col-row">
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/brg_fox/unguided.png" alt="unguided" />
-                                <span class="cover-label cover-unguided">Unguided</span>
+        <div class="carousel" id="blueness-carousel" data-autoplay="7000">
+            <div class="carousel-shell">
+                <button class="carousel-btn prev" aria-label="Previous slide" data-target="blueness-carousel">&lsaquo;</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+                        <figure class="slide five-col-slide">
+                            <p class="exp-prompt">&ldquo;a baby fox wearing a cozy knitted sweater&rdquo;</p>
+                            <div class="five-col-row">
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/unguided.png" alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/guided.png" alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/guided_lowlam.png" alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/guided_k8.png" alt="guided k=8" /><span class="cover-label cover-guided">Guided (<em>k</em>=8)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/damped.png" alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
                             </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/brg_fox/guided.png" alt="guided" />
-                                <span class="cover-label cover-guided">Guided</span>
+                            <figcaption class="exp-caption">
+                                Reward is the mean blue channel minus the mean of red and green. Naive guidance washes
+                                out the orange fur; damped guidance keeps the fox orange and turns the sweater and
+                                background blue.
+                            </figcaption>
+                        </figure>
+                        <figure class="slide five-col-slide">
+                            <p class="exp-prompt">&ldquo;artist painting in the center of a cluttered room lit by
+                                candlelight, rococo&rdquo;</p>
+                            <div class="five-col-row">
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/unguided.png" alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/guided.png" alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/guided_lowlam.png" alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/guided_k8.png" alt="guided k=8" /><span class="cover-label cover-guided">Guided (<em>k</em>=8)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/damped.png" alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
                             </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/brg_fox/guided_lowlam.png"
-                                    alt="guided lower lambda" />
-                                <span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/brg_fox/guided_k8.png" alt="guided k=8" />
-                                <span class="cover-label cover-guided">Guided (<em>k</em>=8)</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/brg_fox/damped.png" alt="damped" />
-                                <span class="cover-label cover-damped">Damped (ours)</span>
-                            </div>
-                        </div>
-                        <figcaption class="exp-caption">
-                            Reward is the mean blue channel minus the mean of red and green. Naive guidance washes
-                            out the orange fur; damped guidance keeps the fox orange and turns the sweater and
-                            background blue.
-                        </figcaption>
-                    </figure>
-
-                    <figure class="slide five-col-slide">
-                        <p class="exp-prompt">&ldquo;artist painting in the center of a cluttered room lit by
-                            candlelight, rococo&rdquo;</p>
-                        <div class="five-col-row">
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/brg_rococo/unguided.png" alt="unguided" />
-                                <span class="cover-label cover-unguided">Unguided</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/brg_rococo/guided.png" alt="guided" />
-                                <span class="cover-label cover-guided">Guided</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/brg_rococo/guided_lowlam.png"
-                                    alt="guided lower lambda" />
-                                <span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/brg_rococo/guided_k8.png" alt="guided k=8" />
-                                <span class="cover-label cover-guided">Guided (<em>k</em>=8)</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/brg_rococo/damped.png" alt="damped" />
-                                <span class="cover-label cover-damped">Damped (ours)</span>
-                            </div>
-                        </div>
-                        <figcaption class="exp-caption">
-                            Naive guidance produces blue images that lose the artist or candles; damped guidance
-                            produces a very blue image that retains the artist and the warm candlelight.
-                        </figcaption>
-                    </figure>
-
+                            <figcaption class="exp-caption">
+                                Naive guidance produces blue images that lose the artist or candles; damped guidance
+                                produces a very blue image that retains the artist and the warm candlelight.
+                            </figcaption>
+                        </figure>
+                    </div>
                 </div>
-                <div class="carousel-dots"></div>
+                <button class="carousel-btn next" aria-label="Next slide" data-target="blueness-carousel">&rsaquo;</button>
             </div>
-            <button class="carousel-btn next" aria-label="Next slide" data-target="blueness-carousel">&rsaquo;</button>
+            <div class="carousel-dots"></div>
         </div>
 
         <h4>ImageReward (learned human-preference)</h4>
-        <div class="carousel-shell">
-            <button class="carousel-btn prev" aria-label="Previous slide" data-target="ir-carousel">&lsaquo;</button>
-            <div class="carousel" id="ir-carousel" data-autoplay="7000">
-                <div class="carousel-track">
-
-                    <figure class="slide five-col-slide">
-                        <p class="exp-prompt">&ldquo;photorealistic close-up of an archaeologist brushing weathered
-                            paper talismans in a flooded bunker, flashlight haze, focused expression&rdquo;</p>
-                        <div class="five-col-row">
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_archaeo/unguided.png" alt="unguided" />
-                                <span class="cover-label cover-unguided">Unguided</span>
+        <div class="carousel" id="ir-carousel" data-autoplay="7000">
+            <div class="carousel-shell">
+                <button class="carousel-btn prev" aria-label="Previous slide" data-target="ir-carousel">&lsaquo;</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+                        <figure class="slide five-col-slide">
+                            <p class="exp-prompt">&ldquo;photorealistic close-up of an archaeologist brushing
+                                weathered paper talismans in a flooded bunker, flashlight haze, focused
+                                expression&rdquo;</p>
+                            <div class="five-col-row">
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/unguided.png" alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/guided.png" alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/guided_lowlam.png" alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/guided_k8.png" alt="guided k=8" /><span class="cover-label cover-guided">Guided (<em>k</em>=8)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/damped.png" alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
                             </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_archaeo/guided.png" alt="guided" />
-                                <span class="cover-label cover-guided">Guided</span>
+                            <figcaption class="exp-caption">
+                                Both unguided and naively-guided images produce unnatural artifacts or fail to show a
+                                brush; damped guidance produces a more natural image with a visible brush.
+                            </figcaption>
+                        </figure>
+                        <figure class="slide five-col-slide">
+                            <p class="exp-prompt">&ldquo;a dull, muted, washed-out, desaturated Indian outdoor market
+                                with stalls and produce, overcast gloomy lighting, faded colors&rdquo;</p>
+                            <div class="five-col-row">
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/unguided.png" alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/guided.png" alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/guided_lowlam.png" alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/guided_k8.png" alt="guided k=8" /><span class="cover-label cover-guided">Guided (<em>k</em>=8)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/damped.png" alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
                             </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_archaeo/guided_lowlam.png"
-                                    alt="guided lower lambda" />
-                                <span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span>
+                            <figcaption class="exp-caption">
+                                Naive guidance brightens the lamps while leaving the rest washed out; damped guidance
+                                produces a more balanced improvement across brightness and color.
+                            </figcaption>
+                        </figure>
+                        <figure class="slide five-col-slide">
+                            <p class="exp-prompt">&ldquo;cinematic split diorama of a miner above and below ground,
+                                helmet beam, coal dust, family dinner fading opposite&rdquo;</p>
+                            <div class="five-col-row">
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/unguided.png" alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/guided.png" alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/guided_lowlam.png" alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/guided_k8.png" alt="guided k=8" /><span class="cover-label cover-guided">Guided (<em>k</em>=8)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/damped.png" alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
                             </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_archaeo/guided_k8.png" alt="guided k=8" />
-                                <span class="cover-label cover-guided">Guided (<em>k</em>=8)</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_archaeo/damped.png" alt="damped" />
-                                <span class="cover-label cover-damped">Damped (ours)</span>
-                            </div>
-                        </div>
-                        <figcaption class="exp-caption">
-                            Both unguided and naively-guided images produce unnatural artifacts or fail to show a
-                            brush; damped guidance produces a more natural image with a visible brush.
-                        </figcaption>
-                    </figure>
-
-                    <figure class="slide five-col-slide">
-                        <p class="exp-prompt">&ldquo;a dull, muted, washed-out, desaturated Indian outdoor market with
-                            stalls and produce, overcast gloomy lighting, faded colors&rdquo;</p>
-                        <div class="five-col-row">
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_market/unguided.png" alt="unguided" />
-                                <span class="cover-label cover-unguided">Unguided</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_market/guided.png" alt="guided" />
-                                <span class="cover-label cover-guided">Guided</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_market/guided_lowlam.png"
-                                    alt="guided lower lambda" />
-                                <span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_market/guided_k8.png" alt="guided k=8" />
-                                <span class="cover-label cover-guided">Guided (<em>k</em>=8)</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_market/damped.png" alt="damped" />
-                                <span class="cover-label cover-damped">Damped (ours)</span>
-                            </div>
-                        </div>
-                        <figcaption class="exp-caption">
-                            Naive guidance brightens the lamps while leaving the rest washed out; damped guidance
-                            produces a more balanced improvement across brightness and color.
-                        </figcaption>
-                    </figure>
-
-                    <figure class="slide five-col-slide">
-                        <p class="exp-prompt">&ldquo;cinematic split diorama of a miner above and below ground, helmet
-                            beam, coal dust, family dinner fading opposite&rdquo;</p>
-                        <div class="five-col-row">
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_miner/unguided.png" alt="unguided" />
-                                <span class="cover-label cover-unguided">Unguided</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_miner/guided.png" alt="guided" />
-                                <span class="cover-label cover-guided">Guided</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_miner/guided_lowlam.png"
-                                    alt="guided lower lambda" />
-                                <span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_miner/guided_k8.png" alt="guided k=8" />
-                                <span class="cover-label cover-guided">Guided (<em>k</em>=8)</span>
-                            </div>
-                            <div class="cover-cell">
-                                <img src="assets/images/experiments/ir_miner/damped.png" alt="damped" />
-                                <span class="cover-label cover-damped">Damped (ours)</span>
-                            </div>
-                        </div>
-                        <figcaption class="exp-caption">
-                            Naive guidance hacks ImageReward by ignoring the split-diorama constraint; damped guidance
-                            produces dramatic images that still respect the constraint.
-                        </figcaption>
-                    </figure>
-
+                            <figcaption class="exp-caption">
+                                Naive guidance hacks ImageReward by ignoring the split-diorama constraint; damped
+                                guidance produces dramatic images that still respect the constraint.
+                            </figcaption>
+                        </figure>
+                    </div>
                 </div>
-                <div class="carousel-dots"></div>
+                <button class="carousel-btn next" aria-label="Next slide" data-target="ir-carousel">&rsaquo;</button>
             </div>
-            <button class="carousel-btn next" aria-label="Next slide" data-target="ir-carousel">&rsaquo;</button>
+            <div class="carousel-dots"></div>
         </div>
 
         <!-- Mode selection: checkerboard figure stacked above the table -->
         <h3>Mode selection: 2D checkerboard</h3>
-
         <div class="cb-stack">
             <figure class="cb-figure">
                 <img src="assets/images/experiments/cb_fig7.png" alt="checkerboard guidance comparison" />
@@ -706,7 +618,6 @@
                     tilt.
                 </figcaption>
             </figure>
-
             <div class="cb-table">
                 <p class="cb-table-caption">
                     <strong>Checkerboard statistics.</strong> Mean reward and covariance trace for each method
@@ -715,210 +626,162 @@
                 </p>
                 <table>
                     <thead>
-                        <tr>
-                            <th>Method</th>
-                            <th>Mean reward</th>
-                            <th>Cov.&nbsp;trace</th>
-                        </tr>
+                        <tr><th>Method</th><th>Mean reward</th><th>Cov.&nbsp;trace</th></tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Analytic tilt</td>
-                            <td>0.914 &plusmn; 0.003</td>
-                            <td>0.457 &plusmn; 0.021</td>
-                        </tr>
-                        <tr>
-                            <td>Plug-in (<em>k</em>=1)</td>
-                            <td>0.764 &plusmn; 0.004</td>
-                            <td>1.930 &plusmn; 0.048</td>
-                        </tr>
-                        <tr>
-                            <td>Plug-in (<em>k</em>=8)</td>
-                            <td>0.804 &plusmn; 0.007</td>
-                            <td>1.397 &plusmn; 0.068</td>
-                        </tr>
-                        <tr>
-                            <td>Best-of-2</td>
-                            <td>0.914 &plusmn; 0.003</td>
-                            <td>0.520 &plusmn; 0.026</td>
-                        </tr>
-                        <tr>
-                            <td>Best-of-4</td>
-                            <td>0.978 &plusmn; 0.002</td>
-                            <td>0.107 &plusmn; 0.010</td>
-                        </tr>
-                        <tr class="row-highlight">
-                            <td>Best-of-4, $\sigma_{\mathrm{damp}}=0.2$</td>
-                            <td>0.920 &plusmn; 0.004</td>
-                            <td>0.429 &plusmn; 0.022</td>
-                        </tr>
+                        <tr><td>Analytic tilt</td><td>0.914 &plusmn; 0.003</td><td>0.457 &plusmn; 0.021</td></tr>
+                        <tr><td>Plug-in (<em>k</em>=1)</td><td>0.764 &plusmn; 0.004</td><td>1.930 &plusmn; 0.048</td></tr>
+                        <tr><td>Plug-in (<em>k</em>=8)</td><td>0.804 &plusmn; 0.007</td><td>1.397 &plusmn; 0.068</td></tr>
+                        <tr><td>Best-of-2</td><td>0.914 &plusmn; 0.003</td><td>0.520 &plusmn; 0.026</td></tr>
+                        <tr><td>Best-of-4</td><td>0.978 &plusmn; 0.002</td><td>0.107 &plusmn; 0.010</td></tr>
+                        <tr class="row-highlight"><td>Best-of-4, $\sigma_{\mathrm{damp}}=0.2$</td><td>0.920 &plusmn; 0.004</td><td>0.429 &plusmn; 0.022</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
         <h3>Mode selection on FLUX.1</h3>
-        <div class="carousel-shell">
-            <button class="carousel-btn prev" aria-label="Previous slide" data-target="ms-carousel">&lsaquo;</button>
-            <div class="carousel" id="ms-carousel" data-autoplay="9000">
-                <div class="carousel-track">
+        <div class="carousel" id="ms-carousel" data-autoplay="9000">
+            <div class="carousel-shell">
+                <button class="carousel-btn prev" aria-label="Previous slide" data-target="ms-carousel">&lsaquo;</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
 
-                    <figure class="slide ms-slide">
-                        <p class="exp-prompt">&ldquo;a roadside American diner in the Nevada desert, shot at twilight,
-                            a neon sign on the roof glowing ECLIPSE DINER, in cherry-red and cream tubes, a long empty
-                            highway behind it, painterly warm light on chrome surfaces&rdquo;</p>
-                        <div class="ms-grid">
-                            <!-- header row -->
-                            <div></div>
-                            <div class="ms-col-label" data-cols="2">Best-of-1</div>
-                            <div class="ms-col-label" data-cols="2">Best-of-2</div>
-                            <div class="ms-col-label" data-cols="2">Best-of-4</div>
+                        <figure class="slide ms-slide">
+                            <p class="exp-prompt">&ldquo;a roadside American diner in the Nevada desert, shot at
+                                twilight, a neon sign on the roof glowing ECLIPSE DINER, in cherry-red and cream
+                                tubes, a long empty highway behind it, painterly warm light on chrome surfaces&rdquo;</p>
 
-                            <!-- Unguided -->
-                            <div class="ms-row-label cover-unguided">Unguided</div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_diner/unguided_bo1_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_diner/unguided_bo1_b.png" alt="" />
-                            </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_diner/unguided_bo2_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_diner/unguided_bo2_b.png" alt="" />
-                            </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_diner/unguided_bo4_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_diner/unguided_bo4_b.png" alt="" />
+                            <!-- column headers (desktop only) -->
+                            <div class="ms-col-headers">
+                                <span></span>
+                                <span class="ms-col-label">Best-of-1</span>
+                                <span class="ms-col-label">Best-of-2</span>
+                                <span class="ms-col-label">Best-of-4</span>
                             </div>
 
-                            <!-- Guided -->
-                            <div class="ms-row-label cover-guided">Guided</div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_diner/guided_bo1_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_diner/guided_bo1_b.png" alt="" />
+                            <div class="ms-method">
+                                <div class="ms-row-label cover-unguided">Unguided</div>
+                                <div class="ms-cells">
+                                    <img src="assets/images/experiments/flux_ms_diner/unguided_bo1_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/unguided_bo1_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/unguided_bo2_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/unguided_bo2_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/unguided_bo4_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/unguided_bo4_b.png" alt="" />
+                                </div>
                             </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_diner/guided_bo2_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_diner/guided_bo2_b.png" alt="" />
+                            <div class="ms-method">
+                                <div class="ms-row-label cover-guided">Guided</div>
+                                <div class="ms-cells">
+                                    <img src="assets/images/experiments/flux_ms_diner/guided_bo1_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/guided_bo1_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/guided_bo2_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/guided_bo2_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/guided_bo4_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/guided_bo4_b.png" alt="" />
+                                </div>
                             </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_diner/guided_bo4_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_diner/guided_bo4_b.png" alt="" />
+                            <div class="ms-method">
+                                <div class="ms-row-label cover-guided">Guided (<em>k</em>=8)</div>
+                                <div class="ms-cells">
+                                    <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo1_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo1_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo2_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo2_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo4_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo4_b.png" alt="" />
+                                </div>
                             </div>
-
-                            <!-- Guided (k=8) -->
-                            <div class="ms-row-label cover-guided">Guided (<em>k</em>=8)</div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo1_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo1_b.png" alt="" />
-                            </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo2_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo2_b.png" alt="" />
-                            </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo4_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo4_b.png" alt="" />
-                            </div>
-
-                            <!-- Damped -->
-                            <div class="ms-row-label cover-damped">Damped (ours)</div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_diner/damped_bo1_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_diner/damped_bo1_b.png" alt="" />
-                            </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_diner/damped_bo2_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_diner/damped_bo2_b.png" alt="" />
-                            </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_diner/damped_bo4_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_diner/damped_bo4_b.png" alt="" />
-                            </div>
-                        </div>
-                        <figcaption class="exp-caption">
-                            VLM reward derived from &ldquo;Does this image clearly show a neon sign with the word
-                            &lsquo;ECLIPSE&rsquo; as the main readable text?&rdquo; Plug-in guidance hacks the reward;
-                            damping helps slightly; best-of-<em>n</em> substantially improves it &mdash; confirming
-                            the importance of the initial seed for mode selection.
-                        </figcaption>
-                    </figure>
-
-                    <figure class="slide ms-slide">
-                        <p class="exp-prompt">&ldquo;cyberpunk subway platform with a holographic display that says
-                            NEXT TRAIN MARS, teal neon, commuters in silhouette&rdquo;</p>
-                        <div class="ms-grid">
-                            <div></div>
-                            <div class="ms-col-label" data-cols="2">Best-of-1</div>
-                            <div class="ms-col-label" data-cols="2">Best-of-2</div>
-                            <div class="ms-col-label" data-cols="2">Best-of-4</div>
-
-                            <div class="ms-row-label cover-unguided">Unguided</div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_subway/unguided_bo1_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_subway/unguided_bo1_b.png" alt="" />
-                            </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_subway/unguided_bo2_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_subway/unguided_bo2_b.png" alt="" />
-                            </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_subway/unguided_bo4_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_subway/unguided_bo4_b.png" alt="" />
+                            <div class="ms-method">
+                                <div class="ms-row-label cover-damped">Damped (ours)</div>
+                                <div class="ms-cells">
+                                    <img src="assets/images/experiments/flux_ms_diner/damped_bo1_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/damped_bo1_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/damped_bo2_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/damped_bo2_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/damped_bo4_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_diner/damped_bo4_b.png" alt="" />
+                                </div>
                             </div>
 
-                            <div class="ms-row-label cover-guided">Guided</div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_subway/guided_bo1_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_subway/guided_bo1_b.png" alt="" />
-                            </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_subway/guided_bo2_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_subway/guided_bo2_b.png" alt="" />
-                            </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_subway/guided_bo4_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_subway/guided_bo4_b.png" alt="" />
+                            <figcaption class="exp-caption">
+                                VLM reward derived from &ldquo;Does this image clearly show a neon sign with the word
+                                &lsquo;ECLIPSE&rsquo; as the main readable text?&rdquo; Plug-in guidance hacks the
+                                reward; damping helps slightly; best-of-<em>n</em> substantially improves it &mdash;
+                                confirming the importance of the initial seed for mode selection.
+                            </figcaption>
+                        </figure>
+
+                        <figure class="slide ms-slide">
+                            <p class="exp-prompt">&ldquo;cyberpunk subway platform with a holographic display that says
+                                NEXT TRAIN MARS, teal neon, commuters in silhouette&rdquo;</p>
+
+                            <div class="ms-col-headers">
+                                <span></span>
+                                <span class="ms-col-label">Best-of-1</span>
+                                <span class="ms-col-label">Best-of-2</span>
+                                <span class="ms-col-label">Best-of-4</span>
                             </div>
 
-                            <div class="ms-row-label cover-guided">Guided (<em>k</em>=8)</div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo1_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo1_b.png" alt="" />
+                            <div class="ms-method">
+                                <div class="ms-row-label cover-unguided">Unguided</div>
+                                <div class="ms-cells">
+                                    <img src="assets/images/experiments/flux_ms_subway/unguided_bo1_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/unguided_bo1_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/unguided_bo2_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/unguided_bo2_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/unguided_bo4_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/unguided_bo4_b.png" alt="" />
+                                </div>
                             </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo2_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo2_b.png" alt="" />
+                            <div class="ms-method">
+                                <div class="ms-row-label cover-guided">Guided</div>
+                                <div class="ms-cells">
+                                    <img src="assets/images/experiments/flux_ms_subway/guided_bo1_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/guided_bo1_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/guided_bo2_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/guided_bo2_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/guided_bo4_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/guided_bo4_b.png" alt="" />
+                                </div>
                             </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo4_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo4_b.png" alt="" />
+                            <div class="ms-method">
+                                <div class="ms-row-label cover-guided">Guided (<em>k</em>=8)</div>
+                                <div class="ms-cells">
+                                    <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo1_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo1_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo2_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo2_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo4_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo4_b.png" alt="" />
+                                </div>
+                            </div>
+                            <div class="ms-method">
+                                <div class="ms-row-label cover-damped">Damped (ours)</div>
+                                <div class="ms-cells">
+                                    <img src="assets/images/experiments/flux_ms_subway/damped_bo1_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/damped_bo1_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/damped_bo2_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/damped_bo2_b.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/damped_bo4_a.png" alt="" />
+                                    <img src="assets/images/experiments/flux_ms_subway/damped_bo4_b.png" alt="" />
+                                </div>
                             </div>
 
-                            <div class="ms-row-label cover-damped">Damped (ours)</div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_subway/damped_bo1_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_subway/damped_bo1_b.png" alt="" />
-                            </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_subway/damped_bo2_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_subway/damped_bo2_b.png" alt="" />
-                            </div>
-                            <div class="ms-pair">
-                                <img src="assets/images/experiments/flux_ms_subway/damped_bo4_a.png" alt="" />
-                                <img src="assets/images/experiments/flux_ms_subway/damped_bo4_b.png" alt="" />
-                            </div>
-                        </div>
-                        <figcaption class="exp-caption">
-                            VLM reward derived from &ldquo;Does this image clearly show a display with the text
-                            &lsquo;NEXT TRAIN MARS&rsquo; as the main readable text?&rdquo; The qualitative pattern
-                            reproduces: plug-in guidance hacks the reward, and best-of-<em>n</em> substantially
-                            improves it.
-                        </figcaption>
-                    </figure>
+                            <figcaption class="exp-caption">
+                                VLM reward derived from &ldquo;Does this image clearly show a display with the text
+                                &lsquo;NEXT TRAIN MARS&rsquo; as the main readable text?&rdquo; The qualitative
+                                pattern reproduces: plug-in guidance hacks the reward, and best-of-<em>n</em>
+                                substantially improves it.
+                            </figcaption>
+                        </figure>
 
+                    </div>
                 </div>
-                <div class="carousel-dots"></div>
+                <button class="carousel-btn next" aria-label="Next slide" data-target="ms-carousel">&rsaquo;</button>
             </div>
-            <button class="carousel-btn next" aria-label="Next slide" data-target="ms-carousel">&rsaquo;</button>
+            <div class="carousel-dots"></div>
         </div>
     </section>
 
