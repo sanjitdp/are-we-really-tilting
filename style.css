@@ -195,24 +195,11 @@ strong { font-weight: 700; }
     line-height: 1;
 }
 
-/* arXiv wordmark, used as icon for the Paper button */
-.arxiv-mark {
-    width: auto;
+/* Official arXiv logo SVG used as icon for the Paper button */
+.arxiv-svg {
+    width: 40px;
     height: 18px;
-    font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: -0.02em;
-    color: var(--arxiv-red);
-    line-height: 1;
-}
-.arxiv-mark .x {
-    font-style: italic;
-    font-weight: 700;
-    margin: 0 -1px;
-    font-size: 16px;
-    transform: translateY(1px);
-    display: inline-block;
+    color: inherit;
 }
 
 /* Big serif quote, vertically centered */
@@ -277,6 +264,46 @@ strong { font-weight: 700; }
     overflow-x: auto;
 }
 .formula-box mjx-container { margin: 0 !important; }
+
+/* Proof / derivation dropdowns */
+.proof-drop {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0;
+    margin: 14px 0 22px;
+    background: var(--bg);
+    overflow: hidden;
+}
+.proof-drop summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 14.5px;
+    color: var(--lavender-text);
+    background: var(--bg-soft);
+    border-bottom: 1px solid transparent;
+    transition: background 120ms ease;
+    user-select: none;
+}
+.proof-drop summary::-webkit-details-marker { display: none; }
+.proof-drop summary::before {
+    content: "▸ ";
+    display: inline-block;
+    margin-right: 6px;
+    transition: transform 120ms ease;
+    color: var(--lavender-edge);
+}
+.proof-drop[open] summary::before { transform: rotate(90deg); }
+.proof-drop[open] summary { border-bottom-color: var(--border); }
+.proof-drop summary:hover { background: var(--lavender-bg); }
+.proof-drop > p,
+.proof-drop > div {
+    padding: 12px 18px 14px;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+}
 
 /* ============================ Carousel shell (arrows OUTSIDE the figure) ============================ */
 
@@ -411,13 +438,13 @@ strong { font-weight: 700; }
     font-weight: 700;
     letter-spacing: 0.01em;
 }
-.cover-unguided { color: #333; font-weight: 400; }
-.cover-guided   { color: var(--naive); }
-.cover-damped   { color: var(--damped); }
+.cover-unguided { color: #333;          font-weight: 700; }
+.cover-guided   { color: var(--naive);  font-weight: 700; }
+.cover-damped   { color: var(--damped); font-weight: 700; }
 
-/* ============================ Experiment 3-col slides ============================ */
+/* ============================ Experiment 5-col slides ============================ */
 
-.three-col-slide { padding: 6px 0 30px; }
+.five-col-slide { padding: 6px 0 30px; }
 
 .exp-prompt {
     font-style: italic;
@@ -429,16 +456,24 @@ strong { font-weight: 700; }
     padding: 0 8px;
 }
 
-.three-col-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+/* 5 cells in a row on desktop. On narrow viewports, the cells wrap to a
+   second row and centre via justify-content. */
+.five-col-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
-.three-col-row .cover-cell img {
+.five-col-row .cover-cell {
+    flex: 0 0 calc((100% - 4 * 10px) / 5);
+    min-width: 0;
+}
+
+.five-col-row .cover-cell img {
     aspect-ratio: 1 / 1;
 }
 
@@ -600,6 +635,22 @@ strong { font-weight: 700; }
     .ms-grid { grid-template-columns: minmax(90px, auto) repeat(3, 1fr); }
 }
 
+/* Tablet: keep 5 columns but tighten the gap */
+@media (max-width: 900px) {
+    .five-col-row { gap: 8px; }
+    .five-col-row .cover-cell {
+        flex-basis: calc((100% - 4 * 8px) / 5);
+    }
+}
+
+/* Mobile: lay out the 5 experiment cells as 3 + 2 (centred via flex wrap) */
+@media (max-width: 700px) {
+    .five-col-row { gap: 8px; }
+    .five-col-row .cover-cell {
+        flex: 0 0 calc((100% - 2 * 8px) / 3);
+    }
+}
+
 @media (max-width: 760px) {
     body { font-size: 16px; }
     .topnav-inner { padding: 10px 16px; }
@@ -617,7 +668,6 @@ strong { font-weight: 700; }
     .cover-label  { font-size: 11.5px; }
     .cover-prompt { font-size: 13px; }
 
-    .three-col-row { gap: 6px; }
     .exp-prompt    { font-size: 13px; }
     .exp-caption   { font-size: 13.5px; }
 
