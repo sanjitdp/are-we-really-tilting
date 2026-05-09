@@ -231,24 +231,16 @@
     </section>
 
     <!-- ============================================================
-         OVERVIEW figure  (4 panels rebuilt cleanly + HTML legend)
+         OVERVIEW figure  (LaTeX-rendered halves; stacked on mobile)
          ============================================================ -->
     <section class="section overview-section">
         <figure class="overview-figure">
-            <div class="overview-grid">
-                <img src="assets/images/theory/panel_1_base.png" alt="Base target" />
-                <img src="assets/images/theory/panel_2_analytic.png" alt="Analytic reward tilting" />
-                <img src="assets/images/theory/panel_3_practical.png" alt="Practical guidance" />
-                <img src="assets/images/theory/panel_4_damped.png" alt="Damping plus best-of-n" />
+            <div class="overview-halves">
+                <img src="assets/images/theory/overview_left.png"
+                    alt="Base target and analytic reward tilting" />
+                <img src="assets/images/theory/overview_right.png"
+                    alt="Practical guidance and damping with best-of-n" />
             </div>
-            <ul class="overview-legend">
-                <li><span class="lg-swatch lg-base"></span>base target</li>
-                <li><span class="lg-dot lg-base-samples"></span>base samples</li>
-                <li><span class="lg-dot lg-tilted"></span>tilted samples</li>
-                <li><span class="lg-dot lg-guided"></span>guided samples</li>
-                <li><span class="lg-dot lg-proposal"></span>our proposal</li>
-                <li><span class="lg-x">&#x2715;</span>reward maximizer</li>
-            </ul>
             <figcaption>
                 <strong>Overview.</strong> Compared to analytic reward tilting, practical guidance algorithms
                 <em>over-concentrate within each mode</em> and <em>fail to select high-reward modes</em>. We propose
@@ -479,7 +471,7 @@
         <h3>Within-mode hacking on FLUX.1</h3>
 
         <h4>Masked intensity reward</h4>
-        <div class="carousel" id="welder-carousel">
+        <div class="carousel single-slide" id="welder-carousel">
             <div class="carousel-shell">
                 <div class="carousel-viewport">
                     <div class="carousel-track">
@@ -662,6 +654,7 @@
 
                             <div class="ms-method">
                                 <div class="ms-row-label cover-unguided">Unguided</div>
+                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_diner/unguided_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_diner/unguided_bo1_b.png" alt="" />
@@ -673,6 +666,7 @@
                             </div>
                             <div class="ms-method">
                                 <div class="ms-row-label cover-guided">Guided</div>
+                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_diner/guided_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_diner/guided_bo1_b.png" alt="" />
@@ -684,6 +678,7 @@
                             </div>
                             <div class="ms-method">
                                 <div class="ms-row-label cover-guided">Guided (<em>k</em>=8)</div>
+                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo1_b.png" alt="" />
@@ -695,6 +690,7 @@
                             </div>
                             <div class="ms-method">
                                 <div class="ms-row-label cover-damped">Damped (ours)</div>
+                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_diner/damped_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_diner/damped_bo1_b.png" alt="" />
@@ -726,6 +722,7 @@
 
                             <div class="ms-method">
                                 <div class="ms-row-label cover-unguided">Unguided</div>
+                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_subway/unguided_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_subway/unguided_bo1_b.png" alt="" />
@@ -737,6 +734,7 @@
                             </div>
                             <div class="ms-method">
                                 <div class="ms-row-label cover-guided">Guided</div>
+                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_subway/guided_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_subway/guided_bo1_b.png" alt="" />
@@ -748,6 +746,7 @@
                             </div>
                             <div class="ms-method">
                                 <div class="ms-row-label cover-guided">Guided (<em>k</em>=8)</div>
+                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo1_b.png" alt="" />
@@ -759,6 +758,7 @@
                             </div>
                             <div class="ms-method">
                                 <div class="ms-row-label cover-damped">Damped (ours)</div>
+                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_subway/damped_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_subway/damped_bo1_b.png" alt="" />
