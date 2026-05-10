@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Flow guidance favicon option</title>
+  <rect width="64" height="64" rx="14" fill="#1d2230"/>
+  <circle cx="32" cy="32" r="22" fill="#ffffff" opacity="0.08"/>
+  <path d="M13 42C22 28 33 24 51 21" fill="none" stroke="#f27900" stroke-width="5" stroke-linecap="round"/>
+  <path d="M13 32C25 38 37 38 51 31" fill="none" stroke="#c5b6e6" stroke-width="5" stroke-linecap="round"/>
+  <path d="M13 48C25 48 39 43 52 35" fill="none" stroke="#35a43a" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="50" cy="21" r="4" fill="#b31b1b"/>
+  <circle cx="52" cy="35" r="3" fill="#ffffff"/>
+</svg>
