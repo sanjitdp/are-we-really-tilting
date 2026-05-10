@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,8 +19,7 @@
             svg: { fontCache: 'global' }
         };
     </script>
-    <script id="MathJax-script" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 
 <body>
@@ -29,12 +29,7 @@
          ============================================================ -->
     <header class="topnav" id="topnav">
         <div class="topnav-inner">
-            <span class="topnav-title">Are we really tilting?</span>
             <nav class="topnav-links">
-                <a href="#background">Background</a>
-                <a href="#overview">Overview</a>
-                <a href="#experiments">Experiments</a>
-                <a href="#citation">Citation</a>
                 <a class="link-pill" href="#" target="_blank" rel="noopener">Paper</a>
                 <a class="link-pill" href="https://github.com/sanjitdp/reward-guidance" target="_blank"
                     rel="noopener">Code</a>
@@ -66,7 +61,7 @@
                     the guided model over-optimizes the reward at the cost of fidelity to the learned distribution.
                     We show that reward hacking arises from an approximation made in most practical implementations
                     of reward-guided diffusion &mdash; finite-particle <strong>plug-in estimation</strong> of the
-                    Doob <em>h</em>-function &mdash; even in the simplest non-trivial settings of Gaussian and
+                    Doob $h$-function &mdash; even in the simplest non-trivial settings of Gaussian and
                     Gaussian-mixture targets with quadratic rewards. In closed form, we isolate two distinct failure
                     modes: <strong>within-mode reward hacking</strong> and the inability to <strong>select
                         high-reward modes</strong>. We propose a closed-form reward damping schedule that corrects
@@ -78,16 +73,8 @@
 
                 <div class="hero-links">
                     <a class="btn" href="#" target="_blank" rel="noopener" aria-label="Paper on arXiv">
-                        <svg class="btn-icon arxiv-svg" viewBox="93 7 78 109" aria-hidden="true">
-                            <g transform="translate(-358.165 -222.27)">
-                                <path fill="#aa142d"
-                                    d="M486.149,277.877l-32.741,38.852c-1.286,1.372-2.084,3.777-1.365,5.5a4.705,4.705,0,0,0,4.4,2.914,4.191,4.191,0,0,0,3.16-1.563l40.191-42.714a4.417,4.417,0,0,0,.042-6.042Z" />
-                                <path fill="#7c7469"
-                                    d="M486.149,277.877l31.187-38.268c1.492-1.989,2.2-3.03,1.492-4.723a5.142,5.142,0,0,0-4.481-3.161h0a4.024,4.024,0,0,0-3.008,1.108L472.711,274.6a4.769,4.769,0,0,0,.015,6.53L520.512,332.2a3.913,3.913,0,0,0,3.137,1.192,4.394,4.394,0,0,0,4.027-2.818c.719-1.727-.076-3.438-1.4-5.23l-40.124-47.464" />
-                                <path fill="#aa142d"
-                                    d="M499.833,274.828,453.169,224.4s-1.713-2.08-3.524-2.124a4.607,4.607,0,0,0-4.338,2.788c-.705,1.692-.2,2.88,1.349,5.1l40.093,48.422" />
-                            </g>
-                        </svg>
+                        <img class="btn-icon arxiv-mark" src="assets/images/icons/arxiv-logomark-small-tight.png" alt=""
+                            aria-hidden="true" />
                         Paper
                     </a>
                     <a class="btn" href="https://github.com/sanjitdp/reward-guidance" target="_blank" rel="noopener"
@@ -99,7 +86,10 @@
                         Code
                     </a>
                     <a class="btn" href="#citation" aria-label="Citation">
-                        <span class="btn-icon btn-quote">&ldquo;</span>
+                        <svg class="btn-icon quote-svg" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor"
+                                d="M5.7 18.75c3.1-1.13 5.1-3.62 5.1-7.38V6H4.45v6.15H7.7c-.22 2.02-1.3 3.52-3.1 4.5l1.1 2.1Zm10.1 0c3.1-1.13 5.1-3.62 5.1-7.38V6h-6.35v6.15h3.25c-.22 2.02-1.3 3.52-3.1 4.5l1.1 2.1Z" />
+                        </svg>
                         Citation
                     </a>
                 </div>
@@ -108,7 +98,8 @@
             <div class="hero-carousel-wrap">
                 <div class="carousel" id="cover-carousel" data-autoplay="6000">
                     <div class="carousel-shell">
-                        <button class="carousel-btn prev" aria-label="Previous slide" data-target="cover-carousel">&lsaquo;</button>
+                        <button class="carousel-btn prev" aria-label="Previous slide"
+                            data-target="cover-carousel">&lsaquo;</button>
                         <div class="carousel-viewport">
                             <div class="carousel-track">
                                 <figure class="slide cover-slide">
@@ -221,7 +212,8 @@
                                 </figure>
                             </div>
                         </div>
-                        <button class="carousel-btn next" aria-label="Next slide" data-target="cover-carousel">&rsaquo;</button>
+                        <button class="carousel-btn next" aria-label="Next slide"
+                            data-target="cover-carousel">&rsaquo;</button>
                     </div>
                     <div class="carousel-dots"></div>
                 </div>
@@ -235,20 +227,21 @@
          Desktop: original wide LaTeX figure (4 panels in one row).
          Mobile:  custom 2x2 LaTeX rebuild with a 3-row legend.
          ============================================================ -->
-    <section class="section overview-section">
+    <section id="overview" class="section overview-section">
+        <h2>Overview</h2>
+        <p class="overview-sentence">
+            Compared to analytic reward tilting, practical guidance algorithms over-concentrate within each mode and
+            fail to select high-reward modes. We propose a damped reward scale to mitigate within-mode
+            reward hacking and clarify the role of best-of-$n$ in mode selection; combining these two methods often
+            enables us to
+            approximately recover the reward tilt.
+        </p>
         <figure class="overview-figure">
             <picture>
-                <source media="(max-width: 720px)"
-                    srcset="assets/images/theory/overview_mobile.png" />
-                <img src="assets/images/theory/overview.png"
+                <source media="(max-width: 720px)" srcset="assets/images/theory/overview_mobile.png" />
+                <img src="assets/images/theory/overview_cropped.png"
                     alt="Overview: base target, analytic reward tilting, practical guidance, damping with best-of-n" />
             </picture>
-            <figcaption>
-                <strong>Overview.</strong> Compared to analytic reward tilting, practical guidance algorithms
-                <em>over-concentrate within each mode</em> and <em>fail to select high-reward modes</em>. We propose
-                damped reward guidance to fix the first issue, and clarify the role of best-of-<em>n</em> in fixing
-                the second; combined, they approximately recover the analytic tilt.
-            </figcaption>
         </figure>
     </section>
 
@@ -270,9 +263,11 @@
         </div>
 
         <p>
-            until $t = 1$. The drift can be written in terms of the linear stochastic interpolant
+            until $t = 1$. We work in the case where the drift can be written in terms of the linear stochastic
+            interpolant
             $I_t = (1-t)\,I_0 + t\,I_1$ (with $I_0 \sim \mathcal{N}(0, I_d)$ and $I_1 \sim \rho_1$ independent) as
-            $b_t(x) = \mathbb{E}[\dot{I}_t \mid I_t = x]$, and is learned by minimizing the flow-matching objective
+            $b_t(x) = \mathbb{E}[\dot{I}_t \mid I_t = x]$, and is learned by minimizing a flow matching objective
+            or a regression objective
             (<a href="https://arxiv.org/abs/2210.02747" target="_blank" rel="noopener">Lipman et al.</a>;
             <a href="https://arxiv.org/abs/2303.08797" target="_blank" rel="noopener">Albergo et al.</a>).
         </p>
@@ -294,12 +289,14 @@
             <summary>Proof &middot; SDE matches the flow time-marginals</summary>
             <div>
                 <p>The Fokker&ndash;Planck equation associated with the SDE is</p>
-                $$\partial_t \rho_t = -\nabla \cdot \left( \rho_t b_t + \tfrac{1}{2} \nabla \cdot (\rho_t\, \sigma_t \sigma_t^\top) \right) + \tfrac{1}{2} \nabla \cdot (\nabla \cdot (\rho_t\, \sigma_t \sigma_t^\top)) = -\nabla \cdot (\rho_t b_t),$$
+                $$\partial_t \rho_t = -\nabla \cdot \left( \rho_t b_t + \tfrac{1}{2} \nabla \cdot (\rho_t\, \sigma_t
+                \sigma_t^\top) \right) + \tfrac{1}{2} \nabla \cdot (\nabla \cdot (\rho_t\, \sigma_t \sigma_t^\top)) =
+                -\nabla \cdot (\rho_t b_t),$$
                 <p>which matches the continuity equation for the probability flow ODE.</p>
             </div>
         </details>
 
-        <h3>Reward guidance and the Doob <em>h</em>-transform</h3>
+        <h3>Reward guidance and the Doob $h$-transform</h3>
         <p>
             In reward-guided generation, we want samples not from $\rho_1$ but from the <em>reward-tilted measure</em>
         </p>
@@ -310,8 +307,8 @@
 
         <p>
             for a reward $r : \mathbb{R}^d \to \mathbb{R}$ and inverse temperature $\lambda > 0$. The Doob
-            <em>h</em>-transform provides a principled way to reach $\tilde{\rho}_1$ at terminal time by modifying
-            the drift of the forward SDE. Define the <em>Doob h-function</em>
+            $h$-transform provides a principled way to reach $\tilde{\rho}_1$ at terminal time by modifying
+            the drift of the forward SDE. Define the Doob $h$-function
         </p>
 
         <div class="formula-box">
@@ -331,131 +328,148 @@
         <p>
             then yields a sample $\tilde{x}_1 \sim \tilde{\rho}_1$ <em>provided</em> that $X_0$ and $X_1$ are
             independent. <a href="https://arxiv.org/abs/2502.10433" target="_blank" rel="noopener">Domingo-Enrich
-            et al.</a> show that the <em>memoryless schedule</em> $\sigma_t = \sqrt{2(1-t)/t}\,I_d$ guarantees this
+                et al.</a> show that the <em>memoryless schedule</em> $\sigma_t = \sqrt{2(1-t)/t}\,I_d$ guarantees this
             property.
         </p>
 
         <details class="proof-drop">
-            <summary>Proof &middot; Doob <em>h</em>-transform yields the reward tilt</summary>
+            <summary>Proof &middot; Doob $h$-transform yields the reward tilt</summary>
             <div>
-                <p>We first define the Doob <em>h</em>-function</p>
+                <p>We first define the Doob $h$-function</p>
                 $$h_t(x) = \mathbb{E}[e^{\lambda r(X_1)} \mid X_t = x]$$
-                <p>and note that $h_t(X_t)$ is a Doob martingale. Letting $\mathcal{L}_t$ denote the generator of the diffusion:</p>
-                $$\mathcal{L}_t f = \left( b_t + \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log \rho_t \right)^{\!\top} \nabla f + \tfrac{1}{2} \operatorname{tr}\!\left( (\sigma_t \sigma_t^\top) \nabla^2 f \right),$$
+                <p>and note that $h_t(X_t)$ is a Doob martingale. Letting $\mathcal{L}_t$ denote the generator of the
+                    diffusion:</p>
+                $$\mathcal{L}_t f = \left( b_t + \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log \rho_t
+                \right)^{\!\top} \nabla f + \tfrac{1}{2} \operatorname{tr}\!\left( (\sigma_t \sigma_t^\top) \nabla^2 f
+                \right),$$
                 <p>we know that $h_t(X_t)$ must satisfy the Kolmogorov backward equation</p>
                 $$\partial_t h_t(X_t) + \mathcal{L}_t h_t(X_t) = 0.$$
-                <p>Next, let $(\mathcal{F}_t)_{t \geq 0}$ denote the natural filtration generated by the Brownian motion $(B_t)_{t \geq 0}$. Letting $P$ denote the law of the path $(X_t)_{t \in [0, 1]}$ and letting $P_t$ denote the restriction of $P$ to $\mathcal{F}_t$, we define the <em>Doob h-transform</em> of $P$ by its Radon&ndash;Nikodym derivative:</p>
+                <p>Next, let $(\mathcal{F}_t)_{t \geq 0}$ denote the natural filtration generated by the Brownian motion
+                    $(B_t)_{t \geq 0}$. Letting $P$ denote the law of the path $(X_t)_{t \in [0, 1]}$ and letting $P_t$
+                    denote the restriction of $P$ to $\mathcal{F}_t$, we define the Doob $h$-transform of $P$ by
+                    its Radon&ndash;Nikodym derivative:</p>
                 $$\frac{dQ_t}{dP_t} = g_t := \frac{h_t(X_t)}{h_0(X_0)}.$$
                 <p>By It&ocirc;'s formula and the Kolmogorov backward equation, we have</p>
                 $$\begin{aligned}
-                    dg_t
-                     & = \frac{1}{h_0(X_0)} \left( (\partial_t h_t(X_t) + \mathcal{L}_t h_t(X_t))\, dt + \nabla h_t(X_t)^{\!\top} \sigma_t\, dB_t \right) \\
-                     & = \frac{1}{h_0(X_0)} \nabla h_t(X_t)^{\!\top} \sigma_t\, dB_t                                                                       \\
-                     & = g_t \nabla \log h_t(X_t)^{\!\top} \sigma_t\, dB_t.
+                dg_t
+                & = \frac{1}{h_0(X_0)} \left( (\partial_t h_t(X_t) + \mathcal{L}_t h_t(X_t))\, dt + \nabla
+                h_t(X_t)^{\!\top} \sigma_t\, dB_t \right) \\
+                & = \frac{1}{h_0(X_0)} \nabla h_t(X_t)^{\!\top} \sigma_t\, dB_t \\
+                & = g_t \nabla \log h_t(X_t)^{\!\top} \sigma_t\, dB_t.
                 \end{aligned}$$
                 <p>At this point, applying It&ocirc;'s formula shows that</p>
-                $$d(\log g_t) = \nabla \log h_t(X_t)^{\!\top} \sigma_t\, dB_t - \tfrac{1}{2} \|\nabla \log h_t(X_t)^{\!\top} \sigma_t\|_2^2\, dt$$
-                <p>and integrating both sides shows that $g_t$ is the Dol&eacute;ans&ndash;Dade exponential (local) martingale</p>
-                $$g_t = \exp\!\left( \int_0^t \nabla \log h_s(X_s)^{\!\top} \sigma_s\, dB_s - \tfrac{1}{2} \int_0^t \|\nabla \log h_s(X_s)^{\!\top} \sigma_s\|_2^2\, ds \right).$$
+                $$d(\log g_t) = \nabla \log h_t(X_t)^{\!\top} \sigma_t\, dB_t - \tfrac{1}{2} \|\nabla \log
+                h_t(X_t)^{\!\top} \sigma_t\|_2^2\, dt$$
+                <p>and integrating both sides shows that $g_t$ is the Dol&eacute;ans&ndash;Dade exponential (local)
+                    martingale</p>
+                $$g_t = \exp\!\left( \int_0^t \nabla \log h_s(X_s)^{\!\top} \sigma_s\, dB_s - \tfrac{1}{2} \int_0^t
+                \|\nabla \log h_s(X_s)^{\!\top} \sigma_s\|_2^2\, ds \right).$$
                 <p>Under the standard Novikov's condition (for instance):</p>
-                $$\mathbb{E}\!\left[ \exp\!\left( \tfrac{1}{2} \int_0^1 \|\nabla \log h_s(X_s)^{\!\top} \sigma_s\|_2^2\, ds \right) \right] < \infty,$$
-                <p>$g_t$ is a true martingale. At last, Girsanov's theorem implies that under $Q := Q_1$, the process</p>
-                $$\tilde{B}_t = B_t - \int_0^t \sigma_s^{\!\top} \nabla \log h_s(X_s)\, ds$$
-                <p>is a Brownian motion, and substituting back into the SDE for $X_t$ gives</p>
-                $$dX_t = \left( b_t(X_t) + \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log \rho_t(X_t) + (\sigma_t \sigma_t^\top) \nabla \log h_t(X_t) \right) dt + \sigma_t\, d\tilde{B}_t.$$
-                <p>We can then find the density $\tilde{\rho}_t$ of $X_t$ under $Q$ by integrating a test function $f \in C_c^\infty(\mathbb{R}^d)$:</p>
-                $$\mathbb{E}_Q[f(X_t)] = \mathbb{E}_P[g_t\, f(X_t)] = \mathbb{E}_P\!\left[ f(X_t)\, \frac{h_t(X_t)}{h_0(X_0)} \right].$$
-                <p>In the specific case that $X_0 \perp\!\!\!\perp X_1$ (which happens using the memoryless noise schedule), it is clear that $h_0(X_0) = \mathbb{E}[e^{\lambda r(X_1)}]$ is a normalizing constant, and thus $\tilde{\rho}_t(x) \propto \rho_t(x)\, h_t(x)$. At the endpoint, this means that $\tilde{\rho}_1(x) \propto e^{\lambda r(x)} \rho_1(x)$ as desired, and the Doob <em>h</em>-transform of the original diffusion gives a principled way to sample from the reward-tilted measure. We can then convert the guided SDE back to a guided ODE by considering the associated probability flow:</p>
-                $$\begin{aligned}
+                $$\mathbb{E}\!\left[ \exp\!\left( \tfrac{1}{2} \int_0^1 \|\nabla \log h_s(X_s)^{\!\top} \sigma_s\|_2^2\,
+                ds \right) \right] < \infty,$$ <p>$g_t$ is a true martingale. At last, Girsanov's theorem implies that
+                    under $Q := Q_1$, the process</p>
+                    $$\tilde{B}_t = B_t - \int_0^t \sigma_s^{\!\top} \nabla \log h_s(X_s)\, ds$$
+                    <p>is a Brownian motion, and substituting back into the SDE for $X_t$ gives</p>
+                    $$dX_t = \left( b_t(X_t) + \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log \rho_t(X_t) + (\sigma_t
+                    \sigma_t^\top) \nabla \log h_t(X_t) \right) dt + \sigma_t\, d\tilde{B}_t.$$
+                    <p>We can then find the density $\tilde{\rho}_t$ of $X_t$ under $Q$ by integrating a test function
+                        $f \in C_c^\infty(\mathbb{R}^d)$:</p>
+                    $$\mathbb{E}_Q[f(X_t)] = \mathbb{E}_P[g_t\, f(X_t)] = \mathbb{E}_P\!\left[ f(X_t)\,
+                    \frac{h_t(X_t)}{h_0(X_0)} \right].$$
+                    <p>In the specific case that $X_0 \perp\!\!\!\perp X_1$ (which happens using the memoryless noise
+                        schedule), it is clear that $h_0(X_0) = \mathbb{E}[e^{\lambda r(X_1)}]$ is a normalizing
+                        constant, and thus $\tilde{\rho}_t(x) \propto \rho_t(x)\, h_t(x)$. At the endpoint, this means
+                        that $\tilde{\rho}_1(x) \propto e^{\lambda r(x)} \rho_1(x)$ as desired, and the Doob
+                        $h$-transform of the original diffusion gives a principled way to sample from the
+                        reward-tilted measure. We can then convert the guided SDE back to a guided ODE by considering
+                        the associated probability flow:
+                    </p>
+                    $$\begin{aligned}
                     dX_t
-                     & = \left( b_t(X_t) + \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log \rho_t(X_t) + (\sigma_t \sigma_t^\top) \nabla \log h_t(X_t) - \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log \tilde{\rho}_t(X_t) \right) dt \\
-                     & = \left( b_t(X_t) + \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log h_t(X_t) \right) dt.
-                \end{aligned}$$
-                <p>Hence, the guided probability flow ODE simply includes an additional score term $\tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log h_t(X_t)$ that steers the dynamics toward high-reward regions of the output space.</p>
+                    & = \left( b_t(X_t) + \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log \rho_t(X_t) + (\sigma_t
+                    \sigma_t^\top) \nabla \log h_t(X_t) - \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log
+                    \tilde{\rho}_t(X_t) \right) dt \\
+                    & = \left( b_t(X_t) + \tfrac{1}{2} (\sigma_t \sigma_t^\top) \nabla \log h_t(X_t) \right) dt.
+                    \end{aligned}$$
+                    <p>Hence, the guided probability flow ODE simply includes an additional score term $\tfrac{1}{2}
+                        (\sigma_t \sigma_t^\top) \nabla \log h_t(X_t)$ that steers the dynamics toward high-reward
+                        regions of the output space.</p>
             </div>
         </details>
 
         <h3>Plug-in estimation</h3>
         <p>
-            The Doob <em>h</em>-function is intractable in general, so practitioners replace it with a
+            The Doob $h$-function is intractable in general, so practitioners replace it with a
             <em>$k$-particle plug-in estimator</em>:
         </p>
 
         <div class="formula-box">
             $$\hat{h}_t^{(k)}(x) \;=\; \frac{1}{k} \sum_{i=1}^{k} e^{\lambda r(X_1^{(i)})},
-            \qquad X_1^{(i)} \stackrel{\text{iid}}{\sim} p_{1\mid t}(\,\cdot\, \mid x).$$
+            \qquad X_1^{(i)} \stackrel{\text{iid}}{\sim} p_{1\mid t}(\,\cdot\, \mid x),$$
         </div>
 
         <p>
-            In practice, $k$ is small for cost reasons. <strong>Our central claim</strong> is that, even with
-            arbitrarily large $k$, this plug-in estimator does not produce samples from $\tilde{\rho}_1$ &mdash; it
-            has two distinct biases that we characterize in closed form.
+            where $p_{1 \vert t}$ denotes the law of $(X_1 \mid X_t = x)$. In practice, $k$ is often chosen to be
+            small due to computational constraints. We demonstrate that the plug-in estimator exhibits two biases due to
+            <strong>finite-sample effects</strong>, and provide methods to mitigate each one.
         </p>
     </section>
 
     <!-- ============================================================
          WHAT WE PROVE
          ============================================================ -->
-    <section id="overview" class="section">
+    <section id="what-we-prove" class="section">
         <h2>What we prove</h2>
 
         <div class="callout">
             <p>
-                Even in the simplest non-trivial settings &mdash; Gaussian and Gaussian-mixture targets with
-                quadratic rewards &mdash; the plug-in estimator exhibits <strong>two distinct failure modes</strong>
-                that are derivable in closed form:
+                Our main contributions are:
             </p>
             <ol>
-                <li><strong>Within-mode reward hacking.</strong> The estimator over-rewards the model along directions
-                    of high reward, producing samples that drift off the data manifold even when only one mode is
-                    relevant.</li>
-                <li><strong>Mode-selection failure.</strong> The estimator has no mechanism to up-weight a distant
-                    high-reward mode against a closer low-reward mode &mdash; guidance cannot reweight the mixture.
-                </li>
+                <li>We prove in Gaussian settings that significant <strong>within-mode reward hacking</strong> arises
+                    from finite-particle plug-in estimation in most implementations of reward-guided diffusion.</li>
+                <li>We show in Gaussian mixture settings that guidance using plug-in estimation <strong>fails to select
+                        between
+                        modes</strong> and has no mechanism for accurately weighting distant high-reward modes.</li>
+                <li>We propose a simple closed form <strong>damped reward schedule</strong> $\lambda_t$ to mitigate
+                    within-mode reward hacking and clarify the role of <strong>best-of-$n$</strong> sampling in
+                    performing mode
+                    selection.</li>
             </ol>
-            <p>
-                We propose a closed-form <strong>reward damping schedule</strong> that fixes (1) at no extra compute,
-                and show that <strong>best-of-<em>n</em> sampling</strong> is the natural fix for (2). See the
-                <a href="#" target="_blank" rel="noopener">paper</a> for the precise statements and proofs.
-            </p>
         </div>
-
-        <h3>Failure mode 1: within-mode reward hacking</h3>
         <p>
-            On a single Gaussian target with a quadratic reward, the analytic tilt has a known closed form. The plug-in
-            estimator overshoots it: samples concentrate too tightly and shift too far in the reward direction.
-            Damping restores the analytic distribution.
+            See the <a href="#" target="_blank" rel="noopener">paper</a> for the precise statements and proofs.
         </p>
 
-        <div class="triple">
-            <figure>
-                <img src="assets/images/theory/gmm_quad_analytic.png" alt="analytic tilt of a Gaussian target" />
-                <figcaption><strong>Analytic tilt.</strong> Ground truth reward-tilted measure.</figcaption>
-            </figure>
-            <figure>
-                <img src="assets/images/theory/gmm_quad_plugin_k1.png" alt="plug-in estimator overshoots" />
-                <figcaption><strong>Plug-in (<em>k</em>=1).</strong> Over-concentrates and overshoots the mean.</figcaption>
-            </figure>
-            <figure>
-                <img src="assets/images/theory/gmm_quad_plugin_damped.png" alt="damped guidance recovers tilt" />
-                <figcaption><strong>Damped (ours).</strong> Recovers the analytic tilt at the same compute.</figcaption>
-            </figure>
+        <strong>Within-mode reward hacking:</strong> We prove that plug-in guidance overshoots the reward maximizer and
+        samples concentrate too tightly, and that increasing $k$ helps only mildly (at a logarithmic rate in
+        $\infty$-Wasserstein distance). For an isotropic target $\mathcal{N}(0, \sigma^2 I_d)$ with a quadratic reward,
+        replacing the guidance scale $\lambda$ with the time-dependent <em>reward damping schedule</em>
+        <div class="formula-box">
+            $$
+            \lambda_t \;=\; \frac{\lambda}{1 + 2\lambda\,\sigma^2_{1\mid t}},
+            \qquad
+            \sigma^2_{1\mid t} \;=\; \frac{\sigma^2 (1-t)^2}{(1-t)^2 + t^2 \sigma^2},
+            $$
         </div>
+        recovers the analytic guidance. In practice, although these assumptions don't hold exactly, we find that the
+        damped schedule still significantly mitigates reward hacking and improves sample quality. We treat $\sigma$ as a
+        tunable hyperparameter that controls the strength of damping.
 
-        <h3>Failure mode 2: mode selection</h3>
-        <p>
-            On a 1D Gaussian mixture with a step-function reward favouring the right mode, plug-in guidance
-            cannot reweight the mixture toward the high-reward mode &mdash; trajectories follow whichever mode they
-            were initialized near. Best-of-<em>n</em> resampling recovers the correct mixture weights.
-        </p>
+        <figure class="full-figure gmm-figure">
+            <img src="assets/images/theory/gmm_quadratic_combined.png"
+                alt="Gaussian mixture reward hacking comparison: analytic tilt, plug-in k=1, plug-in k=8, and damped guidance" />
+        </figure>
+
+        <strong>Failure to select modes:</strong> We prove in a representative Gaussian mixture example that plug-in
+        guidance cannot accurately weight distant
+        high-reward modes
+        &mdash; trajectories usually end up in the mode they were initialized near. Best-of-$n$ sampling (running $n$
+        independent $k = 1$ guided trajectories and selecting the one with highest reward) can recover
+        the correct mixture weights.
 
         <figure class="full-figure">
             <img src="assets/images/theory/ms_step.png" alt="mode selection failure on 1D Gaussian mixture" />
-            <figcaption>
-                <strong>Mode selection on a 1D Gaussian mixture.</strong> Plug-in guidance is tied to the initial seed
-                and cannot route mass to the high-reward mode; best-of-<em>n</em> selection at the end of sampling
-                approximately recovers the analytic mixture weights.
-            </figcaption>
         </figure>
     </section>
 
@@ -465,14 +479,17 @@
     <section id="experiments" class="section">
         <h2>Experiments</h2>
         <p class="section-lead">
-            We confirm the theory on a 2D checkerboard target and on FLUX.1-dev with three reward families:
-            a hand-crafted masked-intensity reward, a colour-channel reward, and the learned ImageReward
-            human-preference reward.
+            We confirm that our insights translate to practice through a variety of experiments (see the <a href="#"
+                target="_blank" rel="noopener">paper</a> for details and more results).
         </p>
 
-        <h3>Within-mode hacking on FLUX.1</h3>
+        <h3>Within-mode reward hacking</h3>
 
-        <h4>Masked intensity reward</h4>
+        <p class="reward-note">
+            <strong>Masked intensity reward:</strong> mean pixel intensity inside a top-right circular mask minus the
+            mean
+            intensity outside.
+        </p>
         <div class="carousel single-slide" id="welder-carousel">
             <div class="carousel-shell">
                 <div class="carousel-viewport">
@@ -481,16 +498,22 @@
                             <p class="exp-prompt">&ldquo;photorealistic worm's-eye view of a welder mid-spark inside a
                                 rusted ship hull, sweat, smoke, orange backlight&rdquo;</p>
                             <div class="five-col-row">
-                                <div class="cover-cell"><img src="assets/images/experiments/welder/unguided.png" alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/welder/guided.png" alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/welder/guided_lowlam.png" alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/welder/guided_k8.png" alt="guided k=8" /><span class="cover-label cover-guided">Guided (<em>k</em>=8)</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/welder/damped.png" alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/welder/unguided.png"
+                                        alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/welder/guided.png"
+                                        alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/welder/guided_lowlam.png"
+                                        alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower
+                                        $\lambda$)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/welder/guided_k8.png"
+                                        alt="guided k=8" /><span class="cover-label cover-guided">Guided ($k=8$)</span>
+                                </div>
+                                <div class="cover-cell"><img src="assets/images/experiments/welder/damped.png"
+                                        alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
                             </div>
                             <figcaption class="exp-caption">
-                                Reward is mean pixel intensity inside a top-right circular mask minus mean intensity
-                                outside. Naive guidance maximizes the masked-region brightness by removing the welder
-                                from the frame; reward damping obtains a high-reward sample including the welder.
+                                Naive guidance maximizes the masked-region brightness by removing the welder from the
+                                frame; reward damping obtains a high-reward sample including the welder.
                             </figcaption>
                         </figure>
                     </div>
@@ -499,36 +522,53 @@
             <div class="carousel-dots"></div>
         </div>
 
-        <h4>Blueness reward</h4>
+        <p class="reward-note">
+            <strong>Blueness reward:</strong> mean blue channel minus the mean red and green channels.
+        </p>
         <div class="carousel" id="blueness-carousel" data-autoplay="7000">
             <div class="carousel-shell">
-                <button class="carousel-btn prev" aria-label="Previous slide" data-target="blueness-carousel">&lsaquo;</button>
+                <button class="carousel-btn prev" aria-label="Previous slide"
+                    data-target="blueness-carousel">&lsaquo;</button>
                 <div class="carousel-viewport">
                     <div class="carousel-track">
                         <figure class="slide five-col-slide">
                             <p class="exp-prompt">&ldquo;a baby fox wearing a cozy knitted sweater&rdquo;</p>
                             <div class="five-col-row">
-                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/unguided.png" alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/guided.png" alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/guided_lowlam.png" alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/guided_k8.png" alt="guided k=8" /><span class="cover-label cover-guided">Guided (<em>k</em>=8)</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/damped.png" alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/unguided.png"
+                                        alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/guided.png"
+                                        alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/guided_lowlam.png"
+                                        alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower
+                                        $\lambda$)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/guided_k8.png"
+                                        alt="guided k=8" /><span class="cover-label cover-guided">Guided ($k=8$)</span>
+                                </div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_fox/damped.png"
+                                        alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
                             </div>
                             <figcaption class="exp-caption">
-                                Reward is the mean blue channel minus the mean of red and green. Naive guidance washes
-                                out the orange fur; damped guidance keeps the fox orange and turns the sweater and
-                                background blue.
+                                Naive guidance washes out the orange fur; damped guidance keeps the fox orange and
+                                turns the sweater and background blue.
                             </figcaption>
                         </figure>
                         <figure class="slide five-col-slide">
                             <p class="exp-prompt">&ldquo;artist painting in the center of a cluttered room lit by
                                 candlelight, rococo&rdquo;</p>
                             <div class="five-col-row">
-                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/unguided.png" alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/guided.png" alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/guided_lowlam.png" alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/guided_k8.png" alt="guided k=8" /><span class="cover-label cover-guided">Guided (<em>k</em>=8)</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/damped.png" alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/unguided.png"
+                                        alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/guided.png"
+                                        alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
+                                <div class="cover-cell"><img
+                                        src="assets/images/experiments/brg_rococo/guided_lowlam.png"
+                                        alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower
+                                        $\lambda$)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/guided_k8.png"
+                                        alt="guided k=8" /><span class="cover-label cover-guided">Guided ($k=8$)</span>
+                                </div>
+                                <div class="cover-cell"><img src="assets/images/experiments/brg_rococo/damped.png"
+                                        alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
                             </div>
                             <figcaption class="exp-caption">
                                 Naive guidance produces blue images that lose the artist or candles; damped guidance
@@ -537,15 +577,19 @@
                         </figure>
                     </div>
                 </div>
-                <button class="carousel-btn next" aria-label="Next slide" data-target="blueness-carousel">&rsaquo;</button>
+                <button class="carousel-btn next" aria-label="Next slide"
+                    data-target="blueness-carousel">&rsaquo;</button>
             </div>
             <div class="carousel-dots"></div>
         </div>
 
-        <h4>ImageReward (learned human-preference)</h4>
+        <p class="reward-note">
+            <strong>ImageReward:</strong> a learned human-preference reward taking a prompt and an image as inputs.
+        </p>
         <div class="carousel" id="ir-carousel" data-autoplay="7000">
             <div class="carousel-shell">
-                <button class="carousel-btn prev" aria-label="Previous slide" data-target="ir-carousel">&lsaquo;</button>
+                <button class="carousel-btn prev" aria-label="Previous slide"
+                    data-target="ir-carousel">&lsaquo;</button>
                 <div class="carousel-viewport">
                     <div class="carousel-track">
                         <figure class="slide five-col-slide">
@@ -553,11 +597,19 @@
                                 weathered paper talismans in a flooded bunker, flashlight haze, focused
                                 expression&rdquo;</p>
                             <div class="five-col-row">
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/unguided.png" alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/guided.png" alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/guided_lowlam.png" alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/guided_k8.png" alt="guided k=8" /><span class="cover-label cover-guided">Guided (<em>k</em>=8)</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/damped.png" alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/unguided.png"
+                                        alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/guided.png"
+                                        alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
+                                <div class="cover-cell"><img
+                                        src="assets/images/experiments/ir_archaeo/guided_lowlam.png"
+                                        alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower
+                                        $\lambda$)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/guided_k8.png"
+                                        alt="guided k=8" /><span class="cover-label cover-guided">Guided ($k=8$)</span>
+                                </div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_archaeo/damped.png"
+                                        alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
                             </div>
                             <figcaption class="exp-caption">
                                 Both unguided and naively-guided images produce unnatural artifacts or fail to show a
@@ -565,14 +617,28 @@
                             </figcaption>
                         </figure>
                         <figure class="slide five-col-slide">
-                            <p class="exp-prompt">&ldquo;a dull, muted, washed-out, desaturated Indian outdoor market
-                                with stalls and produce, overcast gloomy lighting, faded colors&rdquo;</p>
+                            <div class="exp-prompt market-prompt">
+                                <span class="prompt-pair">
+                                    <span>&ldquo;a dull, muted, washed-out, desaturated Indian outdoor market
+                                        with stalls and produce, overcast gloomy lighting, faded colors&rdquo;</span>
+                                    <span class="prompt-arrow" aria-hidden="true">&rarr;</span>
+                                    <span>&ldquo;a vibrant Indian outdoor market with colorful stalls and
+                                        produce&rdquo;</span>
+                                </span>
+                            </div>
                             <div class="five-col-row">
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/unguided.png" alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/guided.png" alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/guided_lowlam.png" alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/guided_k8.png" alt="guided k=8" /><span class="cover-label cover-guided">Guided (<em>k</em>=8)</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/damped.png" alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/unguided.png"
+                                        alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/guided.png"
+                                        alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/guided_lowlam.png"
+                                        alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower
+                                        $\lambda$)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/guided_k8.png"
+                                        alt="guided k=8" /><span class="cover-label cover-guided">Guided ($k=8$)</span>
+                                </div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_market/damped.png"
+                                        alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
                             </div>
                             <figcaption class="exp-caption">
                                 Naive guidance brightens the lamps while leaving the rest washed out; damped guidance
@@ -583,11 +649,18 @@
                             <p class="exp-prompt">&ldquo;cinematic split diorama of a miner above and below ground,
                                 helmet beam, coal dust, family dinner fading opposite&rdquo;</p>
                             <div class="five-col-row">
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/unguided.png" alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/guided.png" alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/guided_lowlam.png" alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower&nbsp;<em>λ</em>)</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/guided_k8.png" alt="guided k=8" /><span class="cover-label cover-guided">Guided (<em>k</em>=8)</span></div>
-                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/damped.png" alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/unguided.png"
+                                        alt="unguided" /><span class="cover-label cover-unguided">Unguided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/guided.png"
+                                        alt="guided" /><span class="cover-label cover-guided">Guided</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/guided_lowlam.png"
+                                        alt="guided lower lambda" /><span class="cover-label cover-guided">Guided (lower
+                                        $\lambda$)</span></div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/guided_k8.png"
+                                        alt="guided k=8" /><span class="cover-label cover-guided">Guided ($k=8$)</span>
+                                </div>
+                                <div class="cover-cell"><img src="assets/images/experiments/ir_miner/damped.png"
+                                        alt="damped" /><span class="cover-label cover-damped">Damped (ours)</span></div>
                             </div>
                             <figcaption class="exp-caption">
                                 Naive guidance hacks ImageReward by ignoring the split-diorama constraint; damped
@@ -602,61 +675,104 @@
         </div>
 
         <!-- Mode selection: checkerboard figure stacked above the table -->
-        <h3>Mode selection: 2D checkerboard</h3>
+        <h3>Mode selection</h3>
+        <p class="experiment-note">
+            <strong>Checkerboard:</strong> the base model samples uniformly from the checkerboard (gray)
+            and the reward is Gaussian.
+        </p>
         <div class="cb-stack">
             <figure class="cb-figure">
                 <img src="assets/images/experiments/cb_fig7.png" alt="checkerboard guidance comparison" />
                 <figcaption>
-                    <strong>Checkerboard guidance.</strong> Unlike plug-in guidance, best-of-<em>n</em> can select
-                    modes. With reward damping, best-of-<em>n</em> significantly improves fidelity to the analytic
-                    tilt.
+                    <strong>Checkerboard guidance.</strong> Best-of-$n$ can select modes; with reward damping,
+                    best-of-$n$
+                    significantly improves fidelity to the analytic tilt.
                 </figcaption>
             </figure>
             <div class="cb-table">
                 <p class="cb-table-caption">
-                    <strong>Checkerboard statistics.</strong> Mean reward and covariance trace for each method
-                    ($\lambda = 10$). Uncertainties are $\pm 2$ standard errors of the mean; covariance-trace
-                    uncertainties are bootstrapped.
+                    <strong>Checkerboard statistics.</strong> Mean reward and covariance trace for each method. Plug-in
+                    guidance cannot select modes, so the mean reward is too low and the covariance trace is too high.
+                    Best-of-$2$ already improves reward and comes close to matching the analytic tilt; best-of-$4$ with
+                    reward damping increases fidelity to the analytic tilt even further.
                 </p>
                 <table>
                     <thead>
-                        <tr><th>Method</th><th>Mean reward</th><th>Cov.&nbsp;trace</th></tr>
+                        <tr>
+                            <th>Method</th>
+                            <th>Mean reward</th>
+                            <th>Cov.&nbsp;trace</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Analytic tilt</td><td>0.914 &plusmn; 0.003</td><td>0.457 &plusmn; 0.021</td></tr>
-                        <tr><td>Plug-in (<em>k</em>=1)</td><td>0.764 &plusmn; 0.004</td><td>1.930 &plusmn; 0.048</td></tr>
-                        <tr><td>Plug-in (<em>k</em>=8)</td><td>0.804 &plusmn; 0.007</td><td>1.397 &plusmn; 0.068</td></tr>
-                        <tr><td>Best-of-2</td><td>0.914 &plusmn; 0.003</td><td>0.520 &plusmn; 0.026</td></tr>
-                        <tr><td>Best-of-4</td><td>0.978 &plusmn; 0.002</td><td>0.107 &plusmn; 0.010</td></tr>
-                        <tr class="row-highlight"><td>Best-of-4, $\sigma_{\mathrm{damp}}=0.2$</td><td>0.920 &plusmn; 0.004</td><td>0.429 &plusmn; 0.022</td></tr>
+                        <tr>
+                            <td>Analytic tilt</td>
+                            <td>0.914 &plusmn; 0.003</td>
+                            <td>0.457 &plusmn; 0.021</td>
+                        </tr>
+                        <tr>
+                            <td>Plug-in ($k=1$)</td>
+                            <td>0.764 &plusmn; 0.004</td>
+                            <td>1.930 &plusmn; 0.048</td>
+                        </tr>
+                        <tr>
+                            <td>Plug-in ($k=8$)</td>
+                            <td>0.804 &plusmn; 0.007</td>
+                            <td>1.397 &plusmn; 0.068</td>
+                        </tr>
+                        <tr>
+                            <td>Best-of-$2$</td>
+                            <td>0.914 &plusmn; 0.003</td>
+                            <td>0.520 &plusmn; 0.026</td>
+                        </tr>
+                        <tr>
+                            <td>Best-of-$4$</td>
+                            <td>0.978 &plusmn; 0.002</td>
+                            <td>0.107 &plusmn; 0.010</td>
+                        </tr>
+                        <tr class="row-highlight">
+                            <td>Best-of-$4$, $\sigma_{\mathrm{damp}}=0.2$</td>
+                            <td>0.920 &plusmn; 0.004</td>
+                            <td>0.429 &plusmn; 0.022</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <h3>Mode selection on FLUX.1</h3>
+        <p class="experiment-note">
+            <strong>FLUX.1 (VLM reward):</strong> the base model is FLUX.1-dev and the reward is $r(x) =
+            \log(p(\mathrm{Yes})) -
+            \log(p(\mathrm{No}))$, where
+            $p(\cdot)$ denotes the next-token
+            probability from the Qwen2.5-VL-3B VLM.
+        </p>
         <div class="carousel" id="ms-carousel" data-autoplay="9000">
             <div class="carousel-shell">
-                <button class="carousel-btn prev" aria-label="Previous slide" data-target="ms-carousel">&lsaquo;</button>
+                <button class="carousel-btn prev" aria-label="Previous slide"
+                    data-target="ms-carousel">&lsaquo;</button>
                 <div class="carousel-viewport">
                     <div class="carousel-track">
 
                         <figure class="slide ms-slide">
                             <p class="exp-prompt">&ldquo;a roadside American diner in the Nevada desert, shot at
                                 twilight, a neon sign on the roof glowing ECLIPSE DINER, in cherry-red and cream
-                                tubes, a long empty highway behind it, painterly warm light on chrome surfaces&rdquo;</p>
+                                tubes, a long empty highway behind it, painterly warm light on chrome surfaces&rdquo;
+                            </p>
 
                             <!-- column headers (desktop only) -->
                             <div class="ms-col-headers">
                                 <span></span>
-                                <span class="ms-col-label">Best-of-1</span>
-                                <span class="ms-col-label">Best-of-2</span>
-                                <span class="ms-col-label">Best-of-4</span>
+                                <span class="ms-col-label">Best-of-$1$</span>
+                                <span class="ms-col-label">Best-of-$2$</span>
+                                <span class="ms-col-label">Best-of-$4$</span>
                             </div>
 
                             <div class="ms-method">
                                 <div class="ms-row-label cover-unguided">Unguided</div>
-                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
+                                <div class="ms-pair-labels">
+                                    <span>Best-of-$1$</span><span>Best-of-$2$</span><span>Best-of-$4$</span>
+                                </div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_diner/unguided_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_diner/unguided_bo1_b.png" alt="" />
@@ -668,7 +784,9 @@
                             </div>
                             <div class="ms-method">
                                 <div class="ms-row-label cover-guided">Guided</div>
-                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
+                                <div class="ms-pair-labels">
+                                    <span>Best-of-$1$</span><span>Best-of-$2$</span><span>Best-of-$4$</span>
+                                </div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_diner/guided_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_diner/guided_bo1_b.png" alt="" />
@@ -679,8 +797,10 @@
                                 </div>
                             </div>
                             <div class="ms-method">
-                                <div class="ms-row-label cover-guided">Guided (<em>k</em>=8)</div>
-                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
+                                <div class="ms-row-label cover-guided">Guided ($k=8$)</div>
+                                <div class="ms-pair-labels">
+                                    <span>Best-of-$1$</span><span>Best-of-$2$</span><span>Best-of-$4$</span>
+                                </div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_diner/guided_k8_bo1_b.png" alt="" />
@@ -692,7 +812,9 @@
                             </div>
                             <div class="ms-method">
                                 <div class="ms-row-label cover-damped">Damped (ours)</div>
-                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
+                                <div class="ms-pair-labels">
+                                    <span>Best-of-$1$</span><span>Best-of-$2$</span><span>Best-of-$4$</span>
+                                </div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_diner/damped_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_diner/damped_bo1_b.png" alt="" />
@@ -706,7 +828,7 @@
                             <figcaption class="exp-caption">
                                 VLM reward derived from &ldquo;Does this image clearly show a neon sign with the word
                                 &lsquo;ECLIPSE&rsquo; as the main readable text?&rdquo; Plug-in guidance hacks the
-                                reward; damping helps slightly; best-of-<em>n</em> substantially improves it &mdash;
+                                reward; damping helps slightly; best-of-$n$ substantially improves it &mdash;
                                 confirming the importance of the initial seed for mode selection.
                             </figcaption>
                         </figure>
@@ -717,14 +839,16 @@
 
                             <div class="ms-col-headers">
                                 <span></span>
-                                <span class="ms-col-label">Best-of-1</span>
-                                <span class="ms-col-label">Best-of-2</span>
-                                <span class="ms-col-label">Best-of-4</span>
+                                <span class="ms-col-label">Best-of-$1$</span>
+                                <span class="ms-col-label">Best-of-$2$</span>
+                                <span class="ms-col-label">Best-of-$4$</span>
                             </div>
 
                             <div class="ms-method">
                                 <div class="ms-row-label cover-unguided">Unguided</div>
-                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
+                                <div class="ms-pair-labels">
+                                    <span>Best-of-$1$</span><span>Best-of-$2$</span><span>Best-of-$4$</span>
+                                </div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_subway/unguided_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_subway/unguided_bo1_b.png" alt="" />
@@ -736,7 +860,9 @@
                             </div>
                             <div class="ms-method">
                                 <div class="ms-row-label cover-guided">Guided</div>
-                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
+                                <div class="ms-pair-labels">
+                                    <span>Best-of-$1$</span><span>Best-of-$2$</span><span>Best-of-$4$</span>
+                                </div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_subway/guided_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_subway/guided_bo1_b.png" alt="" />
@@ -747,8 +873,10 @@
                                 </div>
                             </div>
                             <div class="ms-method">
-                                <div class="ms-row-label cover-guided">Guided (<em>k</em>=8)</div>
-                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
+                                <div class="ms-row-label cover-guided">Guided ($k=8$)</div>
+                                <div class="ms-pair-labels">
+                                    <span>Best-of-$1$</span><span>Best-of-$2$</span><span>Best-of-$4$</span>
+                                </div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_subway/guided_k8_bo1_b.png" alt="" />
@@ -760,7 +888,9 @@
                             </div>
                             <div class="ms-method">
                                 <div class="ms-row-label cover-damped">Damped (ours)</div>
-                                <div class="ms-pair-labels"><span>Best-of-1</span><span>Best-of-2</span><span>Best-of-4</span></div>
+                                <div class="ms-pair-labels">
+                                    <span>Best-of-$1$</span><span>Best-of-$2$</span><span>Best-of-$4$</span>
+                                </div>
                                 <div class="ms-cells">
                                     <img src="assets/images/experiments/flux_ms_subway/damped_bo1_a.png" alt="" />
                                     <img src="assets/images/experiments/flux_ms_subway/damped_bo1_b.png" alt="" />
@@ -774,7 +904,7 @@
                             <figcaption class="exp-caption">
                                 VLM reward derived from &ldquo;Does this image clearly show a display with the text
                                 &lsquo;NEXT TRAIN MARS&rsquo; as the main readable text?&rdquo; The qualitative
-                                pattern reproduces: plug-in guidance hacks the reward, and best-of-<em>n</em>
+                                pattern is similar: plug-in guidance hacks the reward, and best-of-$n$
                                 substantially improves it.
                             </figcaption>
                         </figure>
@@ -801,14 +931,10 @@
     </section>
 
     <footer class="footer">
-        <p>
-            &copy; 2026 Sanjit Dandapanthula and Nicholas&nbsp;M.&nbsp;Boffi &middot; Carnegie Mellon University
-            &middot;
-            <a href="https://github.com/sanjitdp/reward-guidance" target="_blank" rel="noopener">code</a>
-        </p>
+        <p>&copy; 2026 Sanjit Dandapanthula and Nicholas&nbsp;M.&nbsp;Boffi</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=carousel-align"></script>
 </body>
 
 </html>

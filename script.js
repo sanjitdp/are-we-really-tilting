@@ -55,9 +55,35 @@
         let timer = null;
         let userInteracted = false;
 
+        function syncArrowPosition() {
+            const shell = root.querySelector(".carousel-shell");
+            if (!shell || (!prevBtn && !nextBtn)) return;
+
+            const activeSlide = slides[index];
+            const imageNodes = Array.from(activeSlide.querySelectorAll(
+                ".five-col-row img, .cover-row img, .ms-cells img, .slide > img"
+            ));
+            const imageRects = imageNodes
+                .map((img) => img.getBoundingClientRect())
+                .filter((rect) => rect.width > 0 && rect.height > 0);
+
+            if (!imageRects.length) return;
+
+            const shellRect = shell.getBoundingClientRect();
+            const button = prevBtn || nextBtn;
+            const buttonHeight = button ? button.getBoundingClientRect().height : 36;
+            const imageTop = Math.min(...imageRects.map((rect) => rect.top));
+            const imageBottom = Math.max(...imageRects.map((rect) => rect.bottom));
+            const imageCenter = (imageTop + imageBottom) / 2 - shellRect.top;
+            const arrowTop = Math.max(0, imageCenter - buttonHeight / 2);
+
+            root.style.setProperty("--carousel-arrow-top", `${arrowTop}px`);
+        }
+
         function render() {
             track.style.transform = `translateX(-${index * 100}%)`;
             dots.forEach((d, i) => d.classList.toggle("active", i === index));
+            requestAnimationFrame(syncArrowPosition);
         }
 
         function goTo(i, fromUser = false) {
@@ -109,6 +135,12 @@
         root.addEventListener("mouseenter", stopAutoplay);
         root.addEventListener("mouseleave", () => {
             if (!userInteracted) startAutoplay();
+        });
+        window.addEventListener("resize", syncArrowPosition);
+        slides.forEach((slide) => {
+            slide.querySelectorAll("img").forEach((img) => {
+                if (!img.complete) img.addEventListener("load", syncArrowPosition, { once: true });
+            });
         });
 
         render();
