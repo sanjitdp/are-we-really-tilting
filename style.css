@@ -737,11 +737,10 @@ figure figcaption {
     border-color: var(--lavender-edge);
     color: var(--text);
 }
-.bibtex-copy.copied {
-    background: var(--lavender-bg);
-    border-color: var(--lavender-edge);
-    color: var(--damped);
-}
+/* While "copied", only the icon swaps — the button itself looks identical
+   to its resting state, so the click feels transient rather than a sticky
+   highlighted toggle. */
+.bibtex-copy.copied { color: var(--damped); }
 
 /* ============================ Responsive ============================ */
 
