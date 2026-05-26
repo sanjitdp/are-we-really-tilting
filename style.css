@@ -28,7 +28,6 @@
     --figure-gap:     8px;
     --experiment-block-gap: 28px;
     --experiment-group-gap: 68px;
-    --figure-block-gap: 44px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -164,60 +163,11 @@ strong { font-weight: 700; }
 }
 .link-pill:hover { background: var(--bg-soft); }
 
-/* ============================ Hero ============================ */
+/* ============================ Hero / authors ============================ */
 
-.hero {
-    max-width: var(--content-width);
-    margin: 0 auto;
-    padding: 56px 24px 24px;
-}
-
-.hero-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 72px;
-    align-items: center;
-}
-
-.hero-text { min-width: 0; }
-
-.paper-title {
-    font-size: clamp(30px, 4.4vw, 46px);
-    font-weight: 700;
-    margin: 0 0 6px;
-    letter-spacing: -0.025em;
-    line-height: 1.08;
-    text-wrap: balance;
-}
-
-.paper-subtitle {
-    font-size: clamp(15px, 1.7vw, 19px);
-    color: var(--text-soft);
-    font-weight: 400;
-    margin: 0 0 20px;
-    line-height: 1.35;
-    text-wrap: balance;
-}
-
-.authors { font-size: 17px; margin-bottom: 4px; }
 .authors span:not(:last-child)::after { content: " · "; color: var(--text-soft); margin: 0 4px; }
 .authors a { border-bottom: none; font-weight: 600; color: var(--text); }
 .authors a:hover { color: var(--analytic); }
-
-.affiliation { color: var(--text-soft); font-size: 15px; margin-bottom: 18px; }
-
-.abstract {
-    font-size: 15.5px;
-    line-height: 1.6;
-    color: var(--text);
-    background: var(--lavender-bg);
-    border-left: 4px solid var(--lavender-edge);
-    border-radius: 6px;
-    padding: 16px 18px;
-    margin: 0 0 22px;
-}
-
-.hero-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
 
 .btn {
     display: inline-flex;
@@ -259,70 +209,24 @@ strong { font-weight: 700; }
     color: var(--lavender-text);
 }
 
-.hero-carousel-wrap {
-    min-width: 0;
-    width: 100%;
-    max-width: 620px;
-    justify-self: end;
-}
+/* ============================ Sections / notes ============================ */
 
-/* ============================ Sections ============================ */
-
-.section {
-    max-width: var(--content-width);
-    margin: 0 auto;
-    padding: 38px 24px;
-}
-
-.overview-section { padding: 18px 24px 20px; }
-
-.section h2 {
-    font-size: 30px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin: 0 0 18px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-}
-.section h3 { font-size: 22px; font-weight: 700; margin: 44px 0 10px; letter-spacing: -0.01em; }
-.section h4 { font-size: 18px; font-weight: 700; margin: 34px 0 8px; color: var(--text); }
-.section-lead + h3 { margin-top: 30px; }
-.section h3 + h4 { margin-top: 16px; }
-.section-lead { font-size: 17px; color: var(--text-soft); margin-bottom: 22px; }
-.overview-sentence {
-    max-width: 980px;
+/* Unified note: label that sits directly above a figure/carousel/table.
+   The bottom margin is intentionally small so the label hugs the visual
+   below it; the top margin gives generous separation from prior content. */
+.note {
     color: var(--text-soft);
-    margin-bottom: 0;
-}
-.experiment-note {
-    color: var(--text-soft);
-    margin: 0 0 var(--figure-gap);
+    margin: 40px 0 8px;
     line-height: 1.55;
 }
-.experiment-note strong {
-    color: var(--text);
-}
-.reward-note {
-    color: var(--text-soft);
-    margin: 32px 0 6px;
-}
-.reward-note strong {
-    color: var(--text);
-}
-.reward-note + .carousel {
-    margin-top: 0;
-}
+.note strong { color: var(--text); }
+.note + .carousel,
+.note + figure,
+.note + .cb-stack { margin-top: 0; }
 
-/* ============================ Lavender callouts / formulas ============================ */
+/* ============================ Callout list/paragraph spacing ============================
+   (Box itself is styled inline with Tailwind utilities) */
 
-.callout {
-    background: var(--lavender-bg);
-    border-left: 4px solid var(--lavender-edge);
-    border-radius: 6px;
-    padding: 18px 22px;
-    margin: 18px 0 24px;
-    color: var(--text);
-}
 .callout p:last-child { margin-bottom: 0; }
 .callout ol, .callout ul { padding-left: 20px; margin: 6px 0 12px; }
 .callout li { margin-bottom: 6px; }
@@ -445,7 +349,7 @@ strong { font-weight: 700; }
     align-items: center;
     background: transparent;
 }
-.reward-note + .carousel .slide {
+.note + .carousel .slide {
     padding-top: 0;
 }
 
@@ -741,47 +645,16 @@ strong { font-weight: 700; }
 /* Per-method best-of-N labels — only visible on mobile */
 .ms-pair-labels { display: none; }
 
-/* ============================ Overview figure ============================ */
+/* ============================ Figure captions (containers handled by Tailwind) ============================ */
 
-.overview-figure { margin: 16px auto 0; max-width: 1180px; text-align: center; }
-
-.overview-figure img {
-    margin: 0 auto;
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-.overview-figure figcaption {
+figure figcaption {
     font-size: 14.5px;
     color: var(--text-soft);
-    margin-top: 12px;
+    margin: 12px auto 0;
     line-height: 1.5;
     text-align: center;
     max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
 }
-
-/* ============================ Generic figures ============================ */
-
-.full-figure {
-    margin: var(--figure-block-gap) auto calc(var(--figure-block-gap) + 8px);
-    text-align: center;
-    max-width: 1000px;
-}
-.full-figure img { margin: 0 auto; max-width: 100%; height: auto; border-radius: 6px; }
-.full-figure figcaption {
-    font-size: 14.5px;
-    color: var(--text-soft);
-    margin-top: 12px;
-    line-height: 1.5;
-    text-align: center;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.gmm-figure { max-width: 1120px; }
 
 .triple {
     display: grid;
@@ -881,18 +754,6 @@ strong { font-weight: 700; }
     color: var(--lavender-text);
 }
 
-/* ============================ Footer ============================ */
-
-.footer {
-    border-top: 1px solid var(--border);
-    margin-top: 28px;
-    padding: 24px 24px 36px;
-    text-align: center;
-    color: var(--text-soft);
-    font-size: 14px;
-}
-.footer a { color: var(--text-soft); }
-
 /* ============================ Responsive ============================ */
 
 /* Hide section anchors at tablet/narrow-desktop widths to avoid topnav crowding;
@@ -900,15 +761,6 @@ strong { font-weight: 700; }
 @media (max-width: 1080px) {
     .topnav-anchor,
     .topnav-divider { display: none; }
-}
-
-@media (max-width: 980px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 28px; }
-    .hero      { padding-top: 36px; }
-    .hero-carousel-wrap { justify-self: stretch; max-width: 100%; }
-
-    /* Overview: stack the two LaTeX halves */
-    .overview-halves { grid-template-columns: 1fr; gap: 16px; }
 }
 
 @media (max-width: 720px) {
@@ -922,15 +774,6 @@ strong { font-weight: 700; }
     .topnav-divider { display: none; }
     .topnav-title { font-size: 13.5px; }
     .topnav-title .topnav-authors { display: none; }
-
-    .hero { padding: 24px 16px 8px; }
-    .section { padding: 36px 16px 28px; }
-    .section h2 { font-size: 26px; }
-    .section h3 { margin-top: 38px; font-size: 20px; }
-    .section h4 { margin-top: 30px; }
-    .section-lead + h3 { margin-top: 26px; }
-    .section h3 + h4 { margin-top: 14px; }
-    .overview-section { padding: 24px 16px 20px; }
 
     .triple { grid-template-columns: 1fr; }
     .gmm-triple {
@@ -1000,8 +843,7 @@ strong { font-weight: 700; }
 
     .slide { padding: 4px 0; }
 
-    /* Hero buttons: more breathing room */
-    .hero-links { gap: 8px; }
+    /* Hero buttons: slightly tighter on mobile */
     .btn { padding: 9px 14px; font-size: 14px; }
 
     /* Bibtex copy button: smaller and tucked in */

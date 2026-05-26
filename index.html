@@ -11,6 +11,52 @@
     <link rel="icon" href="assets/favicons/favicon-option-flow.svg" type="image/svg+xml">
     <link rel="icon" href="assets/favicons/favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    sm: '640px',
+                    md: '720px',
+                    lg: '980px',
+                    xl: '1080px',
+                    '2xl': '1280px',
+                },
+                extend: {
+                    colors: {
+                        ink: { DEFAULT: '#1d2230', soft: '#4a5168' },
+                        canvas: { DEFAULT: '#ffffff', soft: '#f7f6fb' },
+                        edge: '#e3e1ed',
+                        lavender: {
+                            bg: '#f1ecfa',
+                            edge: '#c5b6e6',
+                            text: '#432d7a',
+                        },
+                        naive: '#f27900',
+                        damped: '#007a00',
+                        analytic: '#1f49aa',
+                        'arxiv-red': '#b31b1b',
+                        'code-bg': '#f3f1ec',
+                    },
+                    fontFamily: {
+                        sans: ['Lato', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+                        mono: ['"SF Mono"', 'Menlo', 'Consolas', 'monospace'],
+                    },
+                    maxWidth: {
+                        content: '1240px',
+                        prose: '900px',
+                        figure: '1000px',
+                        'figure-wide': '1120px',
+                    },
+                    fontSize: {
+                        'title': ['clamp(30px, 4.4vw, 46px)', { lineHeight: '1.08', letterSpacing: '-0.025em' }],
+                        'subtitle': ['clamp(15px, 1.7vw, 19px)', { lineHeight: '1.35' }],
+                    },
+                },
+            },
+        };
+    </script>
     <link rel="stylesheet" href="style.css">
 
     <script>
@@ -54,22 +100,22 @@
     <!-- ============================================================
          HERO
          ============================================================ -->
-    <section class="hero">
-        <div class="hero-grid">
+    <section class="mx-auto max-w-content px-4 md:px-6 pt-6 md:pt-14 pb-2 md:pb-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-            <div class="hero-text">
-                <h1 class="paper-title">Are we really tilting?</h1>
-                <p class="paper-subtitle">The mechanics of reward guidance in flow and diffusion models</p>
+            <div class="min-w-0">
+                <h1 class="text-title font-bold m-0 mb-1.5 [text-wrap:balance]">Are we really tilting?</h1>
+                <p class="text-subtitle text-ink-soft font-normal m-0 mb-5 [text-wrap:balance]">The mechanics of reward guidance in flow and diffusion models</p>
 
-                <div class="authors">
+                <div class="authors text-[17px] mb-1">
                     <span><a href="https://sanjitdp.github.io/" target="_blank" rel="noopener">Sanjit
                             Dandapanthula</a></span>
                     <span><a href="https://nmboffi.github.io/" target="_blank"
                             rel="noopener">Nicholas&nbsp;M.&nbsp;Boffi</a></span>
                 </div>
-                <div class="affiliation">Carnegie Mellon University</div>
+                <div class="text-ink-soft text-[15px] mb-[18px]">Carnegie Mellon University</div>
 
-                <p class="abstract">
+                <p class="text-[15.5px] leading-[1.6] text-ink bg-lavender-bg border-l-4 border-lavender-edge rounded-md py-4 px-[18px] m-0 mb-[22px]">
                     Reward guidance algorithms steer a learned generative process toward the reward-tilted measure
                     at inference time. While empirically powerful, these methods are prone to <em>reward hacking</em>:
                     the guided model over-optimizes the reward at the cost of fidelity to the learned distribution.
@@ -85,7 +131,7 @@
                     practical settings.
                 </p>
 
-                <div class="hero-links">
+                <div class="flex flex-wrap gap-2.5 mt-1">
                     <a class="btn" href="#" target="_blank" rel="noopener" aria-label="Paper on arXiv">
                         <img class="btn-icon arxiv-mark" src="assets/images/icons/arxiv-logomark-small-tight.png" alt=""
                             aria-hidden="true" loading="eager" />
@@ -109,7 +155,7 @@
                 </div>
             </div>
 
-            <div class="hero-carousel-wrap">
+            <div class="min-w-0 w-full max-w-[620px] lg:justify-self-end">
                 <div class="carousel" id="cover-carousel" data-autoplay="8000">
                     <div class="carousel-shell">
                         <button class="carousel-btn prev" aria-label="Previous slide"
@@ -226,20 +272,20 @@
          Desktop: original wide LaTeX figure (4 panels in one row).
          Mobile:  custom 2x2 LaTeX rebuild with a 3-row legend.
          ============================================================ -->
-    <section id="overview" class="section overview-section">
-        <h2>Overview</h2>
-        <p class="overview-sentence">
+    <section id="overview" class="mx-auto max-w-content px-4 md:px-6 pt-6 pb-5">
+        <h2 class="text-[26px] md:text-[30px] font-bold tracking-[-0.02em] m-0 mb-[18px] pb-2 border-b border-edge">Overview</h2>
+        <p class="text-ink-soft m-0">
             Compared to analytic reward tilting, practical guidance algorithms over-concentrate within each mode and
             fail to select high-reward modes. We propose a damped reward scale to mitigate within-mode
             reward hacking and clarify the role of best-of-$n$ in mode selection; combining these two methods often
             enables us to
             approximately recover the reward tilt.
         </p>
-        <figure class="overview-figure">
+        <figure class="mx-auto mt-6 max-w-[1180px] text-center">
             <picture>
                 <source media="(max-width: 720px)" srcset="assets/images/theory/overview_mobile.png" />
-                <img src="assets/images/theory/overview_cropped.png"
-                    alt="Overview: base target, analytic reward tilting, practical guidance, damping with best-of-n"  loading="lazy" />
+                <img class="mx-auto block max-w-full h-auto" src="assets/images/theory/overview_cropped.png"
+                    alt="Overview: base target, analytic reward tilting, practical guidance, damping with best-of-n" loading="lazy" />
             </picture>
         </figure>
     </section>
@@ -247,10 +293,10 @@
     <!-- ============================================================
          BACKGROUND  —  mirrors the paper
          ============================================================ -->
-    <section id="background" class="section">
-        <h2>Background on reward guidance</h2>
+    <section id="background" class="mx-auto max-w-content px-4 md:px-6 py-9 md:py-12 lg:py-14">
+        <h2 class="text-[26px] md:text-[30px] font-bold tracking-[-0.02em] m-0 mb-[18px] pb-2 border-b border-edge">Background on reward guidance</h2>
 
-        <h3>Stochastic interpolants and flow matching</h3>
+        <h3 class="text-[20px] md:text-[22px] font-bold tracking-[-0.01em] mt-9 md:mt-10 mb-2.5">Stochastic interpolants and flow matching</h3>
         <p>
             We assume access to a pre-trained flow model $b : [0,1] \times \mathbb{R}^d \to \mathbb{R}^d$. Samples
             from the data distribution $\rho_1 \in \mathcal{P}(\mathbb{R}^d)$ are drawn by integrating the
@@ -295,7 +341,7 @@
             </div>
         </details>
 
-        <h3>Reward guidance and the Doob $h$-transform</h3>
+        <h3 class="text-[20px] md:text-[22px] font-bold tracking-[-0.01em] mt-9 md:mt-10 mb-2.5">Reward guidance and the Doob $h$-transform</h3>
         <p>
             In reward-guided generation, we want samples not from $\rho_1$ but from the <em>reward-tilted measure</em>
         </p>
@@ -396,7 +442,7 @@
             </div>
         </details>
 
-        <h3>Plug-in estimation</h3>
+        <h3 class="text-[20px] md:text-[22px] font-bold tracking-[-0.01em] mt-9 md:mt-10 mb-2.5">Plug-in estimation</h3>
         <p>
             The Doob $h$-function is intractable in general, so practitioners replace it with a
             <em>$k$-particle plug-in estimator</em>:
@@ -417,10 +463,10 @@
     <!-- ============================================================
          WHAT WE PROVE
          ============================================================ -->
-    <section id="what-we-prove" class="section">
-        <h2>What we prove</h2>
+    <section id="what-we-prove" class="mx-auto max-w-content px-4 md:px-6 py-9 md:py-12 lg:py-14">
+        <h2 class="text-[26px] md:text-[30px] font-bold tracking-[-0.02em] m-0 mb-[18px] pb-2 border-b border-edge">What we prove</h2>
 
-        <div class="callout">
+        <div class="bg-lavender-bg border-l-4 border-lavender-edge rounded-md py-[18px] px-[22px] my-5 text-ink callout">
             <p>
                 Our main contributions are:
             </p>
@@ -455,9 +501,9 @@
         damped schedule still significantly mitigates reward hacking and improves sample quality. We treat $\sigma$ as a
         tunable hyperparameter that controls the strength of damping.
 
-        <figure class="full-figure gmm-figure">
-            <img src="assets/images/theory/gmm_quadratic_combined.png"
-                alt="Gaussian mixture reward hacking comparison: analytic tilt, plug-in k=1, plug-in k=8, and damped guidance"  loading="lazy" />
+        <figure class="my-12 mx-auto text-center max-w-figure-wide">
+            <img class="mx-auto max-w-full h-auto rounded-md" src="assets/images/theory/gmm_quadratic_combined.png"
+                alt="Gaussian mixture reward hacking comparison: analytic tilt, plug-in k=1, plug-in k=8, and damped guidance" loading="lazy" />
         </figure>
 
         <strong>Failure to select modes:</strong> We prove in a representative Gaussian mixture example that plug-in
@@ -467,23 +513,24 @@
         independent $k = 1$ guided trajectories and selecting the one with highest reward) can recover
         the correct mixture weights.
 
-        <figure class="full-figure">
-            <img src="assets/images/theory/ms_step.png" alt="mode selection failure on 1D Gaussian mixture" loading="lazy" />        </figure>
+        <figure class="my-12 mx-auto text-center max-w-figure">
+            <img class="mx-auto max-w-full h-auto rounded-md" src="assets/images/theory/ms_step.png" alt="mode selection failure on 1D Gaussian mixture" loading="lazy" />
+        </figure>
     </section>
 
     <!-- ============================================================
          EXPERIMENTS
          ============================================================ -->
-    <section id="experiments" class="section">
-        <h2>Experiments</h2>
-        <p class="section-lead">
+    <section id="experiments" class="mx-auto max-w-content px-4 md:px-6 py-9 md:py-12 lg:py-14">
+        <h2 class="text-[26px] md:text-[30px] font-bold tracking-[-0.02em] m-0 mb-[18px] pb-2 border-b border-edge">Experiments</h2>
+        <p class="text-[17px] text-ink-soft mb-[22px]">
             We confirm that our insights translate to practice through a variety of experiments (see the <a href="#"
                 target="_blank" rel="noopener">paper</a> for details and more results).
         </p>
 
-        <h3>Within-mode reward hacking</h3>
+        <h3 class="text-[20px] md:text-[22px] font-bold tracking-[-0.01em] mt-9 md:mt-[30px] mb-2.5">Within-mode reward hacking</h3>
 
-        <p class="reward-note">
+        <p class="note">
             <strong>Masked intensity reward:</strong> mean pixel intensity inside a top-right circular mask minus the
             mean
             intensity outside.
@@ -520,7 +567,7 @@
             <div class="carousel-dots"></div>
         </div>
 
-        <p class="reward-note">
+        <p class="note">
             <strong>Blueness reward:</strong> mean blue channel minus the mean red and green channels.
         </p>
         <div class="carousel" id="blueness-carousel" data-autoplay="11000">
@@ -581,7 +628,7 @@
             <div class="carousel-dots"></div>
         </div>
 
-        <p class="reward-note">
+        <p class="note">
             <strong>ImageReward:</strong> a learned human-preference reward taking a prompt and an image as inputs.
         </p>
         <div class="carousel" id="ir-carousel" data-autoplay="13000">
@@ -673,8 +720,8 @@
         </div>
 
         <!-- Mode selection: checkerboard figure stacked above the table -->
-        <h3>Mode selection</h3>
-        <p class="experiment-note">
+        <h3 class="text-[20px] md:text-[22px] font-bold tracking-[-0.01em] mt-9 md:mt-[30px] mb-2.5">Mode selection</h3>
+        <p class="note">
             <strong>Checkerboard:</strong> the base model samples uniformly from the checkerboard (gray)
             and the reward is Gaussian.
         </p>
@@ -739,7 +786,7 @@
             </div>
         </div>
 
-        <p class="experiment-note">
+        <p class="note">
             <strong>FLUX.1 (VLM reward):</strong> the base model is FLUX.1-dev and the reward is $r(x) =
             \log(p(\mathrm{Yes})) -
             \log(p(\mathrm{No}))$, where
@@ -871,8 +918,8 @@
     <!-- ============================================================
          CITATION
          ============================================================ -->
-    <section id="citation" class="section">
-        <h2>Citation</h2>
+    <section id="citation" class="mx-auto max-w-content px-4 md:px-6 py-9 md:py-12 lg:py-14">
+        <h2 class="text-[26px] md:text-[30px] font-bold tracking-[-0.02em] m-0 mb-[18px] pb-2 border-b border-edge">Citation</h2>
         <div class="bibtex-wrap">
             <button class="bibtex-copy" type="button" aria-label="Copy BibTeX">Copy</button>
             <pre class="bibtex"><code>@article{dandapanthula2026tilting,
@@ -884,8 +931,8 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <p>&copy; 2026 Sanjit Dandapanthula and Nicholas&nbsp;M.&nbsp;Boffi</p>
+    <footer class="border-t border-edge mt-7 pt-6 pb-9 px-6 text-center text-ink-soft text-sm">
+        <p class="m-0">&copy; 2026 Sanjit Dandapanthula and Nicholas&nbsp;M.&nbsp;Boffi</p>
     </footer>
 
     <script src="script.js?v=carousel-align"></script>
