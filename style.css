@@ -206,9 +206,10 @@ strong { font-weight: 700; }
 }
 
 .arxiv-mark {
-    width: 18px;
-    height: 18px;
-    color: var(--arxiv-red);
+    /* official two-tone arXiv logomark — has its own red/grey colors baked in */
+    width: 16px;
+    height: 22px;
+    object-fit: contain;
 }
 
 .quote-svg {
@@ -726,10 +727,11 @@ figure figcaption {
     justify-content: center;
     transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
 }
-.bibtex-copy .icon { width: 16px; height: 16px; display: block; }
-.bibtex-copy .icon-check { display: none; }
-.bibtex-copy.copied .icon-copy { display: none; }
-.bibtex-copy.copied .icon-check { display: block; }
+.bibtex-copy .icon { width: 16px; height: 16px; }
+.bibtex-copy .icon-copy        { display: block; }
+.bibtex-copy .icon-check       { display: none;  }
+.bibtex-copy.copied .icon-copy { display: none;  }
+.bibtex-copy.copied .icon-check{ display: block; }
 .bibtex-copy:hover {
     background: var(--bg-soft);
     border-color: var(--lavender-edge);
