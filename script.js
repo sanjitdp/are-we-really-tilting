@@ -147,40 +147,69 @@
             if (e.key === "ArrowLeft") { prev(true); e.preventDefault(); }
         });
 
-        // Touch swipe. Deliberately simple: record start X on touchstart, look
-        // at the delta on touchend, commit if it crossed a threshold. No live
-        // drag preview, no preventDefault, no state machine — touch-action:
-        // pan-y on the track tells the browser to handle vertical scrolling
-        // and leave horizontal gestures for us to inspect on touchend.
-        let swipeStart = null;
-        let swipeStartTime = 0;
+        // Live-drag swipe using Pointer Events (unified across touch / mouse /
+        // pen). The track follows the finger; on release we either commit to
+        // a new slide or snap back. setPointerCapture, applied once the
+        // direction is locked to horizontal, keeps events flowing to this
+        // element even if the finger leaves the track — without it,
+        // pointer events would route to whatever's currently under the
+        // pointer instead, and a swipe past the carousel edge would die.
+        let pState = null;
+        // pState = { id, startX, startY, dx, axis: null|'h'|'v' } when active
 
-        track.addEventListener("touchstart", (e) => {
-            if (e.touches.length !== 1) { swipeStart = null; return; }
-            swipeStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-            swipeStartTime = Date.now();
-        }, { passive: true });
+        function resetPointer() { pState = null; }
 
-        function endSwipe(e) {
-            if (swipeStart == null) return;
-            const t = e.changedTouches && e.changedTouches[0];
-            const start = swipeStart;
-            swipeStart = null;
-            if (!t) return;
-            const dx = t.clientX - start.x;
-            const dy = t.clientY - start.y;
-            const dt = Date.now() - swipeStartTime;
-            // Must be primarily horizontal, and either a quick flick or a
-            // longer drag.
-            if (Math.abs(dx) < Math.abs(dy)) return;
-            const fastFlick  = Math.abs(dx) > 40 && dt < 400;
-            const longDrag   = Math.abs(dx) > 70;
-            if (!fastFlick && !longDrag) return;
-            if (dx < 0) next(true); else prev(true);
+        track.addEventListener("pointerdown", (e) => {
+            if (e.pointerType === "mouse" && e.button !== 0) return; // left btn
+            pState = { id: e.pointerId, startX: e.clientX, startY: e.clientY, dx: 0, axis: null };
+            track.style.transition = "none";
+        });
+
+        track.addEventListener("pointermove", (e) => {
+            if (!pState || e.pointerId !== pState.id) return;
+            const dx = e.clientX - pState.startX;
+            const dy = e.clientY - pState.startY;
+
+            if (pState.axis == null) {
+                if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
+                    pState.axis = Math.abs(dx) > Math.abs(dy) ? "h" : "v";
+                    if (pState.axis === "h") {
+                        // Lock the gesture to this element so we keep getting
+                        // events even past the carousel edges.
+                        try { track.setPointerCapture(pState.id); } catch (_) {}
+                    } else {
+                        // Vertical: let the browser handle scrolling; we're done.
+                        track.style.transition = "";
+                        pState = null;
+                        return;
+                    }
+                }
+            }
+
+            if (pState && pState.axis === "h") {
+                if (e.cancelable) e.preventDefault();
+                pState.dx = dx;
+                render(dx);
+            }
+        });
+
+        function endPointer(e) {
+            if (!pState || e.pointerId !== pState.id) return;
+            const { axis, dx } = pState;
+            try { if (track.hasPointerCapture(pState.id)) track.releasePointerCapture(pState.id); } catch (_) {}
+            pState = null;
+            track.style.transition = "";
+            if (axis === "h") {
+                if (Math.abs(dx) > 50) {
+                    if (dx < 0) next(true); else prev(true);
+                } else {
+                    render(); // snap back to current slide
+                }
+            }
         }
 
-        track.addEventListener("touchend", endSwipe, { passive: true });
-        track.addEventListener("touchcancel", () => { swipeStart = null; }, { passive: true });
+        track.addEventListener("pointerup", endPointer);
+        track.addEventListener("pointercancel", endPointer);
 
         track.querySelectorAll("img").forEach((img) => {
             img.addEventListener("dragstart", (e) => e.preventDefault());
