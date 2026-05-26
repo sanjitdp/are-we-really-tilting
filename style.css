@@ -228,7 +228,8 @@ strong { font-weight: 700; }
    (Box itself is styled inline with Tailwind utilities) */
 
 .callout p:last-child { margin-bottom: 0; }
-.callout ol, .callout ul { padding-left: 20px; margin: 6px 0 12px; }
+.callout ol { list-style: decimal; padding-left: 20px; margin: 6px 0 12px; }
+.callout ul { list-style: disc;    padding-left: 20px; margin: 6px 0 12px; }
 .callout li { margin-bottom: 6px; }
 
 .formula-box {
