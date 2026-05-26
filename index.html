@@ -284,7 +284,7 @@
             enables us to
             approximately recover the reward tilt.
         </p>
-        <figure class="mx-auto mt-6 max-w-[1180px] text-center">
+        <figure class="mx-auto mt-6 mb-2 max-w-[1180px] text-center">
             <picture>
                 <source media="(max-width: 720px)" srcset="assets/images/theory/overview_mobile.png" />
                 <img class="mx-auto block max-w-full h-auto" src="assets/images/theory/overview_cropped.png"
@@ -504,7 +504,7 @@
         damped schedule still significantly mitigates reward hacking and improves sample quality. We treat $\sigma$ as a
         tunable hyperparameter that controls the strength of damping.
 
-        <figure class="my-12 mx-auto text-center max-w-figure-wide">
+        <figure class="mt-6 mb-8 mx-auto text-center max-w-figure-wide">
             <img class="mx-auto max-w-full h-auto rounded-md" src="assets/images/theory/gmm_quadratic_combined.png"
                 alt="Gaussian mixture reward hacking comparison: analytic tilt, plug-in k=1, plug-in k=8, and damped guidance" loading="lazy" />
         </figure>
@@ -516,7 +516,7 @@
         independent $k = 1$ guided trajectories and selecting the one with highest reward) can recover
         the correct mixture weights.
 
-        <figure class="my-12 mx-auto text-center max-w-figure">
+        <figure class="mt-6 mb-8 mx-auto text-center max-w-figure">
             <img class="mx-auto max-w-full h-auto rounded-md" src="assets/images/theory/ms_step.png" alt="mode selection failure on 1D Gaussian mixture" loading="lazy" />
         </figure>
     </section>

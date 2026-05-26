@@ -221,22 +221,15 @@ strong { font-weight: 700; }
 /* ============================ Sections / notes ============================ */
 
 /* Unified note: label that sits directly above a figure/carousel/table.
-   The bottom margin defines the visible gap from the label's baseline
-   to the top of the prompt / image / chart below it; the next block's
-   own top margin is zeroed via the adjacent-sibling rules below, so
-   this single number controls the entire gap. */
+   Bottom margin is zero — the gap from the note's baseline to the
+   figure below is driven entirely by the figure's own top margin, so
+   every figure gets the same gap regardless of preceding element. */
 .note {
     color: var(--text-soft);
-    margin: 28px 0 22px;
+    margin: 32px 0 0;
     line-height: 1.55;
 }
 .note strong { color: var(--text); }
-.note + .carousel,
-.note + figure,
-.note + .cb-stack { margin-top: 0; }
-/* And let the carousel slide content start right at its container top */
-.note + .carousel .slide,
-.note + .carousel .ms-slide { padding-top: 0; }
 
 /* ============================ Callout list/paragraph spacing ============================
    (Box itself is styled inline with Tailwind utilities) */
@@ -318,7 +311,7 @@ strong { font-weight: 700; }
 
 .carousel {
     position: relative;
-    margin: 8px 0 34px;
+    margin: 24px 0 32px;
     min-width: 0;
     --carousel-arrow-top: 150px;
 }
@@ -333,14 +326,6 @@ strong { font-weight: 700; }
 /* Single-slide carousels have no prev/next buttons — let viewport span full width */
 .carousel.single-slide .carousel-shell {
     grid-template-columns: minmax(0, 1fr);
-}
-/* Single-slide: no other slides to align with, so the prompt min-height
-   that exists for arrow alignment just creates dead space above short
-   prompts. Let the prompt take its natural height. */
-.carousel.single-slide .exp-prompt,
-.carousel.single-slide .cover-prompt {
-    min-height: 0;
-    align-items: start;
 }
 
 .carousel-viewport {
@@ -366,7 +351,7 @@ strong { font-weight: 700; }
     flex: 0 0 100%;
     min-width: 0;
     margin: 0;
-    padding: 8px 0 8px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -446,12 +431,11 @@ strong { font-weight: 700; }
 
 /* ============================ Cover slide ============================ */
 
-.cover-slide { padding: 8px 12px 8px; }
+.cover-slide { padding: 0 12px; }
 
-/* Prompt and the trailing label row have to balance: equal min-height
-   keeps the image strip exactly at the slide's vertical centre, so the
-   shell-centred arrows always align with the image regardless of how long
-   the prompt is. */
+/* Prompt above a cover/experiment slide. Takes its natural height —
+   if slides have different prompt lengths, the JS sync re-centers
+   the arrows on each slide's image strip. */
 .cover-prompt {
     font-style: italic;
     color: var(--text-soft);
@@ -459,10 +443,6 @@ strong { font-weight: 700; }
     font-size: 15px;
     margin: 0 0 12px;
     line-height: 1.4;
-    min-height: 3.2em;
-    display: grid;
-    align-items: end;
-    justify-items: center;
     text-wrap: balance;
 }
 
@@ -493,44 +473,27 @@ strong { font-weight: 700; }
 .cover-guided   { color: var(--naive); }
 .cover-damped   { color: var(--damped); }
 
-/* Hero carousel: tweaks for the right column of the hero */
-.hero-carousel-wrap .carousel { margin: 0; }
-#welder-carousel,
-#blueness-carousel {
-    margin-bottom: var(--experiment-block-gap);
-}
-
-#ir-carousel {
-    margin-top: 8px;
-    margin-bottom: 44px;
-}
-
-#ms-carousel {
-    margin-top: 8px;
-    margin-bottom: 42px;
-}
+/* Hero carousel: no margins — the hero handles its own spacing. */
+.hero-carousel-wrap .carousel,
+.min-w-0.w-full .carousel { margin: 0; }
+#cover-carousel { margin: 0; }
 
 /* ============================ 5-col experiment slides ============================ */
 
-.five-col-slide { padding: 8px 0 8px; }
+.five-col-slide { padding: 0; }
 
-/* Match prompt and caption min-heights so the image strip lives at the
-   slide's vertical centre. With align-items: center on the shell, the
-   arrows then sit at exactly the image's vertical centre. */
+/* Prompt above an experiment slide. Takes its natural height —
+   JS recenters the arrows on each slide's image strip when the
+   active slide changes, so we don't need to enforce equal heights. */
 .exp-prompt {
     font-style: italic;
     color: var(--text-soft);
     text-align: center;
     font-size: 16px;
-    margin: 0 auto 6px;
+    margin: 0 auto 12px;
     line-height: 1.35;
     padding: 0 12px;
-    width: min(100%, 820px);
     max-width: 820px;
-    min-height: 4.1em;
-    display: grid;
-    align-items: end;
-    justify-items: center;
     text-wrap: balance;
 }
 .prompt-pair {
@@ -553,15 +516,6 @@ strong { font-weight: 700; }
 }
 
 @media (min-width: 721px) {
-    #ms-carousel .ms-slide {
-        padding-top: 0;
-    }
-
-    #ms-carousel .exp-prompt {
-        min-height: 0;
-        margin-bottom: 6px;
-    }
-
     .market-prompt {
         width: min(100%, 960px);
         max-width: 960px;
@@ -691,7 +645,7 @@ figure figcaption {
     display: flex;
     flex-direction: column;
     gap: 22px;
-    margin: var(--figure-gap) auto var(--experiment-group-gap);
+    margin: 24px auto 32px;
     max-width: 1000px;
 }
 .cb-figure { margin: 0; min-width: 0; text-align: center; }
@@ -804,13 +758,12 @@ figure figcaption {
         line-height: 1.25;
     }
 
-    /* Cover slide: smaller prompt, drop min-height (no arrows to align with) */
-    .cover-slide  { padding: 4px 0; }
+    /* Cover slide: smaller prompt + tighter labels */
+    .cover-slide  { padding: 0; }
     .cover-row    { gap: 5px; }
     .cover-label  { font-size: 13px; margin-top: 6px; }
     .cover-prompt {
         font-size: 13.5px;
-        min-height: 0;
         margin-bottom: 10px;
         padding: 0 4px;
     }
@@ -837,8 +790,7 @@ figure figcaption {
     .exp-prompt {
         font-size: 14.5px;
         line-height: 1.32;
-        margin-bottom: 6px;
-        min-height: 0;
+        margin-bottom: 10px;
         padding: 0 4px;
     }
     .exp-caption  { font-size: 13px; padding: 0 4px; }
