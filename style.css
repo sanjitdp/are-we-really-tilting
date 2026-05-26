@@ -226,7 +226,7 @@ strong { font-weight: 700; }
    every figure gets the same gap regardless of preceding element. */
 .note {
     color: var(--text-soft);
-    margin: 32px 0 0;
+    margin: 16px 0 0;
     line-height: 1.55;
 }
 .note strong { color: var(--text); }
@@ -311,7 +311,9 @@ strong { font-weight: 700; }
 
 .carousel {
     position: relative;
-    margin: 24px 0 32px;
+    /* Asymmetric: label above hugs the figure (8px), generous space
+       below to separate it from the next figure (44px). */
+    margin: 8px 0 44px;
     min-width: 0;
     --carousel-arrow-top: 150px;
 }
@@ -559,7 +561,7 @@ strong { font-weight: 700; }
 
 .ms-slide {
     --ms-label-col: 138px;
-    padding: 8px 0 8px;
+    padding: 0;
     min-width: 0;
     width: 100%;
 }
@@ -645,7 +647,7 @@ figure figcaption {
     display: flex;
     flex-direction: column;
     gap: 22px;
-    margin: 24px auto 32px;
+    margin: 8px auto 44px;
     max-width: 1000px;
 }
 .cb-figure { margin: 0; min-width: 0; text-align: center; }
