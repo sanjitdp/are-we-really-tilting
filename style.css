@@ -24,10 +24,11 @@
 
     --code-bg:        #f3f1ec;
 
-    --content-width:  1180px;
+    --content-width:  1240px;
     --figure-gap:     8px;
     --experiment-block-gap: 28px;
     --experiment-group-gap: 68px;
+    --figure-block-gap: 44px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -36,7 +37,20 @@ html, body { overflow-x: hidden; }
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 64px;
+    scroll-padding-top: 72px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .carousel-track { transition: none !important; }
+    .topnav { transition: none !important; }
+}
+
+:focus { outline: none; }
+:focus-visible {
+    outline: 2px solid var(--lavender-text);
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
 body {
@@ -83,24 +97,63 @@ strong { font-weight: 700; }
 .topnav-inner {
     width: 100%;
     margin: 0;
-    padding: 12px 24px;
+    padding: 11px 24px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 16px;
 }
 
 .topnav-title {
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14.5px;
     color: var(--text);
     letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    flex-shrink: 1;
+}
+.topnav-title .topnav-authors {
+    font-weight: 400;
+    color: var(--text-soft);
 }
 
-.topnav-links { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.topnav-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
 .topnav-links a { color: var(--text-soft); font-size: 14px; border: none; }
 .topnav-links a:hover { color: var(--text); }
+
+.topnav-anchor {
+    position: relative;
+    padding: 2px 0;
+}
+.topnav-anchor.active {
+    color: var(--lavender-text);
+}
+.topnav-anchor.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 2px;
+    background: var(--lavender-edge);
+    border-radius: 2px;
+}
+
+.topnav-divider {
+    width: 1px;
+    height: 18px;
+    background: var(--border);
+    display: inline-block;
+}
 
 .link-pill {
     border: 1px solid var(--border) !important;
@@ -121,8 +174,8 @@ strong { font-weight: 700; }
 
 .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.25fr);
-    gap: 36px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 72px;
     align-items: center;
 }
 
@@ -134,6 +187,7 @@ strong { font-weight: 700; }
     margin: 0 0 6px;
     letter-spacing: -0.025em;
     line-height: 1.08;
+    text-wrap: balance;
 }
 
 .paper-subtitle {
@@ -142,11 +196,7 @@ strong { font-weight: 700; }
     font-weight: 400;
     margin: 0 0 20px;
     line-height: 1.35;
-}
-
-@media (min-width: 1100px) {
-    .paper-title    { white-space: nowrap; }
-    .paper-subtitle { white-space: nowrap; }
+    text-wrap: balance;
 }
 
 .authors { font-size: 17px; margin-bottom: 4px; }
@@ -209,7 +259,12 @@ strong { font-weight: 700; }
     color: var(--lavender-text);
 }
 
-.hero-carousel-wrap { min-width: 0; }
+.hero-carousel-wrap {
+    min-width: 0;
+    width: 100%;
+    max-width: 620px;
+    justify-self: end;
+}
 
 /* ============================ Sections ============================ */
 
@@ -249,10 +304,7 @@ strong { font-weight: 700; }
 }
 .reward-note {
     color: var(--text-soft);
-    margin: 14px 0 0;
-    transform: translateY(22px);
-    position: relative;
-    z-index: 1;
+    margin: 32px 0 6px;
 }
 .reward-note strong {
     color: var(--text);
@@ -375,6 +427,12 @@ strong { font-weight: 700; }
     display: flex;
     transition: transform 450ms cubic-bezier(0.22, 0.61, 0.36, 1);
     will-change: transform;
+    touch-action: pan-y;
+}
+.carousel-track img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .slide {
@@ -432,12 +490,12 @@ strong { font-weight: 700; }
     justify-content: center;
     align-items: center;
     gap: 8px;
-    padding: 6px 0 0;
+    padding: 10px 0 0;
     pointer-events: none;
 }
 .carousel-dots button {
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
     padding: 0;
     border: none;
     border-radius: 999px;
@@ -448,8 +506,19 @@ strong { font-weight: 700; }
 }
 .carousel-dots button:hover { background: rgba(67, 45, 122, 0.45); }
 .carousel-dots button.active {
-    width: 22px;
+    width: 24px;
     background: var(--lavender-text);
+}
+
+.carousel-counter {
+    display: none;
+    margin-left: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-soft);
+    font-variant-numeric: tabular-nums;
+    user-select: none;
 }
 
 /* ============================ Cover slide ============================ */
@@ -509,15 +578,12 @@ strong { font-weight: 700; }
 }
 
 #ir-carousel {
+    margin-top: 8px;
     margin-bottom: 44px;
 }
 
-#ir-carousel {
-    margin-top: 24px;
-}
-
 #ms-carousel {
-    margin-top: 24px;
+    margin-top: 8px;
     margin-bottom: 42px;
 }
 
@@ -699,12 +765,16 @@ strong { font-weight: 700; }
 
 /* ============================ Generic figures ============================ */
 
-.full-figure { margin: 12px auto 36px; text-align: center; max-width: 1000px; }
+.full-figure {
+    margin: var(--figure-block-gap) auto calc(var(--figure-block-gap) + 8px);
+    text-align: center;
+    max-width: 1000px;
+}
 .full-figure img { margin: 0 auto; max-width: 100%; height: auto; border-radius: 6px; }
 .full-figure figcaption {
     font-size: 14.5px;
     color: var(--text-soft);
-    margin-top: 10px;
+    margin-top: 12px;
     line-height: 1.5;
     text-align: center;
     max-width: 900px;
@@ -746,7 +816,8 @@ strong { font-weight: 700; }
 }
 .cb-table { font-size: 14px; min-width: 0; max-width: 720px; margin: 0 auto; width: 100%; }
 .cb-table-caption { font-size: 13.5px; color: var(--text-soft); margin: 0 0 8px; line-height: 1.45; text-align: center; }
-.cb-table table { width: 100%; border-collapse: collapse; background: var(--bg); border-radius: 6px; overflow: hidden; }
+.cb-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.cb-table table { width: 100%; min-width: 360px; border-collapse: collapse; background: var(--bg); border-radius: 6px; overflow: hidden; }
 .cb-table th, .cb-table td {
     padding: 6px 8px;
     border-bottom: 1px solid var(--border);
@@ -766,16 +837,48 @@ strong { font-weight: 700; }
 
 /* ============================ BibTeX / Citation ============================ */
 
+.bibtex-wrap {
+    position: relative;
+}
+
 .bibtex {
     background: var(--code-bg);
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 16px 18px;
+    padding-right: 90px;
     font-family: "SF Mono", "Menlo", "Consolas", monospace;
     font-size: 13.5px;
     line-height: 1.55;
     overflow-x: auto;
     color: var(--text);
+    margin: 0;
+}
+
+.bibtex-copy {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.bibtex-copy:hover {
+    background: var(--bg-soft);
+    border-color: var(--lavender-edge);
+}
+.bibtex-copy.copied {
+    background: var(--lavender-bg);
+    border-color: var(--lavender-edge);
+    color: var(--lavender-text);
 }
 
 /* ============================ Footer ============================ */
@@ -792,9 +895,17 @@ strong { font-weight: 700; }
 
 /* ============================ Responsive ============================ */
 
+/* Hide section anchors at tablet/narrow-desktop widths to avoid topnav crowding;
+   keep just the title and the Paper/Code pills. */
+@media (max-width: 1080px) {
+    .topnav-anchor,
+    .topnav-divider { display: none; }
+}
+
 @media (max-width: 980px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 28px; }
     .hero      { padding-top: 36px; }
+    .hero-carousel-wrap { justify-self: stretch; max-width: 100%; }
 
     /* Overview: stack the two LaTeX halves */
     .overview-halves { grid-template-columns: 1fr; gap: 16px; }
@@ -802,18 +913,24 @@ strong { font-weight: 700; }
 
 @media (max-width: 720px) {
     body { font-size: 16px; }
+
+    /* Top nav: hide the section anchors and the divider on phones;
+       keep just the title + Paper/Code pills. */
     .topnav-inner { padding: 10px 16px; }
     .topnav-links { gap: 10px; }
-    .topnav-title { display: none; }
+    .topnav-anchor,
+    .topnav-divider { display: none; }
+    .topnav-title { font-size: 13.5px; }
+    .topnav-title .topnav-authors { display: none; }
 
-    .hero { padding: 28px 16px 14px; }
-    .section { padding: 30px 16px; }
+    .hero { padding: 24px 16px 8px; }
+    .section { padding: 36px 16px 28px; }
     .section h2 { font-size: 26px; }
-    .section h3 { margin-top: 38px; }
+    .section h3 { margin-top: 38px; font-size: 20px; }
     .section h4 { margin-top: 30px; }
     .section-lead + h3 { margin-top: 26px; }
     .section h3 + h4 { margin-top: 14px; }
-    .overview-section { padding: 16px 16px 18px; }
+    .overview-section { padding: 24px 16px 20px; }
 
     .triple { grid-template-columns: 1fr; }
     .gmm-triple {
@@ -825,20 +942,71 @@ strong { font-weight: 700; }
         line-height: 1.25;
     }
 
-    .cover-slide  { padding: 8px 4px; }
+    /* Cover slide: smaller prompt, drop min-height (no arrows to align with) */
+    .cover-slide  { padding: 4px 0; }
     .cover-row    { gap: 5px; }
-    .cover-label  { font-size: 14px; }
-    .cover-prompt { font-size: 13px; min-height: 4em; }
+    .cover-label  { font-size: 13px; margin-top: 6px; }
+    .cover-prompt {
+        font-size: 13.5px;
+        min-height: 0;
+        margin-bottom: 10px;
+        padding: 0 4px;
+    }
 
-    .five-col-row .cover-cell { flex-basis: calc((100% - 2 * 6px) / 3); }   /* mobile: 3 + 2 */
-    .five-col-row { gap: 6px; }
-    .exp-prompt   { font-size: 15px; line-height: 1.32; margin-bottom: 6px; min-height: 4.3em; }
-    .exp-caption  { font-size: 13.5px; }
+    /* 5-method comparison on mobile: 2 columns × 3 rows. The 5th cell
+       (the "Damped (ours)" result) spans both columns and is centered
+       at the same image size — visually intentional emphasis on our
+       method rather than an orphaned cell. */
+    .five-col-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        max-width: 100%;
+    }
+    .five-col-row .cover-cell { flex: none; }
+    .five-col-row .cover-cell:nth-child(5) {
+        grid-column: 1 / -1;
+        width: calc((100% - 6px) / 2);
+        justify-self: center;
+    }
+    .five-col-row .cover-cell .cover-label {
+        font-size: 13px;
+    }
+    .exp-prompt {
+        font-size: 14.5px;
+        line-height: 1.32;
+        margin-bottom: 6px;
+        min-height: 0;
+        padding: 0 4px;
+    }
+    .exp-caption  { font-size: 13px; padding: 0 4px; }
 
-    .carousel-shell { grid-template-columns: 28px minmax(0, 1fr) 28px; column-gap: 6px; }
-    .carousel-btn   { width: 28px; height: 28px; font-size: 18px; }
+    /* Arrows are useless at this size — hide them and rely on swipe + dots. */
+    .carousel-shell { grid-template-columns: minmax(0, 1fr); column-gap: 0; }
+    .carousel-btn { display: none; }
+    .carousel-counter { display: inline-block; }
+    .carousel-dots { padding-top: 12px; }
+    .carousel-dots button {
+        width: 10px; height: 10px;
+        /* Larger invisible tap target */
+        position: relative;
+    }
+    .carousel-dots button::after {
+        content: "";
+        position: absolute;
+        inset: -8px;
+    }
+    .carousel-dots button.active { width: 26px; }
 
-    .slide { padding: 8px 4px; }
+    .slide { padding: 4px 0; }
+
+    /* Hero buttons: more breathing room */
+    .hero-links { gap: 8px; }
+    .btn { padding: 9px 14px; font-size: 14px; }
+
+    /* Bibtex copy button: smaller and tucked in */
+    .bibtex { padding-right: 70px; font-size: 12.5px; }
+    .bibtex-copy { padding: 5px 10px; font-size: 11.5px; }
 
     /* Mode-selection on mobile:
          - hide the slide-level column headers (they only fit the desktop grid)
@@ -853,7 +1021,8 @@ strong { font-weight: 700; }
     .ms-row-label {
         text-align: center;
         padding: 0 0 5px;
-        font-size: 16px;
+        font-size: 15.5px;
+        font-weight: 700;
     }
     .ms-pair-labels {
         display: grid;
@@ -863,7 +1032,7 @@ strong { font-weight: 700; }
     }
     .ms-pair-labels span {
         text-align: center;
-        font-size: 14px;
+        font-size: 12.5px;
         font-weight: 400;
         color: var(--text-soft);
         text-transform: uppercase;
@@ -879,4 +1048,10 @@ strong { font-weight: 700; }
         grid-auto-flow: column;
         gap: 4px;
     }
+
+    /* Tables: scroll horizontally rather than squish */
+    .cb-table-scroll { margin: 0 -4px; padding: 0 4px; }
+
+    /* Formula boxes can have wide TeX — give a horizontal escape hatch */
+    .formula-box { padding: 8px 12px; font-size: 13.5px; }
 }
