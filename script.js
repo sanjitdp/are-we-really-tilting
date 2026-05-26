@@ -192,10 +192,13 @@
             }
 
             if (dragging) {
+                // Claim the gesture so the browser doesn't fire touchcancel
+                // (e.g. iOS edge-back swipe, native horizontal pan heuristics).
+                if (e.cancelable) e.preventDefault();
                 currentDx = dx;
                 render(dx);
             }
-        }, { passive: true });
+        }, { passive: false });
 
         function endTouch() {
             if (startX == null) {
