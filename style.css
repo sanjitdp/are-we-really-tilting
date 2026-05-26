@@ -206,9 +206,12 @@ strong { font-weight: 700; }
 }
 
 .arxiv-mark {
-    /* official two-tone arXiv logomark — has its own red/grey colors baked in */
-    width: 16px;
-    height: 22px;
+    /* official two-tone arXiv logomark — has its own red/grey colors baked in.
+       The viewBox is 17.73 × 24.27 (taller than wide); 14 × 19 keeps its
+       aspect ratio while matching the visual weight of the GitHub mark
+       (18 × 18) and the citation quote glyph (19 × 19). */
+    width: 14px;
+    height: 19px;
     object-fit: contain;
 }
 
