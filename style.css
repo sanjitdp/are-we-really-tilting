@@ -260,6 +260,18 @@ section > *:last-child { margin-bottom: 0; }
 }
 .formula-box mjx-container { margin: 0 !important; }
 
+/* Each display-math container scrolls horizontally on its own when the
+   equation is wider than the column. Without max-width:100%, MathJax's
+   SVG would push the page width out; without overflow-x:auto, it would
+   be silently clipped. Applies to both bare $$…$$ in body text and the
+   .formula-box-wrapped equations. */
+mjx-container[display="true"] {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
 /* Proof / derivation dropdowns */
 .proof-drop {
     border: 1px solid var(--border);
@@ -297,7 +309,6 @@ section > *:last-child { margin-bottom: 0; }
     margin: 0;
     font-size: 15px;
     line-height: 1.75;
-    overflow-x: auto;
 }
 .proof-drop > div p { margin: 10px 0; }
 .proof-drop > div mjx-container { margin: 12px 0 !important; }
