@@ -231,6 +231,13 @@ strong { font-weight: 700; }
 }
 .note strong { color: var(--text); }
 
+/* Drop the trailing bottom margin on the LAST child of any section, so
+   the section's padding-bottom alone controls the gap to the next h2.
+   Without this, a section ending in a figure (mb 44) shows a larger
+   inter-section gap than one ending in a paragraph (mb 17), even
+   though the padding is identical. */
+section > *:last-child { margin-bottom: 0; }
+
 /* ============================ Callout list/paragraph spacing ============================
    (Box itself is styled inline with Tailwind utilities) */
 
@@ -694,7 +701,7 @@ figure figcaption {
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 16px 18px;
-    padding-right: 90px;
+    padding-right: 56px;
     font-family: "SF Mono", "Menlo", "Consolas", monospace;
     font-size: 13.5px;
     line-height: 1.55;
@@ -707,26 +714,32 @@ figure figcaption {
     position: absolute;
     top: 10px;
     right: 10px;
-    padding: 6px 12px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
     border: 1px solid var(--border);
     border-radius: 6px;
     background: var(--bg);
-    color: var(--text);
-    font-family: inherit;
-    font-size: 12.5px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    color: var(--text-soft);
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
 }
+.bibtex-copy .icon { width: 16px; height: 16px; display: block; }
+.bibtex-copy .icon-check { display: none; }
+.bibtex-copy.copied .icon-copy { display: none; }
+.bibtex-copy.copied .icon-check { display: block; }
 .bibtex-copy:hover {
     background: var(--bg-soft);
     border-color: var(--lavender-edge);
+    color: var(--text);
 }
 .bibtex-copy.copied {
     background: var(--lavender-bg);
     border-color: var(--lavender-edge);
-    color: var(--lavender-text);
+    color: var(--damped);
 }
 
 /* ============================ Responsive ============================ */
@@ -819,9 +832,10 @@ figure figcaption {
     /* Hero buttons: slightly tighter on mobile */
     .btn { padding: 9px 14px; font-size: 14px; }
 
-    /* Bibtex copy button: smaller and tucked in */
-    .bibtex { padding-right: 70px; font-size: 12.5px; }
-    .bibtex-copy { padding: 5px 10px; font-size: 11.5px; }
+    /* Bibtex copy button: smaller on mobile */
+    .bibtex { padding-right: 48px; font-size: 12.5px; }
+    .bibtex-copy { width: 28px; height: 28px; }
+    .bibtex-copy .icon { width: 14px; height: 14px; }
 
     /* Mode-selection on mobile:
          - hide the slide-level column headers (they only fit the desktop grid)

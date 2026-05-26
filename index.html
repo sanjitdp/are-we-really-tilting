@@ -924,7 +924,17 @@
     <section id="citation" class="mx-auto max-w-content px-4 md:px-6 py-4 md:py-5 lg:py-6">
         <h2 class="text-[26px] md:text-[30px] font-bold tracking-[-0.02em] m-0 mb-[18px] pb-2 border-b border-edge">Citation</h2>
         <div class="bibtex-wrap">
-            <button class="bibtex-copy" type="button" aria-label="Copy BibTeX">Copy</button>
+            <button class="bibtex-copy" type="button" aria-label="Copy BibTeX">
+                <svg class="icon icon-copy" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 4h9a2 2 0 0 1 2 2v11M6 8h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z" />
+                </svg>
+                <svg class="icon icon-check" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                        stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7" />
+                </svg>
+            </button>
             <pre class="bibtex"><code>@article{dandapanthula2026tilting,
   title   = {Are we really tilting? The mechanics of reward guidance in flow and diffusion models},
   author  = {Dandapanthula, Sanjit and Boffi, Nicholas M.},

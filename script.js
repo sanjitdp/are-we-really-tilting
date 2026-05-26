@@ -259,12 +259,14 @@
     });
 })();
 
-// Copy BibTeX
+// Copy BibTeX — icon button that swaps copy ↔ check via the .copied class.
 (function () {
     document.querySelectorAll(".bibtex-wrap").forEach((wrap) => {
         const btn = wrap.querySelector(".bibtex-copy");
         const code = wrap.querySelector("code");
         if (!btn || !code) return;
+        let resetTimer = null;
+
         btn.addEventListener("click", async () => {
             const text = code.textContent.trim();
             try {
@@ -281,15 +283,15 @@
                     document.body.removeChild(ta);
                 }
                 btn.classList.add("copied");
-                const original = btn.dataset.label || btn.textContent;
-                btn.dataset.label = original;
-                btn.textContent = "Copied";
-                setTimeout(() => {
-                    btn.textContent = original;
+                btn.setAttribute("aria-label", "Copied to clipboard");
+                if (resetTimer) clearTimeout(resetTimer);
+                resetTimer = setTimeout(() => {
                     btn.classList.remove("copied");
+                    btn.setAttribute("aria-label", "Copy BibTeX");
+                    resetTimer = null;
                 }, 1500);
             } catch (err) {
-                btn.textContent = "Copy failed";
+                console.error("BibTeX copy failed", err);
             }
         });
     });
