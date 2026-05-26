@@ -311,9 +311,9 @@ strong { font-weight: 700; }
 
 .carousel {
     position: relative;
-    /* Asymmetric: label above hugs the figure (8px), generous space
-       below to separate it from the next figure (44px). */
-    margin: 8px 0 44px;
+    /* Asymmetric: small gap above to sit close to the label (16px),
+       generous space below to separate it from the next block (44px). */
+    margin: 16px 0 44px;
     min-width: 0;
     --carousel-arrow-top: 150px;
 }
@@ -647,7 +647,7 @@ figure figcaption {
     display: flex;
     flex-direction: column;
     gap: 22px;
-    margin: 8px auto 44px;
+    margin: 16px auto 44px;
     max-width: 1000px;
 }
 .cb-figure { margin: 0; min-width: 0; text-align: center; }
