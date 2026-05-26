@@ -32,6 +32,15 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+/* With Tailwind preflight disabled, restore the minimum needed for
+   utility border classes (border-b, border-l, etc.) to actually
+   render — default border-style would otherwise be `none`. */
+*, *::before, *::after {
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--border);
+}
+
 html, body { overflow-x: hidden; }
 
 html {
@@ -212,17 +221,22 @@ strong { font-weight: 700; }
 /* ============================ Sections / notes ============================ */
 
 /* Unified note: label that sits directly above a figure/carousel/table.
-   The bottom margin is intentionally small so the label hugs the visual
-   below it; the top margin gives generous separation from prior content. */
+   The bottom margin defines the visible gap from the label's baseline
+   to the top of the prompt / image / chart below it; the next block's
+   own top margin is zeroed via the adjacent-sibling rules below, so
+   this single number controls the entire gap. */
 .note {
     color: var(--text-soft);
-    margin: 40px 0 8px;
+    margin: 28px 0 22px;
     line-height: 1.55;
 }
 .note strong { color: var(--text); }
 .note + .carousel,
 .note + figure,
 .note + .cb-stack { margin-top: 0; }
+/* And let the carousel slide content start right at its container top */
+.note + .carousel .slide,
+.note + .carousel .ms-slide { padding-top: 0; }
 
 /* ============================ Callout list/paragraph spacing ============================
    (Box itself is styled inline with Tailwind utilities) */
@@ -320,6 +334,14 @@ strong { font-weight: 700; }
 .carousel.single-slide .carousel-shell {
     grid-template-columns: minmax(0, 1fr);
 }
+/* Single-slide: no other slides to align with, so the prompt min-height
+   that exists for arrow alignment just creates dead space above short
+   prompts. Let the prompt take its natural height. */
+.carousel.single-slide .exp-prompt,
+.carousel.single-slide .cover-prompt {
+    min-height: 0;
+    align-items: start;
+}
 
 .carousel-viewport {
     overflow: hidden;
@@ -350,10 +372,6 @@ strong { font-weight: 700; }
     align-items: center;
     background: transparent;
 }
-.note + .carousel .slide {
-    padding-top: 0;
-}
-
 .slide > img {
     max-width: 100%;
     height: auto;
