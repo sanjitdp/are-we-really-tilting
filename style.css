@@ -357,6 +357,12 @@ mjx-container[display="true"] {
     min-width: 0;
     background: transparent;
     touch-action: pan-y;
+    /* Be the slides' offsetParent so Embla measures slide.offsetLeft
+       relative to the viewport (0 for slide 0). Without this, the
+       offsetParent climbs up to .carousel (position: relative) and the
+       grid offset to the viewport column leaks into Embla's transform,
+       chopping the first ~48px off slide 0 on desktop. */
+    position: relative;
 }
 
 /* .carousel-track is Embla's container — Embla drives transform/animation
