@@ -356,13 +356,14 @@ mjx-container[display="true"] {
     border-radius: 10px;
     min-width: 0;
     background: transparent;
+    touch-action: pan-y;
 }
 
+/* .carousel-track is Embla's container — Embla drives transform/animation
+   itself, so don't set a CSS transition on it. */
 .carousel-track {
     display: flex;
-    transition: transform 450ms cubic-bezier(0.22, 0.61, 0.36, 1);
     will-change: transform;
-    touch-action: pan-y;
 }
 .carousel-track img {
     -webkit-user-drag: none;
