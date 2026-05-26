@@ -49,8 +49,6 @@
 // Lightweight carousel — no dependencies.
 (function () {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const SWIPE_THRESHOLD = 24;     // px traversed before commit
-    const DIRECTION_LOCK = 8;       // px before we decide axis
 
     const carousels = document.querySelectorAll(".carousel");
 
@@ -149,75 +147,41 @@
             if (e.key === "ArrowLeft") { prev(true); e.preventDefault(); }
         });
 
-        // Live touch drag with direction-locking. CSS sets touch-action: pan-y
-        // on the track so vertical scrolling continues to work natively.
-        let startX = null;
-        let startY = null;
-        let currentDx = 0;
-        let dragging = false;
-        let abandoned = false;
-
-        function resetTouch() {
-            startX = null;
-            startY = null;
-            currentDx = 0;
-            dragging = false;
-            abandoned = false;
-        }
+        // Touch swipe. Deliberately simple: record start X on touchstart, look
+        // at the delta on touchend, commit if it crossed a threshold. No live
+        // drag preview, no preventDefault, no state machine — touch-action:
+        // pan-y on the track tells the browser to handle vertical scrolling
+        // and leave horizontal gestures for us to inspect on touchend.
+        let swipeStart = null;
+        let swipeStartTime = 0;
 
         track.addEventListener("touchstart", (e) => {
-            if (e.touches.length !== 1) { resetTouch(); return; }
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            currentDx = 0;
-            dragging = false;
-            abandoned = false;
-            track.style.transition = "none";
+            if (e.touches.length !== 1) { swipeStart = null; return; }
+            swipeStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            swipeStartTime = Date.now();
         }, { passive: true });
 
-        track.addEventListener("touchmove", (e) => {
-            if (startX == null || abandoned) return;
-            const dx = e.touches[0].clientX - startX;
-            const dy = e.touches[0].clientY - startY;
-
-            if (!dragging) {
-                if (Math.abs(dx) > DIRECTION_LOCK && Math.abs(dx) > Math.abs(dy)) {
-                    dragging = true;
-                } else if (Math.abs(dy) > DIRECTION_LOCK) {
-                    // user is scrolling vertically — back out cleanly
-                    abandoned = true;
-                    track.style.transition = "";
-                    return;
-                }
-            }
-
-            if (dragging) {
-                // Claim the gesture so the browser doesn't fire touchcancel
-                // (e.g. iOS edge-back swipe, native horizontal pan heuristics).
-                if (e.cancelable) e.preventDefault();
-                currentDx = dx;
-                render(dx);
-            }
-        }, { passive: false });
-
-        function endTouch() {
-            if (startX == null) {
-                track.style.transition = "";
-                return;
-            }
-            track.style.transition = "";
-            if (dragging && Math.abs(currentDx) > SWIPE_THRESHOLD) {
-                if (currentDx < 0) next(true); else prev(true);
-            } else {
-                render(); // snap back to current slide
-            }
-            resetTouch();
+        function endSwipe(e) {
+            if (swipeStart == null) return;
+            const t = e.changedTouches && e.changedTouches[0];
+            const start = swipeStart;
+            swipeStart = null;
+            if (!t) return;
+            const dx = t.clientX - start.x;
+            const dy = t.clientY - start.y;
+            const dt = Date.now() - swipeStartTime;
+            // Must be primarily horizontal, and either a quick flick or a
+            // longer drag.
+            if (Math.abs(dx) < Math.abs(dy)) return;
+            const fastFlick  = Math.abs(dx) > 40 && dt < 400;
+            const longDrag   = Math.abs(dx) > 70;
+            if (!fastFlick && !longDrag) return;
+            if (dx < 0) next(true); else prev(true);
         }
 
-        track.addEventListener("touchend", endTouch);
-        track.addEventListener("touchcancel", endTouch);
+        track.addEventListener("touchend", endSwipe, { passive: true });
+        track.addEventListener("touchcancel", () => { swipeStart = null; }, { passive: true });
 
-        // Prevent default image drag so horizontal motion never gets stolen
         track.querySelectorAll("img").forEach((img) => {
             img.addEventListener("dragstart", (e) => e.preventDefault());
         });

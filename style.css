@@ -353,12 +353,6 @@ section > *:last-child { margin-bottom: 0; }
     will-change: transform;
     touch-action: pan-y;
 }
-/* touch-action is non-inherited — restate on descendants so the browser
-   doesn't reclaim horizontal pan over an <img> or .cover-cell etc. */
-.carousel-track *,
-.carousel-viewport {
-    touch-action: pan-y;
-}
 .carousel-track img {
     -webkit-user-drag: none;
     user-select: none;
