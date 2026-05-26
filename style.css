@@ -206,10 +206,9 @@ strong { font-weight: 700; }
 }
 
 .arxiv-mark {
-    width: 21px;
-    height: 24px;
-    object-fit: contain;
-    transform: translate(1px, 1px);
+    width: 18px;
+    height: 18px;
+    color: var(--arxiv-red);
 }
 
 .quote-svg {
